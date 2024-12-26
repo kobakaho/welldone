@@ -75,4 +75,4 @@ MVPリリース
 
 
 画面遷移図URL
-https://www.figma.com/design/2PASTSWNR4TC8jwnrG6P4L/Graduation_app_project?node-id=0-1&p=f&t=7ZP2xDKDQFtbRktI-0
+https://www.figma.com/design/2PASTSWNR4TC8jwnrG6P4L/Graduation_app_project?node-id=0-1&t=M9SxuYDVr2a0GA5S-1
