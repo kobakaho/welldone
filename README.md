@@ -72,3 +72,7 @@ MVPリリース
 一般的なCRUD以外の実装予定の機能についてそれぞれどのようなイメージ(使用するAPIや)で実装する予定なのか現状考えているもので良いので教えて下さい。
 
 通知　→　ActionCable
+
+
+画面遷移図URL
+https://www.figma.com/design/2PASTSWNR4TC8jwnrG6P4L/Graduation_app_project?node-id=0-1&t=M9SxuYDVr2a0GA5S-1
