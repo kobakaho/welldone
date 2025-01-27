@@ -1,6 +1,6 @@
-# frozen_string_literal: true 
+# frozen_string_literal: true
 
-#メール認証機能
+# メール認証機能
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new

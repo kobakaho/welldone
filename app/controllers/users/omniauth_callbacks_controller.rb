@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#OAuth認証(SNS認証等)を実装する場合
+# OAuth認証(SNS認証等)を実装する場合
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:

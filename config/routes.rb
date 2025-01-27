@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     session: "users/session",
     registration: "users/registration"
   }
-  #採用したい機能　:Omniauthable
+  # 採用したい機能　:Omniauthable
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
