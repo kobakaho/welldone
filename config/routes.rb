@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  root "static_pages#top"
   devise_for :users, controller: {
     session: "users/session",
     registration: "users/registration"
   }
   # 採用したい機能　:Omniauthable
-
+  resources :cloths
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -16,5 +17,4 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "static_pages#top"
 end
