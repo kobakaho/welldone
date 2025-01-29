@@ -7,7 +7,7 @@ class CreateCloths < ActiveRecord::Migration[7.2]
       t.date :purchase_date
       t.datetime :deleted_at
       t.integer :price
-      t.references :user
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
