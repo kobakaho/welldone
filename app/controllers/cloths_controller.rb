@@ -13,6 +13,7 @@ class ClothsController < ApplicationController
   end
     
   def create
+    @cloth = Cloth.new(cloth_params)
   end
       
   def edit
@@ -20,6 +21,7 @@ class ClothsController < ApplicationController
   end
     
   def update
+    
   end
     
   def destroy
@@ -28,6 +30,6 @@ class ClothsController < ApplicationController
   private
 
   def cloth_params
-    params.reqire(:cloth).permit(:image_file, :brand, :body, :purchase_date, :price)
+    params.reqire(:cloth).permit(:brand, :body, :purchase_date, :price)
   end
 end

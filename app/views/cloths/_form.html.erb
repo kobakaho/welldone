@@ -1,2 +1,29 @@
 <h1>登録フォーム画面</h1>
 
+<!-- カテゴリー＆シーズン＆画像追加 -->
+<%= form_with model: @cloth do |form| %>
+  <div>
+    <%= form.label :brand, "ブランド" %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div>
+    <%= form.label :price, "購入金額" %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :purchase_date, "購入日" %>
+    <%= form.date_field :purchase_date %>
+  </div>
+
+  <div>
+    <%= form.label :body, "購入理由" %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div>
+    <%= form.submit "登録する" %>
+  </div>
+<% end %>
+
