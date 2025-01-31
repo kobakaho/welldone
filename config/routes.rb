@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root "static_pages#top"
-  devise_for :users, controller: {
-    session: "users/session",
-    registration: "users/registration"
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
   # 採用したい機能　:Omniauthable
   resources :cloths
