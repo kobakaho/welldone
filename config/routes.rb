@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root "static_pages#top"
-  devise_for :users, controller: {
-    session: "users/session",
-    registration: "users/registration"
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
-  # 採用したい機能　:Omniauthable
   resources :cloths
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
