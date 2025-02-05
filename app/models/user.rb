@@ -4,8 +4,8 @@ class User < ApplicationRecord
   # :confirmable　は追加する
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
-  
+         :omniauthable, omniauth_providers: [ :google_oauth2 ]
+
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   def self.create_unique_string

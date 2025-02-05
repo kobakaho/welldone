@@ -1,6 +1,6 @@
 class ClothsController < ApplicationController
-  #current_user.id
-  # ログインしないとできないアクションの制限　
+  # current_user.id
+  # ログインしないとできないアクションの制限
   # before_action :authenticate_user only:edit,update,destroy
   def index
     @cloths = Cloth.all
