@@ -26,4 +26,11 @@
   </div>
 <% end %>
 
+<% if flash[:alert] %>
+  <div class="custom-alert">
+    <span class="close" onclick="this.parentElement.style.display='none";>&times;</span>
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
 <%= render "devise/shared/links" %>
