@@ -111,6 +111,10 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.1)
     faraday (2.12.2)
@@ -366,6 +370,7 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
+  dotenv-rails
   jbuilder
   jsbundling-rails
   omniauth-google-oauth2
