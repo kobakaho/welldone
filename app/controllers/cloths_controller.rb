@@ -27,23 +27,25 @@ class ClothsController < ApplicationController
   end
 
   def edit
-    @cloth = current_user.cloths.find(params[:id])
+    @cloth = current_user.cloth.find(params[:id])
   end
 
   def update
     @cloth = Cloth.find(params[:id])
-    if @cloth.update(cloth_params)
-      redirect_to cloth_path(@board), t("defaults.flash_message.updated", item: Cloth.model_name.human)
-    else
-      flash.now[:danger] = t("defaults.flash_message.not_updated", item: Cloth.model_name.human)
-      render :edit, status: :unprocessable_entity
+
+    respond_to do |format|
+      if @cloth.update(cloth_params)
+        format.html { redirect_to cloth_url(@cloth), notice: "更新に成功しました"}
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @cloth = Cloth.find(params[:id])
     @cloth.destroy!
-    redirect_to cloths_path, success: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
+    redirect_to cloths_path, success: t('defaults.flash_message.deleted', item: Cloth.model_name.human), status: :see_other
   end
 
   private

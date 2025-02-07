@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_04_094610) do
   enable_extension "plpgsql"
 
   create_table "cloths", force: :cascade do |t|
-    t.string "image_file", null: false
+    t.string "image_file"
     t.string "brand"
     t.text "body"
     t.date "purchase_date"

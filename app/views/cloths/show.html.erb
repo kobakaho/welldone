@@ -3,8 +3,8 @@
 <%= render @cloth %>
 
 <div>
-  <%= link_to "編集", "#" %>
-  <%= link_to "削除", "#" %>
+  <%= link_to "編集", edit_cloth_path(@cloth) %>
+  <%= link_to "削除", @cloth, data: { turbo_method: :delete } %>
   
-  <%= link_to "一覧にもどる", "#" %>
+  <%= link_to "一覧にもどる", cloths_path %>
 </div>
