@@ -1,6 +1,7 @@
 <h1>登録フォーム画面</h1>
-
+<!-- エラーメッセージ持ってくる -->
 <!-- カテゴリー＆シーズン＆画像追加 -->
+
 
 <!--  form_with 入力フォームに必要なHTMLを作成 -->
 <%= form_with model: @cloth do |form| %>
@@ -11,7 +12,7 @@
 
   <div>
     <%= form.label :price, "購入金額" %>
-    <%= form.number_field :price %>
+    <%= form.text_field :price %>
   </div>
 
   <div>
