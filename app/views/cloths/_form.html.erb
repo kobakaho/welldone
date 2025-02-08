@@ -5,7 +5,7 @@
   <%= render "shared/error_messages", object: form.object %>
   <div>
   <%= form.label :seasons, "シーズン(必須)" %>
-  <%= form.collection_check_boxes :season_ids, Season.order(:name), :id, :name %>
+  <%= form.collection_check_boxes :season_ids, Season.order(:name), :id, :name, include_hidden: false %>
   </div>
 
   <div>
