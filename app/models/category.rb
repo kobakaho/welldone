@@ -3,4 +3,5 @@ class Category < ApplicationRecord
 
   has_many :category_cloths, dependent: :destroy
   has_many :cloths, through: :category_cloths
+  has_ancestry
 end
