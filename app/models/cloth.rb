@@ -4,4 +4,5 @@ class Cloth < ApplicationRecord
   validates :purchase_date, allow_blank: true, comparison: { less_than_or_equal_to: Date.today }# comparison:比較
   validates :price, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 }
   belongs_to :user
+  has_many :seasons, through: :season_cloths
 end
