@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_08_091042) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_08_115839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_cloths", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "cloth_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_cloths_on_category_id"
+    t.index ["cloth_id"], name: "index_category_cloths_on_cloth_id"
+  end
+
   create_table "cloths", force: :cascade do |t|
-    t.string "image_file", null: false
+    t.string "image_file"
     t.string "brand"
     t.text "body"
     t.date "purchase_date"
@@ -43,12 +58,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_091042) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,6 +73,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_091042) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider"
   end
 
+  add_foreign_key "category_cloths", "categories"
+  add_foreign_key "category_cloths", "cloths"
+  add_foreign_key "cloths", "users"
   add_foreign_key "season_cloths", "cloths"
   add_foreign_key "season_cloths", "seasons"
 end
