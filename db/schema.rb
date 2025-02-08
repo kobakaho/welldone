@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_091042) do
   enable_extension "plpgsql"
 
   create_table "cloths", force: :cascade do |t|
-    t.string "image_file"
+    t.string "image_file", null: false
     t.string "brand"
     t.text "body"
     t.date "purchase_date"
@@ -43,6 +43,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_091042) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -58,7 +64,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_08_091042) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider"
   end
 
-  add_foreign_key "cloths", "users"
   add_foreign_key "season_cloths", "cloths"
   add_foreign_key "season_cloths", "seasons"
 end

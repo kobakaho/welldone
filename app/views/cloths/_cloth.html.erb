@@ -1,4 +1,10 @@
 <div>
+  <p>シーズン:
+    <% cloth.seasons.each do |season| %>
+      <%= season.name %>
+    <% end %>
+  </p>
+
   <p>ブランド:<%= cloth.brand %></p>
 
   <p>購入金額:<%= cloth.price %>円</p>

@@ -1,4 +1,6 @@
 class SeasonCloth < ApplicationRecord
-  has_many :cloth
-  has_many :season
+  validates :season_id, uniqueness: { scope: :cloth_id }
+
+  belongs_to :cloth
+  belongs_to :season
 end
