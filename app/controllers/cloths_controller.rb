@@ -1,7 +1,6 @@
 class ClothsController < ApplicationController
-  # current_user.id
-  # ログインしないとできないアクションの制限
-  # before_action :authenticate_user only:edit,update,destroy
+  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  #create,show,index,newは未ログインでもおけ
   def index
     @cloths = Cloth.all
   end
@@ -14,12 +13,16 @@ class ClothsController < ApplicationController
     @cloth = Cloth.new
   end
 
-  def create 
+  def create
+    #if user_signed_in? #未ログインでも作成可能
     @cloth = current_user.cloth.new(cloth_params)
+    #else #ログイン前の場合、clothのデータを保持する
+    #  session[:cloth_data] = cloth_params
+    #end
 
-    respond_to do |format| #異なるリクエストに対応するための記述
+    respond_to do |format| # 異なるリクエストに対応するための記述
       if @cloth.save
-        format.html { redirect_to cloth_url(@cloth), notice: "登録に成功しました"}
+        format.html { redirect_to cloth_url(@cloth), notice: "登録に成功しました" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -35,7 +38,7 @@ class ClothsController < ApplicationController
 
     respond_to do |format|
       if @cloth.update(cloth_params)
-        format.html { redirect_to cloth_url(@cloth), notice: "更新に成功しました"}
+        format.html { redirect_to cloth_url(@cloth), notice: "更新に成功しました" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -45,7 +48,7 @@ class ClothsController < ApplicationController
   def destroy
     @cloth = Cloth.find(params[:id])
     @cloth.destroy!
-    redirect_to cloths_path, success: t('defaults.flash_message.deleted', item: Cloth.model_name.human), status: :see_other
+    redirect_to cloths_path, success: t("defaults.flash_message.deleted", item: Cloth.model_name.human), status: :see_other
   end
 
   private
