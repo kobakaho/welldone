@@ -14,6 +14,7 @@ class ClothsController < ApplicationController
 
   def create
     @cloth = current_user.cloth.new(cloth_params)
+    @cloth.season_ids = params[:cloth][:season_ids] if params[:cloth][:season_ids].present? # :season_idsのデータが渡ってきたら@clothとseasonを関連付ける
 
     respond_to do |format| # 異なるリクエストに対応するための記述
       if @cloth.save
@@ -49,6 +50,6 @@ class ClothsController < ApplicationController
   private
 
   def cloth_params
-    params.require(:cloth).permit(:brand, :body, :purchase_date, :price)
+    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, season_ids: []) # モデル名_ids: []複数のidを配列で受け取る
   end
 end
