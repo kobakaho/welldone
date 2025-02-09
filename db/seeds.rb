@@ -8,18 +8,29 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-cloth = Category.create(name: '服 / アイテム')
-Tops, Outer, Bottoms, One_piece_All_in_one, Bags, Footwear, Underwear, Accessories, Others = cloth.children.create(
-  [
+Category.delete_all
+
+wear = Category.create(name: '着るもの')
+accessory = Category.create(name: '身に着けるもの')
+#other = Category.create(name: 'その他')
+
+Tops, Outer, Pants, Skirt, One_piece_All_in_one = wear.children.create(
+  [    
     { name: 'トップス' },
     { name: 'アウター' },
-    { name: 'ボトムス' },
-    { name: 'ワンピース / オールインワン' },
-    { name: 'アンダーウェア' },
-    { name: '靴' },
+    { name: 'パンツ' },
+    { name: 'スカート' },
+    { name: 'ワンピース / オールインワン' }
+  ]
+)
+
+Hat, Bags, Footwear,Underwear, Accessories = accessory.children.create(
+  [    
+    { name: '帽子' },
     { name: 'バッグ' },
-    { name: 'ファッション小物' },
-    { name: 'その他' }
+    { name: 'シューズ' },
+    { name: 'アンダーウェア' },
+    { name: 'ファッション小物' }
   ]
 )
 
@@ -31,30 +42,34 @@ end
   Outer.children.create(name: name)
 end
 
-['ジーンズ / デニム', 'スラックス', 'チノパン', 'ショートパンツ', 'スカート'].each do |name|
-  Bottoms.children.create(name: name)
+['ジーンズ / デニム', 'スラックス', 'チノパン', 'ショートパンツ'].each do |name|
+  Pants.children.create(name: name)
 end
-  
+
+['ミニスカート', 'ミディスカート', 'ロングスカート', 'プリーツスカート'].each do |name|
+  Skirt.children.create(name: name)
+end
+
 ['ワンピース', 'サロペット / オーバーオール'].each do |name|
   One_piece_All_in_one.children.create(name: name)
 end
-  
+
+['キャップ', 'ハット', 'ニット帽', 'ヘアバンド'].each do |name|
+  Hat.children.create(name: name)
+end
+
 ['リュック / バックパック', 'ショルダーバッグ', 'トートバッグ', 'クラッチバッグ'].each do |name|
   Bags.children.create(name: name)
 end
 
-['スニーカー', 'ローファー', 'ブーツ', 'サンダル', 'パンプス', 'スリッポン', 'ビーチサンダル', 'ハイヒール'].each do |name|
+['スニーカー', 'ローファー', 'ブーツ', 'サンダル', 'パンプス', 'スリッポン', 'ハイヒール'].each do |name|
   Footwear.children.create(name: name)
 end
 
 ['インナーシャツ', 'キャミソール / タンクトップ', 'ショーツ / パンツ', 'ブラジャー', 'レギンス / タイツ', '靴下 / ソックス'].each do |name|
   Underwear.children.create(name: name)
 end
-  
-['帽子', 'ベルト / サスペンダー', '手袋', 'ストール / マフラー / スカーフ', '時計 / ジュエリー / アクセサリー'].each do |name|
+
+['ネクタイ / 蝶ネクタイ', 'イヤーマフ', 'ヘアアクセサリー（ヘアバンド、シュシュ、ヘアピンなど）', 'ベルト / サスペンダー', '手袋', 'ストール / マフラー / スカーフ', '時計 / ジュエリー / アクセサリー'].each do |name|
   Accessories.children.create(name: name)
-end
-  
-['ネクタイ / 蝶ネクタイ', 'イヤーマフ', 'ヘアアクセサリー（ヘアバンド、シュシュ、ヘアピンなど）', '和装（着物 / 浴衣 / 帯）'].each do |name|
-  Others.children.create(name: name)
 end
