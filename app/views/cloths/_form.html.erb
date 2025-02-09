@@ -1,9 +1,10 @@
 <h1>登録フォーム画面</h1>
-<!-- エラーメッセージ持ってくる -->
-<!-- カテゴリー＆シーズン＆画像追加 -->
 <!--  form_with 入力フォームに必要なHTMLを作成 -->
 <%= form_with model: @cloth do |form| %>
   <%= render "shared/error_messages", object: form.object %>
+  
+<!-- カテゴリー＆画像追加 -->
+
   <div>
     <%= form.label :brand, "ブランド(任意)" %>
     <%= form.text_field :brand %>
