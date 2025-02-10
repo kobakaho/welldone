@@ -50,6 +50,6 @@ class ClothsController < ApplicationController
   private
 
   def cloth_params
-    params.require(:cloth).permit(:brand, :body, :purchase_date, :price, season_ids: []) # モデル名_ids: []複数のidを配列で受け取る
+    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, season_ids: []) # モデル名_ids: []複数のidを配列で受け取る
   end
 end

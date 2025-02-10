@@ -5,9 +5,13 @@ class Cloth < ApplicationRecord
   validates :price, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 }
   validates :season_ids, presence: true
   validates :category_id, presence: true
+
   belongs_to :user
+
   has_many :season_cloths, dependent: :destroy
   has_many :seasons, through: :season_cloths
   has_many :category_cloths, dependent: :destroy
   has_many :categories, through: :category_cloths
+
+  mount_uploader :image_file, ClothImageUploader
 end

@@ -3,8 +3,14 @@
 <%= form_with model: @cloth do |form| %>
   <%= render "shared/error_messages", object: form.object %>
   
-<!-- カテゴリー＆画像追加 -->
+<!-- カテゴリー追加 -->
 
+  <div>
+    <%= form.label :image_file, "画像挿入" %>
+    <%= form.file_field :image_file, cless: "form-control", accept: "image/*" %>
+    <%= form.hidden_field :image_file_cache %>
+  </div>
+  
   <div>
     <%= form.label :brand, "ブランド(任意)" %>
     <%= form.text_field :brand %>
