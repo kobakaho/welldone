@@ -8,11 +8,18 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
 Category.delete_all
 
-wear = Category.create(name: '着るもの')
-accessory = Category.create(name: '身に着けるもの')
-# other = Category.create(name: 'その他')
+#チェックリストに合わせて要修正
+item = Category.create(name: '服、アイテム')
+
+wear, accessory, other = item.children.create(
+  [
+    { name: '着るもの' },
+    { name: '身に着けるもの' },
+  ]
+)
 
 Tops, Outer, Pants, Skirt, One_piece_All_in_one = wear.children.create(
   [
