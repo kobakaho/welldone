@@ -12,7 +12,7 @@
   <!-- 動的に表示する -->
   <div>
     <%= form.label :categories, "カテゴリー(必須)" %>
-    <%= form.select :category_id, Category.all.map{|i| [i.name, i.id]} %>
+    <%= form.select :category_ids, Category.all.map{ |category| [category.name, category.id] } %>
   </div>
 
   <div>

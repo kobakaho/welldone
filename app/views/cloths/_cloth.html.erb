@@ -1,4 +1,10 @@
 <div>
+  <p>カテゴリー:
+    <% cloth.categories.each do |category| %>
+      <%= category.name %>
+    <% end %>  
+  </p>
+
   <p>シーズン:
     <% cloth.seasons.each do |season| %>
       <%= season.name %>
