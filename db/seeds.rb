@@ -11,13 +11,13 @@
 
 Category.delete_all
 
-#チェックリストに合わせて要修正
+# チェックリストに合わせて要修正
 item = Category.create(name: '服、アイテム')
 
 wear, accessory, other = item.children.create(
   [
     { name: '着るもの' },
-    { name: '身に着けるもの' },
+    { name: '身に着けるもの' }
   ]
 )
 
