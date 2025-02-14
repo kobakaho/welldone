@@ -10,6 +10,6 @@ class Category < ApplicationRecord
     Category.where(ancestry: nil).each do |parent|
       category_parent_array << [ parent.name, parent.id ]
     end
-    return category_parent_array
+    category_parent_array
   end
 end
