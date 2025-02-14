@@ -18,9 +18,8 @@ class ClothsController < ApplicationController
 
   def create
     @cloth = current_user.cloth.new(cloth_params)
-    #↓マイグレーションファイル変更するadd_index
+    # ↓マイグレーションファイル変更するadd_index
     @cloth.season_ids = params[:cloth][:season_ids] if params[:cloth][:season_ids].present? # :season_idsのデータが渡ってきたら@clothとseasonを関連付ける
-    @cloth.category_ids = params[:cloth][:category_ids] if params[:cloth][:category_ids].present? # :category_idsのデータが渡ってきたら@clothとcategoryを関連付ける
 
     respond_to do |format| # 異なるリクエストに対応するための記述
       if @cloth.save
