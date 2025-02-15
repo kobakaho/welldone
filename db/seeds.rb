@@ -11,16 +11,10 @@
 # チェックリストに合わせて要修正
 Category.delete_all
 
-item = Category.create(name: '服、アイテム')
-item_children_array = [ '着るもの', '身に着けるもの' ]
-item_grandchildren_array = [
-  [ 'トップス', 'アウター', 'パンツ', 'スカート', 'ワンピース / オールインワン' ],
-  [ '帽子', 'バッグ', 'シューズ', 'アンダーウェア', 'ファッション小物' ]
-]
+item = Category.create( name: '服、アイテム' )
+wear = item.children.create( name: '着るもの' )
+wear.children.create([{ name:'トップス' }, { name: 'アウター'}, { name: 'パンツ' }, { name: 'スカート' }, { name: 'ワンピース / オールインワン' }])
 
-item_children_array.each_with_index do |children, index|
-  children = item.children.create(name: children)
-  item_grandchildren_array[index].each do |grandchildren|
-    children.children.create(name: grandchildren)
-  end
-end
+accessory = item.children.create( name: '身に着けるもの' )
+accessory.children.create([{ name:'帽子' }, { name: 'バッグ'}, { name: 'シューズ' }, { name: 'アンダーウェア' }, { name: 'ファッション小物' }])
+
