@@ -1,16 +1,25 @@
 <h1>登録フォーム画面</h1>
 <!--  form_with 入力フォームに必要なHTMLを作成 -->
-<%= form_with model: @cloth do |form| %>
+<%= form_with model: @cloth, data: { turbo: false } do |form| %>
   <%= render "shared/error_messages", object: form.object %>
-  
-<!-- カテゴリー追加 -->
-
   <div>
-    <%= form.label :image_file, "画像挿入" %>
+    <%= form.label :image_file, "画像挿入(必須に設定する)" %>
     <%= form.file_field :image_file, cless: "form-control", accept: "image/*" %>
     <%= form.hidden_field :image_file_cache %>
   </div>
-  
+
+  <!-- 動的に表示する -->
+  <div class="category-form">
+    <%= form.label :categories, "カテゴリー(必須)" %>
+    <%= select_tag :parent_id, options_for_select(@category_parent_array), id: 'parent-category', class: 'form-control' %>
+    <i class="fa-chevron-down"></i>
+  </div>
+
+  <div>
+  <%= form.label :seasons, "シーズン(必須)" %>
+  <%= form.collection_check_boxes :season_ids, Season.order(:name), :id, :name %>
+  </div>
+
   <div>
     <%= form.label :brand, "ブランド(任意)" %>
     <%= form.text_field :brand %>
