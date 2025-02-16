@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "category_grandchildren" do %>
+  <div id="category_grandchildren">
+    <%= select_tag :grandchild_id, options_for_select(@grandchildren.map { |c| [c.name, c.id] }), include_blank: "選択してください", class: "form-control" %>
+  </div>
+<% end %> 
