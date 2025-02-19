@@ -1,18 +1,13 @@
 class CategoriesController < ApplicationController
   def get_children
-    @children = Category.find(params[:parent_id]).children
+    parent_category = Category.find(params[:parent_id])
+    @children = parent_category.children
     
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("get_children", partial: "categories/get_children", locals: { children: @children })
+      end
     end
   end
-
-  def get_grandchildren
-    @grandchildren = Category.find(parems[:child_id]).children
-
-    respond_to do |format|
-      format.turbo_stream
-    end
-  end
-
 end
+    

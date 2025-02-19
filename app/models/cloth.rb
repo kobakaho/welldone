@@ -14,4 +14,5 @@ class Cloth < ApplicationRecord
   has_many :categories, through: :category_cloths
 
   mount_uploader :image_file, ClothImageUploader
+
 end

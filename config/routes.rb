@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       get :get_children, to: "categories#get_children"
     end
   end
-  #jsの呼び出し方　stimulasを呼ぶ環境か
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

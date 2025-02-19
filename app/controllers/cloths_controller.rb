@@ -47,15 +47,15 @@ class ClothsController < ApplicationController
 
   private
 
+  def set_cloth
+    @cloth = Cloth.find(params[:id])
+  end
+
   def cloth_params
     category_ids = []
     category_ids << params[:parent_id] if params[:parent_id].present?
     category_ids << params[:child_id] if params[:child_id].present?
 
-    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }, { category_ids: [] }) # モデル名_ids: []複数のidを配列で受け取る
-  end
-
-  def set_cloth
-    @cloth = Cloth.find(params[:id])
+    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] },).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
   end
 end
