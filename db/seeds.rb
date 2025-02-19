@@ -13,7 +13,7 @@ Category.delete_all
 
 root = Category.create!(name: '服、アイテム')
 
-wear = root.children.create!(name: '着るもの') 
+wear = root.children.create!(name: '着るもの')
 accessary = root.children.create!(name: '身に着けるもの')
 
 wear.children.create!(name: 'トップス')

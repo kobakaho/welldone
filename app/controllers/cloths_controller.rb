@@ -10,7 +10,7 @@ class ClothsController < ApplicationController
   end
 
   def new
-    @cloth = Cloth.new 
+    @cloth = Cloth.new
   end
 
   def create
