@@ -8,19 +8,16 @@
     <%= form.hidden_field :image_file_cache %>
   </div>
 
-  <!-- 動的に表示する -->
   <div>
-    <%= form.label :categories, "カテゴリー(必須)" %>
-    <%= select_tag :parent_id, options_for_select(Category.roots.pluck(:name, :id)), include_blank: "選択してください", class: "form-control", data: { controller: "category", action: "change->category#getChildren" } %>
+    <%= form.label :category, "カテゴリーを選択(必須)" %>
+    <%= select_tag :parent_id,
+          options_for_select(Category.where(ancestry: "485").pluck(:name, :id)),
+          include_blank: "選択してください",
+          class: "form-control",
+          data: { controller: "category", action: "change->category#fetchChildren", } %>
   </div>
 
-  <%= turbo_frame_tag "category_children" do %>
-    <div id="category_children"></div>
-  <% end %>
-
-  <%= turbo_frame_tag "category_grandchildren" do %>
-    <div id="category_grandchildren"></div>
-  <% end %>
+  <div id="get_children"></div>
 
   <div>
     <%= form.label :seasons, "シーズン(必須)" %>
@@ -51,4 +48,3 @@
     <%= form.submit "登録する" %>
   </div>
 <% end %>
-
