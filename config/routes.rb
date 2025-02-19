@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :cloths do
-    get "get_category_children", to: "cloths#get_category_children", defaults: { format: "json" }
-    get "get_category_grandchildren", to: "cloths#get_category_grandchildren", defaults: { format: "json" }
+  resources :cloths
+  resources :categories do
+    collection do
+      get :get_children, to: "categories#get_children"
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
