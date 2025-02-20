@@ -2,6 +2,7 @@
 <!--  form_with 入力フォームに必要なHTMLを作成 -->
 <%= form_with model: @cloth do |form| %>
   <%= render "shared/error_messages", object: form.object %>
+  
   <div>
     <%= form.label :image_file, "画像挿入(必須に設定する)" %>
     <%= form.file_field :image_file, cless: "form-control", accept: "image/*" %>

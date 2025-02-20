@@ -1,4 +1,10 @@
 <div>
+  <% if cloth.image_file_url.present? %>
+    <%= image_tag cloth.image_file_url, width:"300", heigh:"200" %>
+  <% else %>
+    <p>登録された画像はありません</p>
+  <% end %>
+
   <p>カテゴリー:
     <% cloth.categories.each do |category| %>
       <%= category.name %>
