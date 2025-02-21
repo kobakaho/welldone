@@ -1,3 +1,5 @@
 class StaticPagesController < ApplicationController
-  def top; end
+  def top
+    @user = current_user
+  end
 end
