@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :cloth
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
+  mount_uploader :profile_image, ProfileImageUploader
   def self.create_unique_string
     SecureRandom.uuid
   end

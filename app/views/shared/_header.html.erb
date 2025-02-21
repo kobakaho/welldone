@@ -6,6 +6,10 @@
 
     <%= link_to "クローゼット" , cloths_path, class: "nav-link" %>
     <%= link_to "マイページ", edit_user_registration_path, class: "nav-link" %>
+    <% if @user %>
+      <%= image_tag @user.profile_image_url, width:"50", height:"50" %>
+    <% end %>
+
     <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
     <%= link_to "パスワードリセット(未)", "#", class: "nav-link" %>
     </h1>

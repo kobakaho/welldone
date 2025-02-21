@@ -15,7 +15,7 @@ class ClothsController < ApplicationController
 
   def create
     @cloth = current_user.cloth.new(cloth_params)
-    @cloth.season_ids = params[:cloth][:season_ids] if params[:cloth][:season_ids].present? # :season_idsのデータが渡ってきたら@clothとseasonを関連付ける
+    @cloth.season_ids = params[:cloth][:season_ids] if params[:cloth][:season_ids].present?
 
     respond_to do |format| # 異なるリクエストに対応するための記述
       if @cloth.save
