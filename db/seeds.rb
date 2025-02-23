@@ -8,6 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+#  本番環境に適応する分
+#  ["Spring","Summer","Autumn","Winter"].each do |season|
+#    Season.find_or_create_by!(name: season)
+#  end
+
 # チェックリストに合わせて要修正
 Category.delete_all
 

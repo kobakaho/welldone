@@ -1,6 +1,7 @@
 class ClothsController < ApplicationController
   before_action :set_cloth, only: [ :show, :update, :destroy ]
   before_action :authenticate_user!, except: [ :show, :index ]
+  after_action :check_season, only: [ :create ]
 
   def index
     @cloths = Cloth.all
@@ -15,12 +16,12 @@ class ClothsController < ApplicationController
 
   def create
     @cloth = current_user.cloth.new(cloth_params)
-    @cloth.season_ids = params[:cloth][:season_ids] if params[:cloth][:season_ids].present?
 
     respond_to do |format| # 異なるリクエストに対応するための記述
       if @cloth.save
-        format.html { redirect_to cloth_url(@cloth), notice: "登録に成功しました" }
+        format.html { redirect_to cloth_url(@cloth), notice: I18n.t("defaults.flash_message.created", item: Cloth.model_name.human) }
       else
+        flash.now[:danger] = I18n.t("defaults.flash_message.not_created", item: Cloth.model_name.human)
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -33,8 +34,9 @@ class ClothsController < ApplicationController
   def update
     respond_to do |format|
       if @cloth.update(cloth_params)
-        format.html { redirect_to cloth_url(@cloth), notice: "更新に成功しました" }
+        format.html { redirect_to cloth_url(@cloth), notice: I18n.t("defaults.flash_message.updated", item: Cloth.model_name.human) }
       else
+        flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Cloth.model_name.human)
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
@@ -42,10 +44,14 @@ class ClothsController < ApplicationController
 
   def destroy
     @cloth.destroy!
-    redirect_to cloths_path, success: t("defaults.flash_message.deleted", item: Cloth.model_name.human), status: :see_other
+    redirect_to cloths_path, notice: I18n.t("defaults.flash_message.deleted", item: Cloth.model_name.human), status: :see_other
   end
 
   private
+
+  def check_season
+    @cloth.season_ids = params[:cloth][:season_ids] if params[:cloth][:season_ids].present?
+  end
 
   def set_cloth
     @cloth = Cloth.find(params[:id])

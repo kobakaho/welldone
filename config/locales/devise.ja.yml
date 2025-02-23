@@ -101,6 +101,7 @@ ja:
         title: "%{resource}編集"
         unhappy: 気に入りません
         update: 更新
+        profile_image: プロフィール画像
         we_need_your_current_password_to_confirm_your_changes: 変更を反映するには現在のパスワードを入力してください
       new:
         sign_up: アカウント登録
@@ -126,6 +127,8 @@ ja:
         sign_in: ログイン
         sign_in_with_provider: "%{provider}でログイン"
         sign_up: アカウント登録
+        sign_out: ログアウト
+        profile: マイページ
       minimum_password_length: "（%{count}字以上）"
     unlocks:
       new:

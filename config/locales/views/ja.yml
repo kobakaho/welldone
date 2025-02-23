@@ -1,0 +1,42 @@
+#view
+ja:
+  helpers:
+    submit:
+      create: 作成
+      submit: 登録
+      update: 更新
+      back: 戻る
+  defaults:
+    welldone: well断
+    create: 新規作成
+    index: 一覧
+    form: フォーム
+    edit: 編集
+    show: 詳細
+    delete: 削除
+    delete_confirm: 削除しますか？
+    nspecified: 指定なし
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
+      not_deleted: "%{item}を削除できませんでした"
+  cloths:
+    brand: ブランド
+    price: 購入金額
+    purchase_date: 購入日
+    body: 購入理由
+    image_file: アイテム画像
+  category: 
+    name: カテゴリー
+  season: 
+    name: シーズン
+  header:
+    closet: クローゼット
+    profile: プロフィール
+  fotter:
+    contact_us: お問い合わせ
+    terms_of_service: 利用規約
+    privacy_policy: プライバシーポリシー
