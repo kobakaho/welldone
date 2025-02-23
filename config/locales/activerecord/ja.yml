@@ -1,0 +1,23 @@
+#モデル
+ja:
+  activerecord:
+    models:
+      cloth: 服
+      category: カテゴリー
+      season: シーズン
+    attributes:
+      cloth:
+        image_file: アイテム画像
+        brand: ブランド名
+        body: 購入理由
+        purchase_date: 購入日
+        price: 購入金額
+      category:
+        name: カテゴリー
+      season:
+        name: シーズン
+  attributes:
+    id: ID
+    created_at: 作成日時
+    updated_at: 更新日時
+    
