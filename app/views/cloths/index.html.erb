@@ -1,11 +1,16 @@
 <h1><%= I18n.t(".defaults.index") %></h1>
 
 <div id="cloths">
-  <%= @cloths.each do |cloth| %>
-    <%= render cloth %>
-    <p>
-      <%= link_to I18n.t(".defaults.show"), cloth %>
-    </p>
+  <% if @cloth.present? %>
+    <%= @cloths.each do |cloth| %>
+      <%= render cloth %>
+      <p>
+        <%= link_to I18n.t(".defaults.show"), cloth %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>登録したアイテムはありません</p>
   <% end %>
+   
 </div>
 <%= link_to I18n.t(".defaults.create"), new_cloth_path %>

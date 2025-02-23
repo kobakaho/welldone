@@ -2,12 +2,12 @@
 ja:
   helpers:
     submit:
-      create: 新規作成
-      submit: 登録する
+      create: 作成
+      submit: 登録
       update: 更新
       back: 戻る
   defaults:
-    welldone: Well断
+    welldone: well断
     create: 新規作成
     index: 一覧
     form: フォーム
@@ -23,7 +23,7 @@ ja:
       not_updated: "%{item}を更新出来ませんでした"
       deleted: "%{item}を削除しました"
       not_deleted: "%{item}を削除できませんでした"
-  cloth:
+  cloths:
     brand: ブランド
     price: 購入金額
     purchase_date: 購入日
