@@ -19,7 +19,7 @@ class ClothsController < ApplicationController
 
     respond_to do |format| # 異なるリクエストに対応するための記述
       if @cloth.save
-        format.html { redirect_to cloth_url(@cloth), notice: "登録に成功しました" }
+        format.html { redirect_to cloth_url(@cloth), notice: I18n.t("defaults.flash_message.created", item: Cloth.model_name.human) }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -33,7 +33,7 @@ class ClothsController < ApplicationController
   def update
     respond_to do |format|
       if @cloth.update(cloth_params)
-        format.html { redirect_to cloth_url(@cloth), notice: "更新に成功しました" }
+        format.html { redirect_to cloth_url(@cloth), notice: I18n.t("defaults.flash_message.updated", item: Cloth.model_name.human) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -42,7 +42,7 @@ class ClothsController < ApplicationController
 
   def destroy
     @cloth.destroy!
-    redirect_to cloths_path, success: t("defaults.flash_message.deleted", item: Cloth.model_name.human), status: :see_other
+    redirect_to cloths_path, notice: I18n.t("defaults.flash_message.deleted", item: Cloth.model_name.human), status: :see_other
   end
 
   private

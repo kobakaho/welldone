@@ -1,8 +1,8 @@
-<h1>編集</h1>
+<h1><%= I18n.t(".defaults.edit")%></h1>
 
 <%= render "form" %>
 
 <div>
-  <%= link_to "詳細" %>
-  <%= link_to "一覧", cloths_path %>
+  <%= link_to I18n.t(".defaults.show") %>
+  <%= link_to I18n.t(".defaults.index"), cloths_path %>
 </div>

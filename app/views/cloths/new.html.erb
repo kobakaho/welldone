@@ -1,7 +1,7 @@
-<h1>新規作成</h1>
+<h1><%= I18n.t(".helpers.submit.create")%></h1>
 
 <%= render "form", cloth: @cloth %>
 
 <div>
-  <%= link_to "一覧にもどる", cloths_path %>
+  <%= link_to I18n.t(".helpers.submit.back"), cloths_path %>
 </div>

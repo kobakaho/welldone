@@ -1,10 +1,10 @@
-<h1>アイテム詳細</h1>
+<h1><%= I18n.t(".defaults.show") %></h1>
 
 <%= render @cloth %>
 
 <div>
-  <%= link_to "編集", edit_cloth_path(@cloth) %>
-  <%= link_to "削除", @cloth, data: { turbo_method: :delete } %>
+  <%= link_to I18n.t(".defaults.edit"), edit_cloth_path(@cloth) %>
+  <%= link_to I18n.t(".defaults.delete"), @cloth, data: { turbo_method: :delete } %>
   
-  <%= link_to "一覧にもどる", cloths_path %>
+  <%= link_to I18n.t(".helpers.submit.back"), cloths_path %>
 </div>

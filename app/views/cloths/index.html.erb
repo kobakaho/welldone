@@ -1,11 +1,11 @@
-<h1>クローゼット一覧</h1>
+<h1><%= I18n.t(".defaults.index") %></h1>
 
 <div id="cloths">
   <%= @cloths.each do |cloth| %>
     <%= render cloth %>
     <p>
-      <%= link_to "詳細", cloth %>
+      <%= link_to I18n.t(".defaults.show"), cloth %>
     </p>
   <% end %>
 </div>
-<%= link_to "新規登録", new_cloth_path %>
+<%= link_to I18n.t(".defaults.create"), new_cloth_path %>
