@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
   has_many :cloth
+  has_many :checklist
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   mount_uploader :profile_image, ProfileImageUploader
