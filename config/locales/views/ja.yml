@@ -33,9 +33,12 @@ ja:
     name: カテゴリー
   season: 
     name: シーズン
+  checklist:
+    title: チェックリスト
   header:
     closet: クローゼット
     profile: プロフィール
+    checklist: チェックリスト
   fotter:
     contact_us: お問い合わせ
     terms_of_service: 利用規約

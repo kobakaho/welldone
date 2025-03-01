@@ -16,6 +16,8 @@ ja:
         name: カテゴリー
       season: 
         name: シーズン
+      checklist:
+        title: チェックリスト
   attributes:
     id: ID
     created_at: 作成日時

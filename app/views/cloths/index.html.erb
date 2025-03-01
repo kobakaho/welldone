@@ -1,7 +1,7 @@
 <h1><%= I18n.t(".defaults.index") %></h1>
 
 <div id="cloths">
-  <% if @cloth.present? %>
+  <% if @cloths.present? %>
     <%= @cloths.each do |cloth| %>
       <%= render cloth %>
       <p>
