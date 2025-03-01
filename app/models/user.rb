@@ -5,8 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
-  has_many :cloth
-  has_many :checklist
+  has_many :cloths
+  has_many :checklists
+  
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   mount_uploader :profile_image, ProfileImageUploader
