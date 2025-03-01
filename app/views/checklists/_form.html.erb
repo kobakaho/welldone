@@ -1,0 +1,13 @@
+<%= form_with model: @checklist do |form| %>
+  <%= render "shared/error_messages", object: form.object %>
+
+  <div>
+    <%= form.label :title, "チェックリストタイトル" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.submit I18n.t(".helpers.submit.submit") %>
+  </div>
+<% end %>
+

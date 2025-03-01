@@ -1,0 +1,14 @@
+<div id="checklists">
+  <% if @checklists.present? %>
+    <%= @checklists.each do |checklist| %>
+      <%= render checklist %>
+      <p>
+        <%= link_to I18n.t(".defaults.show"), checklist %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>登録したチェックリストはありません</p>
+  <% end %>  
+</div>
+
+<%= link_to I18n.t(".defaults.create"), new_checklist_path %>

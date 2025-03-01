@@ -1,0 +1,8 @@
+<%= render @checklist %>
+
+<div>
+  <%= link_to I18n.t(".defaults.edit"), edit_checklist_path(@checklist) %>
+  <%= link_to I18n.t(".defaults.delete"), @checklist, data: { turbo_method: :delete } %>
+  
+  <%= link_to I18n.t(".helpers.submit.back"), checklists_path %>
+</div>
