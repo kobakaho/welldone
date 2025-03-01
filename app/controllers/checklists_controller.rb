@@ -1,6 +1,6 @@
 class ChecklistsController < ApplicationController
   before_action :set_checklist, only: [ :show, :update, :destroy ]
-  
+
   def index
     @checklists = Checklist.all
   end
