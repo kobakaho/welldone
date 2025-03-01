@@ -5,12 +5,13 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :cloths
+  resources :cloths, only: %i[new create index show edit update destroy]
   resources :categories do
     collection do
       get :get_children, to: "categories#get_children"
     end
   end
+  resources :checklists, only: %i[new create index show edit update destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -15,7 +15,7 @@ class ClothsController < ApplicationController
   end
 
   def create
-    @cloth = current_user.cloth.new(cloth_params)
+    @cloth = current_user.cloths.new(cloth_params)
 
     respond_to do |format| # 異なるリクエストに対応するための記述
       if @cloth.save
