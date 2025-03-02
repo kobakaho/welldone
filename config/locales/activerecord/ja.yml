@@ -5,6 +5,8 @@ ja:
       cloth: アイテム
       category: カテゴリー
       season: シーズン
+      checklist: チェックリスト
+      checklist_item: チェックリストアイテム
     attributes:
       cloth:
         image_file: アイテム画像
@@ -18,6 +20,8 @@ ja:
         name: シーズン
       checklist:
         title: チェックリスト
+      checklist_item:
+        name: アイテム
   attributes:
     id: ID
     created_at: 作成日時

@@ -35,6 +35,8 @@ ja:
     name: シーズン
   checklist:
     title: チェックリスト
+  checklist_item:
+    name: アイテム
   header:
     closet: クローゼット
     profile: プロフィール
