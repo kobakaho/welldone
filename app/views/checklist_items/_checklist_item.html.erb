@@ -1,0 +1,10 @@
+<div>
+  <% if @checklist.checklist_items.present? %>
+    <p><%= checklist_item.name %></p>
+    #<%= link_to "編集", class: "edit-checklist_item-link" %>
+    #<%= link_to "更新", class: "update-checklist_item-link", method: :patch %>
+    #<%= link_to "削除", class: "delete-checklist_item-link", data: { turbo_method: :delete} %>
+  <% else %>
+    <p>登録されたアイテムはありません</p>
+  <% end %>
+</div>

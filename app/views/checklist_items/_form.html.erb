@@ -1,0 +1,13 @@
+<div id="checklist_item-form">
+  <%= form_with model: [@checklist, checklist_item] do |form| %>
+    <%= render "shared/error_messages", object: form.object %>
+    <div>
+        <%= form.label :name, "チェックリストアイテム" %>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.submit I18n.t(".helpers.submit.submit") %>
+    </div>
+  <% end %>
+</div> 
+  
