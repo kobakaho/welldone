@@ -1,15 +1,16 @@
 class ChecklistsController < ApplicationController
-  before_action :set_checklist, only: [ :show, :update, :destroy ]
+  before_action :set_checklist, only: %i[ show edit update destroy ]
 
   def index
-    @checklists = Checklist.all
+    @checklists = current_user.checklists
   end
 
   def new
-    @checklist = Checklist.new
+    @checklist = current_user.checklists.new
   end
 
   def show
+    @checklist_item = @checklist.checklist_items.new
   end
 
   def create
@@ -26,12 +27,11 @@ class ChecklistsController < ApplicationController
   end
 
   def edit
-    @checklist = current_user.checklists.find(params[:id])
   end
 
   def update
     respond_to do |format|
-      if @checklist.update
+      if @checklist.update(checklist_params)
         format.html { redirect_to checklist_url(@checklist), notice: I18n.t("defaults.flash_message.updated", item: Checklist.model_name.human) }
       else
         flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Checklist.model_name.human)
@@ -48,7 +48,7 @@ class ChecklistsController < ApplicationController
   private
 
   def set_checklist
-    @checklist = Checklist.find(params[:id])
+    @checklist = current_user.checklists.find(params[:id])
   end
 
   def checklist_params
