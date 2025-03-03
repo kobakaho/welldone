@@ -1,17 +1,16 @@
 class ClothsController < ApplicationController
-  before_action :set_cloth, only: [ :show, :update, :destroy ]
-  before_action :authenticate_user!, except: [ :show, :index ]
-  after_action :check_season, only: [ :create ]
+  before_action :set_cloth, only: %i[ show update destroy ]
+  after_action :check_season, only: %i[ create ]
 
   def index
-    @cloths = Cloth.all
+    @cloths = current_user.cloths
   end
 
   def show
   end
 
   def new
-    @cloth = Cloth.new
+    @cloth = current_user.cloths.new
   end
 
   def create
@@ -28,7 +27,7 @@ class ClothsController < ApplicationController
   end
 
   def edit
-    @cloth = current_user.cloth.find(params[:id])
+    @cloth = current_user.cloths.find(params[:id])
   end
 
   def update
@@ -54,7 +53,7 @@ class ClothsController < ApplicationController
   end
 
   def set_cloth
-    @cloth = Cloth.find(params[:id])
+    @cloth = current_user.cloths.find(params[:id])
   end
 
   def cloth_params
