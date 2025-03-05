@@ -34,7 +34,7 @@ ja:
   season: 
     name: シーズン
   checklist:
-    title: チェックリスト
+    title: チェックリストタイトル
   checklist_item:
     name: アイテム
   header:
