@@ -1,5 +1,4 @@
 class ChecklistItemsController < ApplicationController
-
   def create
     @checklist_item = ChecklistItem.build(checklist_item_params)
     @checklist_item.save
