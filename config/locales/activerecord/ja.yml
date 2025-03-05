@@ -14,15 +14,21 @@ ja:
         body: 購入理由
         purchase_date: 購入日
         price: 購入金額
-      category: 
-        name: カテゴリー
-      season: 
-        name: シーズン
+        season_ids: シーズン
+        category_ids: カテゴリー
       checklist:
-        title: チェックリスト
+        title: タイトル
       checklist_item:
         name: アイテム
+    errors:
+      models:
+        cloth:
+          blank: 必須項目です
+          less_than_or_equal_to: 明日以降の日付は入力できません
+        checklist:
+          taken: 既に登録されています
   attributes:
     id: ID
     created_at: 作成日時
     updated_at: 更新日時
+  
