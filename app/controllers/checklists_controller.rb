@@ -11,6 +11,7 @@ class ChecklistsController < ApplicationController
 
   def show
     @checklist_item = @checklist.checklist_items.new
+    @checklist_items = @checklist.checklist_items
   end
 
   def create
