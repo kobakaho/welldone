@@ -6,13 +6,14 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :cloths, only: %i[new create index show edit update destroy]
-  resources :categories do
+  resources :categories, only: %i[get_children] do
     collection do
       get :get_children, to: "categories#get_children"
     end
   end
-  resources :checklists do
-    resources :checklist_items, only: %i[new create edit update destroy]
+
+  resources :checklists, only: %i[new create index show edit update destroy] do
+    resources :checklist_items, only: %i[ create destroy ], shallow: true
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
