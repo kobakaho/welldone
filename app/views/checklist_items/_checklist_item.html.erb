@@ -1,0 +1,6 @@
+<tr id="checklist_item-<%= checklist_item.id %>">
+  <% if checklist_item.persisted? %>
+    <%= checklist_item.name %>
+    <%= link_to "✖", checklist_item_path(checklist_item), class: "delete-checklist_item-link", data: { turbo_method: :delete } %>
+  <% end %>
+</tr>

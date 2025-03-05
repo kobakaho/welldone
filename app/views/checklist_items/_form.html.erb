@@ -1,0 +1,8 @@
+<div id="checklist_item-form">
+  <%= form_with model: checklist_item, url: checklist_checklist_items_path(checklist) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+</div>
