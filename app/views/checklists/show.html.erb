@@ -3,10 +3,16 @@
   <%= link_to I18n.t(".defaults.edit"), edit_checklist_path(@checklist) %>
   <%= link_to I18n.t(".defaults.delete"), @checklist, data: { turbo_method: :delete } %> 
 </div>
-<%= render "checklist_items/form", checklist_item: @checklist_item, checklist: @checklist %>
-
-<div id="table-checklist_item">
-  <%= render @checklist.checklist_items %>
-</div>
 
 <%= link_to I18n.t(".helpers.submit.back"), checklists_path %>
+
+
+<div class="container pt-5">
+  <div class="row mb-3">
+    <%= render 'checklist_items/form', checklist_item: @checklist_item, checklist: @checklist %>
+  </div>
+   
+  <table id="table-checklist_item">
+    <%= render @checklist_items %>
+  </table>
+</div>

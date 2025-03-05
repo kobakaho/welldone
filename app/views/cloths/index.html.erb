@@ -2,7 +2,7 @@
 
 <div id="cloths">
   <% if @cloths.present? %>
-    <%= @cloths.each do |cloth| %>
+    <% @cloths.each do |cloth| %>
       <%= render cloth %>
       <p>
         <%= link_to I18n.t(".defaults.show"), cloth %>

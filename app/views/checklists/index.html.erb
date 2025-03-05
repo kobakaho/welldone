@@ -1,6 +1,6 @@
 <div id="checklists">
   <% if @checklists.present? %>
-    <%= @checklists.each do |checklist| %>
+    <% @checklists.each do |checklist| %>
       <%= render checklist %>
       <p>
         <%= link_to I18n.t(".defaults.show"), checklist %>
