@@ -6,5 +6,6 @@ class CreateChecklists < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
+    add_index :checklists, :title, unique: true
   end
 end
