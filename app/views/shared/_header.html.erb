@@ -1,15 +1,20 @@
-<header>
-  <h1 class="nav-item">
-    <%= link_to I18n.t(".defaults.welldone"), root_path, class: "nav_link" %>
-    <%= link_to I18n.t(".devise.registrations.new.sign_up"), new_user_registration_path, class: "nav-link" %>
-
-    <%= link_to I18n.t(".header.closet"), cloths_path, class: "nav-link" %>
-    <%= link_to I18n.t(".header.checklist"), checklists_path, class: "nav-link" %>
-    <%= link_to I18n.t(".devise.shared.links.profile"), edit_user_registration_path, class: "nav-link" %>
-    <% if @user %>
-      <%= image_tag @user.profile_image_url, width:"50", height:"50" %>
-    <% end %>
-
-    <%= link_to I18n.t(".devise.shared.links.sign_out"), destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-    </h1>
+<header class="header">
+  <h1 class="header-logo">
+    <%= link_to I18n.t(".defaults.welldone"), root_path %>
+  </h1>
+  <div class="header-nav">
+    <div class="header-nav-item">
+      <%= link_to I18n.t(".devise.shared.links.profile"), edit_user_registration_path %>
+    </div>
+    <div class="header-nav-item">
+      <div class="header-nav-imge">
+        <% if @user %>
+          <%= image_tag @user.profile_image_url, width:"50", height:"50", class: "w-12 h-12 rounded-full border-2 border-white object-cover" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="header-nav-item">     
+      <%= link_to I18n.t(".devise.shared.links.sign_out"), destroy_user_session_path, data: { turbo_method: :delete } %>
+    </div>
+  </div>
 </header>
