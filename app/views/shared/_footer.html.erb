@@ -1,29 +1,29 @@
-<footer class="footer bg-gray-800 text-white py-8">
-  <div class="flex flex-col md:flex-row md:justify-between items-center max-w-7xl mx-auto px-4">
-    <!-- ロゴ部分未定 -->
-    <div class="mb-4 md:mb-0">
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
       <img src="#" width="140" height="20" alt="WellDone Logo（未）" />
     </div>
-    <!-- ナビゲーション部分 -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-      <div>
-        <p class="footer__navi-heading font-bold text-lg mb-2">FOLLOW ME</p>
-        <ul class="footer__navi space-y-2">
-          <li><a href="https://github.com/kobakaho" class="hover:underline">GitHub</a></li>
+      <div class="footer-nav">
+      <div class="footer-nav-section">
+        <p class="footer-heading">FOLLOW ME</p>
+        <ul class="footer-list">
+          <li><a href="https://github.com/kobakaho" class="footer-link">GitHub</a></li>
         </ul>
       </div>
-      <div>
-        <p class="footer__navi-heading font-bold text-lg mb-2">ABOUT</p>
-        <ul class="footer__navi space-y-2">
-          <li><a href="#" class="hover:underline"><%= I18n.t(".fotter.contact_us") %></a></li>
-          <li><a href="#" class="hover:underline"><%= I18n.t(".fotter.terms_of_service") %></a></li>
-          <li><a href="#" class="hover:underline"><%= I18n.t(".fotter.privacy_policy") %></a></li>
+      <div class="footer-nav-section">
+        <p class="footer-heading">ABOUT</p>
+        <ul class="footer-list">
+          <li><a href="#" class="footer-link"><%= I18n.t(".fotter.contact_us") %></a></li>
+          <li><a href="#" class="footer-link"><%= I18n.t(".fotter.terms_of_service") %></a></li>
+          <li><a href="#" class="footer-link"><%= I18n.t(".fotter.privacy_policy") %></a></li>
         </ul>
       </div>
     </div>
   </div>
-  <hr class="border-gray-600 my-6" />
-  <p class="text-xs">
+  
+  <hr class="footer-divider" />
+  
+  <p class="footer-copy">
     © 2025 - WellDone
   </p>
 </footer>

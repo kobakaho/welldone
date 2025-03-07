@@ -11,29 +11,3 @@ sidebar{
     text-align: center;
 }
 
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1024px;
-    height: 60px;
-    padding: 0 0.8em;
-    margin: 0 auto;
-    font-size: 1.2em;
-  }
-.header-logo{
-    font-size: 28px;
-    font-weight: bold;
-    margin:0;
-} 
-.header-nav {
-    font-size: 15px;
-    font-weight: bold;   
-    display: flex;
-    align-items: center;
-}
-.header-nav-item {
-    display: flex;
-    align-items: center;
-    margin-left: 16px;
-}
