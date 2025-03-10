@@ -1,29 +1,25 @@
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">
-      <img src="#" width="140" height="20" alt="WellDone Logo（未）" />
+<footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+  <div>
+    <img src="#" width="140" height="20" alt="WellDone Logo（未）" class="w-36" />
+  </div>
+  <div class="grid grid-cols-2 gap-8 text-left">
+    <div>
+      <p class="font-bold text-lg">FOLLOW ME</p>
+      <ul>
+        <li><a href="https://github.com/kobakaho" class="link link-hover">GitHub</a></li>
+      </ul>
     </div>
-      <div class="footer-nav">
-      <div class="footer-nav-section">
-        <p class="footer-heading">FOLLOW ME</p>
-        <ul class="footer-list">
-          <li><a href="https://github.com/kobakaho" class="footer-link">GitHub</a></li>
-        </ul>
-      </div>
-      <div class="footer-nav-section">
-        <p class="footer-heading">ABOUT</p>
-        <ul class="footer-list">
-          <li><a href="#" class="footer-link"><%= I18n.t(".fotter.contact_us") %></a></li>
-          <li><a href="#" class="footer-link"><%= I18n.t(".fotter.terms_of_service") %></a></li>
-          <li><a href="#" class="footer-link"><%= I18n.t(".fotter.privacy_policy") %></a></li>
-        </ul>
-      </div>
+    <div>
+      <p class="font-bold text-lg">ABOUT</p>
+      <ul>
+        <li><a href="#" class="link link-hover"><%= I18n.t(".fotter.contact_us") %></a></li>
+        <li><a href="#" class="link link-hover"><%= I18n.t(".fotter.terms_of_service") %></a></li>
+        <li><a href="#" class="link link-hover"><%= I18n.t(".fotter.privacy_policy") %></a></li>
+      </ul>
     </div>
   </div>
-  
-  <hr class="footer-divider" />
-  
-  <p class="footer-copy">
-    © 2025 - WellDone
-  </p>
+
+  <div class="divider my-4"></div>
+
+  <p class="text-center text-sm opacity-80">© 2025 - WellDone</p>
 </footer>
