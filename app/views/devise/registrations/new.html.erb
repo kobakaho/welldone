@@ -1,36 +1,67 @@
-<h2><%= t(".sign_up") %></h2>
+<div class="card border border-base-300 bg-base-100 max-w-xs mx-auto mt-5">
+  <div class="card-body">
+    <h2 class="card-title"><%= t(".sign_up") %></h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="m-3">
+      <div>
+        <label class="input validator flex items-center gap-2">
+          <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </g>
+          </svg>
+          <%= f.email_field :email, placeholder: "mail@site.com", required: true, class: "input input-bordered w-full" %>
+        </label>
+        <div class="validator-hint hidden text-red-500 text-sm">Enter a valid email address</div>
+      </div>
+    </div>
+    
+    <div class="join flex flex-col gap-2 m-3">
+      <!-- パスワード入力 -->
+      <div>
+        <label class="input validator flex items-center gap-2">
+          <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+              <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
+              <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+            </g>
+          </svg>
+          <%= f.password_field :password, placeholder: "Password", required: true, 
+                minlength: 8, pattern: "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", 
+                title: "Must be more than 8 characters, including number, lowercase letter, uppercase letter",
+                class: "input input-bordered w-full" %>
+        </label>
+        <p class="validator-hint hidden text-sm text-red-500">
+          Must be more than 8 characters, including:
+          <br/>At least one number
+          <br/>At least one lowercase letter
+          <br/>At least one uppercase letter
+        </p>
+      </div>
+      <!-- パスワード確認 -->
+      <div>
+        <label class="input flex items-center gap-2 m-3">
+          <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password",
+                class: "input input-bordered w-full" %>
+        </label>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="actions">
+        <%= f.submit t(".sign_up"), class: "btn btn-primary w-full" %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="custom-alert">
+        <span class="close" onclick="this.parentElement.style.display='none";>&times;</span>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t(".sign_up") %>
-  </div>
-<% end %>
-
-<% if flash[:alert] %>
-  <div class="custom-alert">
-    <span class="close" onclick="this.parentElement.style.display='none";>&times;</span>
-    <%= flash[:alert] %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
