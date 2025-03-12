@@ -1,32 +1,39 @@
-<div class="card border border-base-300 bg-base-100 max-w-xs mx-auto mt-5"> 
-  <div class="card-body">
-    <h2 class="card-title"><%= t(".sign_in") %></h2>
+<div class="container mx-auto flex justify-center items-center min-h-screen">
+  <div class="card border border-4 border-base-300 bg-base-100 max-w-md w-full mx-auto my-10 p-6 shadow-lg">
+    <div class="card-body space-y-4">
+      <h2 class="card-title text-center"><%= t(".sign_in") %></h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-control">
-        <%= f.label :email, class: "label" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full" %>
-      </div>
-
-      <div class="form-control">
-        <%= f.label :password, class: "label" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered w-full" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <!-- メール入力 -->
         <div class="form-control">
-          <label class="cursor-pointer flex items-center gap-2 m-2">
-            <%= f.check_box :remember_me, class: "checkbox" %>
-            <span class="label-text"><%= f.label :remember_me %></span>
-          </label>
+          <%= f.label :email, class: "label font-semibold" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full" %>
+        </div>
+
+        <!-- パスワード入力 -->
+        <div class="form-control">
+          <%= f.label :password, class: "label font-semibold" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered w-full" %>
+        </div>
+
+        <!-- Remember Me チェックボックス -->
+        <% if devise_mapping.rememberable? %>
+          <div class="form-control">
+            <label class="cursor-pointer flex items-center gap-2 mt-2">
+              <%= f.check_box :remember_me, class: "checkbox" %>
+              <span class="label-text"><%= f.label :remember_me %></span>
+            </label>
+          </div>
+        <% end %>
+
+        <!-- サインインボタン -->
+        <div class="form-control">
+          <%= f.submit t(".sign_in"), class: "btn btn-primary w-full mt-4" %>
         </div>
       <% end %>
 
-      <div class="form-control">
-        <%= f.submit t(".sign_in"), class: "btn btn-outline m-3" %>
-      </div>
-    <% end %>
-    
+      <div class="divider"></div>
       <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>
