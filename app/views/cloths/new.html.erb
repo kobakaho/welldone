@@ -1,7 +1,6 @@
-<h1><%= I18n.t(".helpers.submit.create")%></h1>
-
-<%= render "form", cloth: @cloth %>
-
-<div>
-  <%= link_to I18n.t(".helpers.submit.back"), cloths_path %>
-</div>
+<div class="container mx-auto flex justify-center items-center min-h-screen">
+  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
+    <%= render "form", cloth: @cloth %>
+    <%= link_to I18n.t(".helpers.submit.back"), cloths_path, class: "btn btn-link" %>
+  </div>  
+</div>  
