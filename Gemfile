@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.2", ">= 7.2.2.1"
+gem "rails", "~> 8.0.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
@@ -27,7 +27,7 @@ gem "omniauth-rails_csrf_protection"
 gem "ancestry"
 gem "carrierwave", "~> 3.0"
 gem "fog-aws"
-gem "rails-i18n", "~> 7.0.0"
+gem "rails-i18n", "~> 8.0.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
