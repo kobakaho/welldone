@@ -1,50 +1,73 @@
-<h2>編集 <%= resource_name.to_s.humanize %></h2>
+<div class="container mx-auto flex justify-center items-center min-h-screen">
+  <div class="card border border-4 border-base-300 bg-base-100 max-w-md w-full mx-auto my-10 p-6 shadow-lg">
+    <div class="card-body space-y-1">
+    <h2 class="text-xl font-semibold ">編集 <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <!-- Email Field -->
+      <div class="form-control">
+        <%= f.label :email, class: "label font-semibold" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full" %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="text-sm text-gray-600">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i><%= t(".leave_blank_if_you_don_t_want_to_change_it") %></i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> 文字以上</em>
+      <!-- Password Field -->
+      <div class="form-control">
+        <%= f.label :password, class: "label font-semibold" %>
+        <i><%= t(".leave_blank_if_you_don_t_want_to_change_it") %></i><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered w-full" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> 文字以上</em>
+        <% end %>
+      </div>
+
+      <!-- Password Confirmation Field -->
+      <div class="form-control">
+        <%= f.label :password_confirmation, class: "label font-semibold" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full" %>
+      </div>
+
+      <!-- Current Password Field -->
+      <div class="form-control">
+        <%= f.label :current_password, class: "label font-semibold" %>
+        <i><%= t(".we_need_your_current_password_to_confirm_your_changes") %></i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "input input-bordered w-full" %>
+      </div>
+
+      <!-- Profile Image Field -->
+      <div>
+      <label class="label">
+        <%= f.label :profile_image, "画像挿入", class: "label-text font-bold" %>
+      </label>
+      <%= f.file_field :profile_image, class: "file-input file-input-bordered outline-inherit", accept: "image/*" %>
+      <%= f.hidden_field :profile_image_cache %>
+    
+      <% if current_user.profile_image? %>
+        <div class="mt-2 flex justify-center">
+          <%= image_tag current_user.profile_image.url, class: " object-contain max-w-[200px] max-h-[150px]" %>
+        </div>
+      <% end %>
+    </div>
+
+      <!-- Submit Button -->
+      <div class="form-group mt-3">
+        <%= f.submit t(".update"), class: "btn btn-primary w-full" %>
+      </div>
     <% end %>
+
+    <!-- Cancel Account Section -->
+    <h3 class="text-lg font-semibold mt-8 mb-4"><%= t(".cancel_my_account") %></h3>
+    <div class="mb-6">
+      <%= button_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger w-full" %>
+    </div>
+
+    <%= link_to t(".back"), :back, class: "btn btn-link" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i><%= t(".we_need_your_current_password_to_confirm_your_changes") %></i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :profile_image, t(".profile_image") %></br>
-    <%= f.file_field :profile_image, class: "form-control", accept: 'image/*' %>
-    <%= f.hidden_field :profile_image_cache %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit t(".update") %>
-  </div>
-<% end %>
-
-<h3><%= t(".cancel_my_account") %></h3>
-
-<div><%= t(".unhappy") %><%= button_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to t(".back"), :back %>
+</div>
