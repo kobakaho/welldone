@@ -1,6 +1,6 @@
 <%= render "form" %>
 
-<div>
-  <%= link_to I18n.t(".defaults.show") %>
-  <%= link_to I18n.t(".defaults.index"), checklists_path %>
+<div class="mt-6 text-center">
+  <%= link_to I18n.t(".defaults.show"), checklist_path %>
+  <%= link_to I18n.t(".defaults.index"), checklists_path, class: "btn btn-link" %>
 </div>

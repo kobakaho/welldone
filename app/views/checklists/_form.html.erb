@@ -1,13 +1,16 @@
-<%= form_with model: @checklist do |form| %>
-  <%= render "shared/error_messages", object: form.object %>
+<div class="max-w-lg mx-auto bg-base-100 p-6 m-10 rounded-lg shadow-md border-4 border-base-300">
+  <%= form_with model: @checklist, class: "space-y-6" do |form| %>
+    <%= render "shared/error_messages", object: form.object %>
 
-  <div>
-    <%= form.label :title, "チェックリストタイトル" %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="form-control w-full">
+      <label class="label">
+        <span class="label-text font-bold text-lg">チェックリストタイトル</span>
+      </label>
+      <%= form.text_field :title, class: "input input-md input-bordered w-full" %>
+    </div>
 
-  <div>
-    <%= form.submit I18n.t(".helpers.submit.submit") %>
-  </div>
-<% end %>
-
+    <div class="mt-6 text-center">
+      <%= form.submit I18n.t(".helpers.submit.submit"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
