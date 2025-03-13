@@ -1,52 +1,77 @@
-<h1><%=  I18n.t(".defaults.form")%></h1>
 <!--  form_with 入力フォームに必要なHTMLを作成 -->
 <%= form_with model: @cloth do |form| %>
   <%= render "shared/error_messages", object: form.object %>
 
   <div>
-    <%= form.label :image_file, "画像挿入(必須に設定する)" %>
-    <%= form.file_field :image_file, cless: "form-control", accept: "image/*" %>
+    <label class="label">
+      <%= form.label :image_file, "画像挿入", class: "label-text font-bold" %>
+    </label>
+    <%= form.file_field :image_file, class: "file-input file-input-bordered outline-inherit", accept: "image/*" %>
     <%= form.hidden_field :image_file_cache %>
-    <%= image_tag @cloth.image_file.url, width:"300", heigh:"200" if @cloth.image_file?%>
+  
+    <% if @cloth.image_file? %>
+      <div class="mt-2 flex justify-center">
+        <%= image_tag @cloth.image_file.url, class: " object-contain max-w-[200px] max-h-[150px]" %>
+      </div>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.label :category, "カテゴリーを選択(必須)" %>
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text font-bold">カテゴリーを選択(必須)</span>
+    </label>
     <%= select_tag :parent_id,
-          options_for_select(Category.where(ancestry: "485").pluck(:name, :id)),
+          options_for_select(Category.where(ancestry: "1").pluck(:name, :id)),
           include_blank: "選択してください",
-          class: "form-control",
-          data: { controller: "category", action: "change->category#fetchChildren", } %>
+          class: "select select-bordered w-full",
+          data: { controller: "category", action: "change->category#fetchChildren" } %>
   </div>
 
-  <div id="get_children"></div>
+  <div id="get_children" class="form-control w-full max-w-xs hidden"></div>
 
-  <div>
-    <%= form.label :seasons, "シーズン(必須)" %>
-    <%= form.collection_check_boxes :season_ids, Season.order(:name), :id, :name %>
+  <div>        
+    <label class="label">
+      <%= form.label :seasons, "シーズン(必須)", class: "label-text font-bold" %>
+    </label>
+    <div class="flex flex-wrap gap-2">
+      <%= form.collection_check_boxes :season_ids, Season.order(:id), :id, :name do |b| %>
+        <label class="flex items-center gap-1 cursor-pointer">
+          <%= b.check_box class: "checkbox checkbox-xs checkbox-info" %>
+          <%= b.text %>
+        </label>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :brand, "ブランド(任意)" %>
-    <%= form.text_field :brand %>
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text font-bold">ブランド(任意)</span>
+    </label>
+    <%= form.text_field :brand, class: "input input-sm input-bordered outline-inherit" %>
   </div>
 
-  <div>
-    <%= form.label :price, "購入金額(任意)" %>
-    <%= form.text_field :price %>
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text font-bold">購入金額(任意)</span>
+    </label>
+    <%= form.text_field :price, class: "input input-sm input-bordered outline-inherit" %>
   </div>
 
-  <div>
-    <%= form.label :purchase_date, "購入日(任意)" %>
-    <%= form.date_field :purchase_date %>
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text font-bold">購入日(任意)</span>
+    </label>
+    <%= form.date_field :purchase_date, class: "input input-sm input-bordered outline-inherit" %>
   </div>
 
-  <div>
-    <%= form.label :body, "購入理由(任意)" %>
-    <%= form.text_field :body %>
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text font-bold">購入理由(任意)</span>
+    </label>
+    <%= form.text_area :body, class: "textarea textarea-xsi input-bordered outline-inherit" %>
   </div>
-
+  
   <div>
-    <%= form.submit I18n.t(".helpers.submit.submit") %>
+    <%= form.submit I18n.t(".helpers.submit.submit"), class: "btn btn-primary btn-block mt-6" %>
   </div>
 <% end %>

@@ -1,10 +1,18 @@
-<h1><%= I18n.t(".defaults.show") %></h1>
+<div class="container mx-auto flex justify-center items-center min-h-screen">
+  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
+  <%= render @cloth %>
+    <div class="absolute bottom-4 right-4 flex space-x-2">
+      <%= link_to edit_cloth_path(@cloth) do %>
+        <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/edit--v1.png" alt="edit" />
+      <% end %>
 
-<%= render @cloth %>
+      <%= link_to @cloth, data: { turbo_method: :delete, confirm: "本当に削除しますか？" } do %>
+        <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/filled-trash.png" alt="delete" />
+      <% end %>
 
-<div>
-  <%= link_to I18n.t(".defaults.edit"), edit_cloth_path(@cloth) %>
-  <%= link_to I18n.t(".defaults.delete"), @cloth, data: { turbo_method: :delete } %>
-  
-  <%= link_to I18n.t(".helpers.submit.back"), cloths_path %>
+      <%= link_to cloths_path, class: "btn btn-outline btn-sm" do %>
+        <%= I18n.t(".helpers.submit.back") %>
+      <% end %>
+    </div>
+  </div>
 </div>
