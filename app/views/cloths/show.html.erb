@@ -6,7 +6,7 @@
         <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/edit--v1.png" alt="edit" />
       <% end %>
 
-      <%= link_to @cloth, data: { turbo_method: :delete, confirm: "本当に削除しますか？" } do %>
+      <%= link_to @cloth, data: { turbo_method: :delete, confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" } do %>
         <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/filled-trash.png" alt="delete" />
       <% end %>
 
