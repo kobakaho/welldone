@@ -17,12 +17,11 @@
     <div class="mx-auto bg-base-100 p-6 rounded-lg shadow-md w-full mt-6">
       <h2 class="text-xl font-semibold mb-4 text-center">チェックリスト</h2>
       <%= render 'checklist_items/form', checklist_item: @checklist_item, checklist: @checklist %>
-
-      <table id="table-checklist_item" class="w-full border border-gray-300 mt-3">
-        <tbody>
-          <% @checklist_items.each do |checklist_item| %>
-          <% end %>
-        </tbody>
+      
+      <table class="table w-full border border-gray-300 mt-4">
+        <tbody id="table-checklist_item">
+          <%= render @checklist_items %>
+        </tbody> 
       </table>
     </div>
     <!-- 戻るボタン -->
