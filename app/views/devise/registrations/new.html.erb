@@ -30,18 +30,17 @@
             </svg>
             <%= f.password_field :password, placeholder: "Password", required: true, 
                   minlength: 8, pattern: "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", 
-                  title: "Must be more than 8 characters, including number, lowercase letter, uppercase letter",
+                  title: "8文字以上で、数字、小文字、大文字を含む必要があります",
                   class: "input input-bordered w-full" %>
           </label>
           <p class="validator-hint text-sm text-red-500 hidden">
-            Must be more than 8 characters, including:
-            <br/>At least one number
-            <br/>At least one lowercase letter
-            <br/>At least one uppercase letter
+          8文字以上で、以下を含む必要があります, including:
+            <br/>少なくとも1つの数字
+            <br/>少なくとも1つの小文字
+            <br/>少なくとも1つの大文字
           </p>
         </div>
-
-        <!-- パスワード確認 -->
+          <!-- パスワード確認 -->
         <div>
           <label class="input flex items-center gap-2 mt-2">
             <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password",
