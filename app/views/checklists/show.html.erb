@@ -21,14 +21,6 @@
       <table id="table-checklist_item" class="w-full border border-gray-300 mt-3">
         <tbody>
           <% @checklist_items.each do |checklist_item| %>
-            <tr id="checklist_item-<%= checklist_item.id %>" class="border-b border-gray-200 p-4 flex justify-between items-center">
-              <% if checklist_item.persisted? %>
-                <td class="text-lg"><%= checklist_item.name %></td>
-                <td>
-                  <%= link_to "✖", checklist_item_path(checklist_item), class: "delete-checklist_item-link text-red-500", data: { turbo_method: :delete } %>
-                </td>
-              <% end %>
-            </tr>
           <% end %>
         </tbody>
       </table>
