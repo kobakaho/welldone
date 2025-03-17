@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :cloths
   has_many :checklists
 
+  validates :username, allow_blank: true, length: { maximum: 50 }
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   mount_uploader :profile_image, ProfileImageUploader
