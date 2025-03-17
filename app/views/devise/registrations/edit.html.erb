@@ -1,14 +1,14 @@
 <div class="container mx-auto flex justify-center items-center min-h-screen">
   <div class="card border border-4 border-base-300 bg-base-100 max-w-md w-full mx-auto my-10 p-6 shadow-lg">
     <div class="card-body space-y-1">
-    <h2 class="text-xl font-semibold ">編集 <%= resource_name.to_s.humanize %></h2>
+    <h2 class="text-xl font-semibold "><%= resource.username.presence || resource.email %>さん</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
     <!-- Name Field -->
     <div class="form-control">
-      <%= f.label :username, class: "label font-semibold" %>
+      <%= f.label :username, t(".username"), class: "label font-semibold" %>
       <%= f.text_field :username, autofocus: true, class: "input input-bordered w-full" %>
     </div>
 
