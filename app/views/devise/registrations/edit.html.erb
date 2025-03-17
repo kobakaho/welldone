@@ -6,6 +6,12 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
+    <!-- Name Field -->
+    <div class="form-control">
+      <%= f.label :username, class: "label font-semibold" %>
+      <%= f.text_field :username, autofocus: true, class: "input input-bordered w-full" %>
+    </div>
+
       <!-- Email Field -->
       <div class="form-control">
         <%= f.label :email, class: "label font-semibold" %>
