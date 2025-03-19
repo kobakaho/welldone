@@ -28,6 +28,7 @@ gem "ancestry"
 gem "carrierwave", "~> 3.0"
 gem "fog-aws"
 gem "rails-i18n", "~> 7.0.0"
+gem 'kaminari'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
