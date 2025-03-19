@@ -1,6 +1,6 @@
 <%= render "form" %>
 
-<div class="mt-6 text-center">
-  <%= link_to I18n.t(".defaults.show"), checklist_path %>
+<div class="text-center">
+  <%= link_to I18n.t(".helpers.submit.back"), checklist_path, class: "btn btn-link" %>
   <%= link_to I18n.t(".defaults.index"), checklists_path, class: "btn btn-link" %>
 </div>
