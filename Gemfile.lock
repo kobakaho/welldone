@@ -429,7 +429,7 @@ DEPENDENCIES
   fog-aws
   jbuilder
   jsbundling-rails
-  kaminari
+  kaminari (~> 1.2.2)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pg (~> 1.1)

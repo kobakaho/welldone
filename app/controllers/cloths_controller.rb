@@ -4,7 +4,7 @@ class ClothsController < ApplicationController
   after_action :check_season, only: %i[ create ]
 
   def index
-    @cloths = current_user.cloths
+    @cloths = current_user.cloths.page(params[:page])
   end
 
   def show
