@@ -5,8 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
-  has_many :cloths
-  has_many :checklists
+  has_many :cloths, dependent: :destroy
+  has_many :checklists, dependent: :destroy
 
   validates :username, allow_blank: true, length: { maximum: 50 }
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
