@@ -8,11 +8,10 @@
     <%= csp_meta_tag %>
     <%= favicon_link_tag %>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="icon.png">
-
     <%= yield :head %>
 
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>

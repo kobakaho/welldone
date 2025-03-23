@@ -23,6 +23,9 @@ ja:
       not_updated: "%{item}を更新出来ませんでした"
       deleted: "%{item}を削除しました"
       not_deleted: "%{item}を削除できませんでした"
+    pagination:
+     previous: "<"
+     next: ">"  
   cloths:
     brand: ブランド
     price: 購入金額
