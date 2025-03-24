@@ -22,13 +22,17 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 gem "devise"
 gem "devise-i18n"
+gem "rails-i18n", "~> 7.0.0"
+
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
-gem "ancestry"
+
 gem "carrierwave", "~> 3.0"
 gem "fog-aws"
-gem "rails-i18n", "~> 7.0.0"
+
+gem "ancestry"
 gem "kaminari", "~> 1.2.2"
+gem "ransack"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
