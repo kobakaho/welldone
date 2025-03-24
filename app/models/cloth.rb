@@ -16,8 +16,8 @@ class Cloth < ApplicationRecord
   mount_uploader :image_file, ClothImageUploader
 
   def self.ransackable_associations(auth_object = nil)
-    [ "seasons" , "categories" ]
-  end 
+    [ "seasons", "categories" ]
+  end
 
   def self.ransackable_attributes(auth_object = nil)
     [ "name" ]

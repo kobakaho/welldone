@@ -5,7 +5,7 @@ class ClothsController < ApplicationController
 
   def index
     @q = current_user.cloths.ransack(params[:q])
-    @cloths = @q.result(distinct: true).page(params[:page]) #検索結果に重複を許さない
+    @cloths = @q.result(distinct: true).page(params[:page]) # 検索結果に重複を許さない
   end
 
   def show

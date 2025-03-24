@@ -6,10 +6,10 @@ class Category < ApplicationRecord
   has_ancestry
 
   def self.ransackable_associations(auth_object = nil)
-    ["cloths"]
+    [ "cloths" ]
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+    [ "name" ]
   end
 end

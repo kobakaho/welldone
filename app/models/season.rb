@@ -5,10 +5,10 @@ class Season < ApplicationRecord
   has_many :cloths, through: :season_cloths
 
   def self.ransackable_associations(auth_object = nil)
-    ["cloths"]
+    [ "cloths" ]
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+    [ "name" ]
   end
 end
