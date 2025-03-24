@@ -1,0 +1,10 @@
+<%= search_form_for q, url: url do |f| %>
+  <div class="flex items-center space-x-2 m-10">
+    <%= f.search_field :seasons_name_or_categories_name_cont, 
+      class: "input input-bordered w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+      placeholder: "シーズンorカテゴリー　あいまい検索" %>
+    <div class="input-group-append">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
