@@ -4,7 +4,8 @@ class ClothsController < ApplicationController
   after_action :check_season, only: %i[ create ]
 
   def index
-    @cloths = current_user.cloths.page(params[:page])
+    @q = current_user.cloths.ransack(params[:q])
+    @cloths = @q.result(distinct: true).page(params[:page]) #検索結果に重複を許さない
   end
 
   def show
