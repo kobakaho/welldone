@@ -32,7 +32,7 @@ gem "fog-aws"
 
 gem "ancestry"
 gem "kaminari", "~> 1.2.2"
-gem "ransack", "~> 3.2.1"
+gem "ransack"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
