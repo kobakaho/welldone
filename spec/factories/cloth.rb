@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :cloth do
     brand { "ユニクロ" }
-    body { "毎年着古すから" }
+    body { "Sample text" }
     purchase_date { Date.new(2025, 3, 1) }
     price { 3000 }
 
