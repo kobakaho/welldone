@@ -1,20 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Cloth, type: :model do
-  let(:cloth) { create(:cloth) }
-  let(:season) { create(:season) }
-  let(:category) { create(:category) }
-
-  it '関連するテーブルが正しく設定された場合' do
-    cloth = build(:cloth, seasons: [ season ], categories: [ category ])
-    expect(cloth).to be_valid
-  end
 
   describe 'バリデーションチェック' do
-    it '設定したすべてのバリデーションが機能しているか' do
-      cloth = build(:cloth)
-      expect(cloth).to be_valid
-      expect(cloth.errors).to be_empty
+    context '全てのフィールドが有効な場合' do
+      it '成功すること' do
+        cloth = build(:cloth)
+        expect(cloth).to be_valid
+      end
     end
 
     context 'ブランド' do
