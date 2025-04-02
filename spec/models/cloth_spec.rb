@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Cloth, type: :model do
-
   describe 'バリデーションチェック' do
     context '全てのフィールドが有効な場合' do
       it '成功すること' do

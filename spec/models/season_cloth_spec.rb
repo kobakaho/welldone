@@ -19,4 +19,4 @@ RSpec.describe SeasonCloth, type: :model do
       expect(new_season_cloth.errors[:season_id]).not_to be_empty
     end
   end
-end  
+end
