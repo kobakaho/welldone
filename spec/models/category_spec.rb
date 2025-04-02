@@ -9,7 +9,7 @@ RSpec.describe Category, type: :model do
       end
 
       it '値がない場合失敗' do
-        category = build(:category, name: " ")
+        category = build(:category, name: '')
         expect(category).to be_invalid
         expect(category.errors[:name]).not_to be_empty
       end

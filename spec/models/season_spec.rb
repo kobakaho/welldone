@@ -9,7 +9,7 @@ RSpec.describe Season, type: :model do
       end
 
       it '値がない場合失敗' do
-        season = build(:season, name: " ")
+        season = build(:season, name: '')
         expect(season).to be_invalid
         expect(season.errors[:name]).not_to be_empty
       end
