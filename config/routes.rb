@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "static_pages#top"
+
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     resources :checklist_items, only: %i[ create destroy ], shallow: true
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "static_pages/terms", to: "static_pages#terms", as: "terms"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

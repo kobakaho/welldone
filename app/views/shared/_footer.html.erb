@@ -14,7 +14,7 @@
       <p class="font-bold text-lg">ABOUT</p>
       <ul>
         <li><a href="https://forms.gle/TQSgq1Vx4x2wcqFaA" target="_blank" rel="noopener noreferrer" class="link link-hover"><%= I18n.t(".fotter.contact_us") %></a></li>
-        <li><a href="#" class="link link-hover"><%= I18n.t(".fotter.terms_of_service") %></a></li>
+        <li><%= link_to I18n.t(".fotter.terms_of_service"), terms_path, class: "link link-hover" %></li>
         <li><a href="#" class="link link-hover"><%= I18n.t(".fotter.privacy_policy") %></a></li>
       </ul>
     </div>
