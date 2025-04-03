@@ -21,7 +21,6 @@ RSpec.describe Category, type: :model do
         category2.valid?
         expect(category2.errors[:name]).not_to be_empty
       end
-
     end
   end
 end

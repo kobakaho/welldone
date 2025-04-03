@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Checklist, type: :model do
-
   context '全てのフィールドが有効な場合' do
     it '成功する' do
       checklist = build(:checklist)
@@ -27,4 +26,3 @@ RSpec.describe Checklist, type: :model do
     end
   end
 end
-
