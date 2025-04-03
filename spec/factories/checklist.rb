@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :checklist do
-    sequence(:title) { |n| "タイトル名#{n}" }
+    title { Faker::String.random }
     association :user
   end
 end
