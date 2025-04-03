@@ -14,6 +14,14 @@ RSpec.describe Category, type: :model do
         expect(category).to be_invalid
         expect(category.errors[:name]).not_to be_empty
       end
+
+      it 'ユニークであること' do
+        category1 = create(:category, name: 'unique name')
+        category2 = build(:category, name: 'unique name')
+        category2.valid?
+        expect(category2.errors[:name]).not_to be_empty
+      end
+
     end
   end
 end

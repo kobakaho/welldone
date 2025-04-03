@@ -14,6 +14,13 @@ RSpec.describe Season, type: :model do
         expect(season).to be_invalid
         expect(season.errors[:name]).not_to be_empty
       end
+
+      it 'ユニークであること' do
+        season1 = create(:season, name: 'unique name')
+        season2 = build(:season, name: 'unique name')
+        season2.valid?
+        expect(season2.errors[:name]).not_to be_empty
+      end
     end
   end
 end
