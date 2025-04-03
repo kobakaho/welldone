@@ -1,5 +1,5 @@
 class Season < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   has_many :season_cloths, dependent: :destroy
   has_many :cloths, through: :season_cloths
