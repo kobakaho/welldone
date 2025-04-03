@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "static_pages/terms", to: "static_pages#terms", as: "terms"
+  get "static_pages/policy", to: "static_pages#policy", as: "policy"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
