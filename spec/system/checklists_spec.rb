@@ -88,7 +88,7 @@ RSpec.describe "Checklists", type: :system do
               expect(current_path).to start_with("/checklists")
             end
           end
-  
+
           context '失敗する' do
             it 'titleが未入力' do
               visit edit_checklist_path(checklist)
