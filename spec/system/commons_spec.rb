@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Commons", type: :system do
-
   context 'ログイン前' do
     before do
       visit root_path
@@ -26,6 +25,10 @@ RSpec.describe "Commons", type: :system do
     describe 'タイトル' do
       it 'タイトルが正しく表示されていること' do
         expect(page).to have_title("well断")
+      end
+      it 'トップ画面に遷移すること' do
+        click_on "well断"
+        expect(page).to have_content("クローゼット管理と断捨離のアプリ")
       end
     end
   end
