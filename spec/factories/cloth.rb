@@ -10,8 +10,8 @@ FactoryBot.define do
     association :user
 
     after(:build) do |cloth|
-      cloth.seasons << FactoryBot.build(:season)
-      cloth.categories << FactoryBot.build(:category)
+      cloth.season_ids << FactoryBot.build(:season)
+      cloth.category_ids << FactoryBot.build(:category)
     end
   end
 end
