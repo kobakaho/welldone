@@ -4,6 +4,11 @@
   </div>
 </figure>
 <div class="card-body">
+
+  <div class="flex justify-end mb-2">
+    <%= render "favorite_buttons", { cloth: cloth} %>
+  </div>
+  
   <p>カテゴリー:
     <% cloth.categories.each do |category| %>
       <%= category.name %>

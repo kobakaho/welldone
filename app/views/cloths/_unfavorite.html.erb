@@ -1,4 +1,3 @@
 <%= link_to favorite_path(current_user.favorites.find_by(cloth_id: cloth.id)), id: "unfavorite-button-for-cloth-#{cloth.id}", data: { turbo_method: :delete } do %>
-  <i class="fa-solid fa-heart"></i>
-
+  <i class="fa-solid fa-heart fa-xl" style="color: #bb6c69;"></i>
 <% end %>
