@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_17_142204) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_07_070627) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_17_142204) do
     t.index ["user_id"], name: "index_cloths_on_user_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "cloth_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cloth_id"], name: "index_favorites_on_cloth_id"
+    t.index ["user_id", "cloth_id"], name: "index_favorites_on_user_id_and_cloth_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "season_cloths", force: :cascade do |t|
     t.bigint "season_id", null: false
     t.bigint "cloth_id", null: false
@@ -99,6 +109,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_17_142204) do
   add_foreign_key "checklist_items", "checklists"
   add_foreign_key "checklists", "users"
   add_foreign_key "cloths", "users"
+  add_foreign_key "favorites", "cloths"
+  add_foreign_key "favorites", "users"
   add_foreign_key "season_cloths", "cloths"
   add_foreign_key "season_cloths", "seasons"
 end
