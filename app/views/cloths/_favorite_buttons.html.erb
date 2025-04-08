@@ -1,0 +1,7 @@
+<div>
+  <% if current_user.favorite?(cloth) %>
+    <%= render "unfavorite", { cloth: cloth } %>
+  <% else %>
+    <%= render "favorite", { cloth: cloth } %>
+  <% end %>
+</div>

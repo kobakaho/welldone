@@ -1,9 +1,14 @@
 <figure>
   <div>
-    <%= image_tag @cloth.image_file_url, class: "max-w-xs h-auto" %>
+    <%= image_tag cloth.image_file_url, class: "max-w-xs h-auto" %>
   </div>
 </figure>
 <div class="card-body">
+
+  <div class="flex justify-end mb-2">
+    <%= render "favorite_buttons", { cloth: cloth} %>
+  </div>
+  
   <p>カテゴリー:
     <% cloth.categories.each do |category| %>
       <%= category.name %>

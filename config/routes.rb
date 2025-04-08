@@ -6,7 +6,14 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :cloths, only: %i[new create index show edit update destroy]
+  resources :cloths, only: %i[new create index show edit update destroy] do
+    collection do
+      get :favorites
+    end
+  end
+
+  resources :favorites, only: %i[create destroy]
+
   resources :categories, only: %i[get_children] do
     collection do
       get :get_children, to: "categories#get_children"

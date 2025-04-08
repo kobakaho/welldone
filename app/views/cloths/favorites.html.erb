@@ -1,0 +1,7 @@
+<div class="container mx-auto px-4 min-h-screen">
+  <% if @favorite_cloths.present? %>
+    <%= render @favorite_cloths %>  
+  <% else %>
+    <p class="col-span-full text-center">お気に入りしましょう</p>
+  <% end %>
+</div>

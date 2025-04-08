@@ -48,6 +48,10 @@ class ClothsController < ApplicationController
     redirect_to cloths_path, notice: I18n.t("defaults.flash_message.deleted", item: Cloth.model_name.human), status: :see_other
   end
 
+  def favorites
+    @favorite_cloths = current_user.favorite_cloths
+  end
+
   private
 
   def check_season

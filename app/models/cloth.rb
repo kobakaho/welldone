@@ -12,6 +12,7 @@ class Cloth < ApplicationRecord
   has_many :seasons, through: :season_cloths
   has_many :category_cloths, dependent: :destroy
   has_many :categories, through: :category_cloths
+  has_many :favorites, dependent: :destroy
 
   mount_uploader :image_file, ClothImageUploader
 
