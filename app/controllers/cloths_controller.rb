@@ -51,7 +51,7 @@ class ClothsController < ApplicationController
   def favorites
     @favorite_cloths = current_user.favorite_cloths
   end
-  
+
   private
 
   def check_season

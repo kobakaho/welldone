@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
   resources :cloths, only: %i[new create index show edit update destroy] do
     collection do
-      get :favorites   
+      get :favorites
     end
   end
 
