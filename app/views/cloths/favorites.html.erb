@@ -1,14 +1,7 @@
 <div class="container mx-auto px-4 min-h-screen">
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
-    <% if @favorite_cloths.present? %>
-      <%= render @favorite_cloths %>
-        <#%= link_to cloth_path(@cloth), class: "block bg-base-100 shadow-xl rounded-lg overflow-hidden transition-transform transform hover:scale-105" do %>
-        <#div class="w-full aspect-square">
-        <#%= image_tag cloth.image_file.url, class: "w-full h-full object-cover" %>
-        <#/div>
-      <#% end %>
-    <% else %>
+  <% if @favorite_cloths.present? %>
+    <%= render @favorite_cloths %>  
+  <% else %>
     <p class="col-span-full text-center">お気に入りしましょう</p>
-    <% end %>
-  </div>
-</div>    
+  <% end %>
+</div>
