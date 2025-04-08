@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [ :google_oauth2 ]
   has_many :cloths, dependent: :destroy
   has_many :checklists, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_cloths, through: :favorites, source: :cloth
 
   validates :username, allow_blank: true, length: { maximum: 50 }
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
@@ -23,5 +25,17 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
     end
+  end
+
+  def favorite?(cloth)
+    favorite_cloths.include?(cloth)
+  end
+
+  def favorite(cloth)
+    favorite_cloths << cloth
+  end
+
+  def unfavorite(cloth)
+    favorite_cloths.destroy(cloth)
   end
 end
