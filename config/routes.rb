@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   resources :favorites, only: %i[create destroy]
 
-  resources :categories, only: %i[get_children] do
+  resources :categories, only: %i[get_children get_parents] do
     collection do
+      get :get_parents, to: "categories#get_parents"
       get :get_children, to: "categories#get_children"
     end
   end
