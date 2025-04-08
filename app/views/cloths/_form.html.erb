@@ -20,12 +20,13 @@
     <label class="label">
       <span class="label-text font-bold">カテゴリーを選択(必須)</span>
     </label>
-    <%= select_tag :parent_id,
-          options_for_select(Category.where(ancestry: "27").pluck(:name, :id)),
+    <%= select_tag :root_id,
+          options_for_select(Category.where(ancestry: nil).pluck(:name, :id)),
           include_blank: "選択してください",
           class: "select select-bordered w-full",
-          data: { controller: "category", action: "change->category#fetchChildren" } %>
+          data: { controller: "category", action: "change->category#fetchParents" } %>
   </div>
+  <div id="get_parents" class="form-control w-full max-w-xs hidden"></div>
 
   <div id="get_children" class="form-control w-full max-w-xs hidden"></div>
 

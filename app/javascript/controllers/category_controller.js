@@ -5,6 +5,22 @@ export default class extends Controller {
   connect() {
     console.log("category.js 読み込みに成功しました")
   }
+  fetchParents(event) {
+    const rootId = event.target.value;
+
+    if (rootId) {
+      fetch(`/categories/get_parents?root_id=${rootId}`, {
+        headers: {
+          Accept: "text/vnd.turbo-stream.html"
+        }
+      })
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("get_parents").innerHTML = html;
+      })
+      .catch(error => console.error("Error:", error));
+    }
+  };
 
   fetchChildren(event) {
     const parentId = event.target.value;
