@@ -16,6 +16,7 @@ end
 
 
 # チェックリストに合わせて要修正
+CategoryCloth.delete_all
 Category.delete_all
 
 # 1階層
