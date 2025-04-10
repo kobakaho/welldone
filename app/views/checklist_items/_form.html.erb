@@ -1,11 +1,13 @@
 <div id="checklist_item-form" class="mx-auto">
   <%= form_with model: checklist_item, url: checklist_checklist_items_path(checklist), class: "join w-full" do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
+    <div class="join">
 
-    <%= f.text_field :name, class: "input input-bordered w-full", placeholder: "アイテム名を入力" %>
+    <%= f.text_field :name, class: "input join-item", placeholder: "アイテム名を入力" %>
     
-    <button type="submit" class="btn btn-primary join-item flex items-center">
-      <img width="24" height="24" src="https://img.icons8.com/ios/50/add--v1.png" alt="add" />
+    <button type="submit" class="btn join-item flex items-center">
+      <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
     </button>
+    </div>
   <% end %>
 </div>  

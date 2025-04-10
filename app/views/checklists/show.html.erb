@@ -2,14 +2,18 @@
   <div class="card bg-base-100 shadow-md w-full max-w-2xl p-8 m-10 flex bg-neutral-content border border-neutral p-6 rounded-box">
     <div class="flex justify-between items-center">
 
+      <%= link_to checklists_path do %>
+        <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
+      <% end %>
+
       <%= render @checklist %>
       <div class="absolute right-12 flex items-center space-x-4">
         <%= link_to edit_checklist_path(@checklist) do %>
-          <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/edit--v1.png" alt="edit" />
+          <i class="fa-solid fa-pen-to-square fa-lg" style="color: #293454;"></i>
         <% end %>
 
         <%= link_to @checklist, data: { turbo_method: :delete, confirm: "本当に削除しますか？作成したアイテムも削除されます", turbo_confirm: "本当に削除しますか？作成したアイテムも削除されます" } do %>
-          <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/filled-trash.png" alt="delete" />
+          <i class="fa-solid fa-trash" style="color: #293454;"></i>
         <% end %>
       </div>
     </div>
@@ -24,9 +28,5 @@
         </tbody>
       </table>
     </div>
-    <!-- 戻るボタン -->
-    <div class="mt-6 text-center">
-      <%= link_to I18n.t(".helpers.submit.back"), checklists_path, class: "btn btn-link" %>
-    </div>    
   </div>    
 </div>

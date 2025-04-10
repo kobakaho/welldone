@@ -1,5 +1,8 @@
-<%= render "form", checklist: @checklist %>
-
-<div class="mt-6 text-center">
-  <%= link_to I18n.t(".helpers.submit.back"), checklists_path, class: "btn btn-link" %>
-</div>
+<div class="container mx-auto flex justify-center items-center min-h-screen">
+  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
+    <%= link_to checklists_path do %>
+      <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
+    <% end %>
+    <%= render "form", checklist: @checklist %>
+  </div>  
+</div>  

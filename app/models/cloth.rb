@@ -1,4 +1,7 @@
 class Cloth < ApplicationRecord
+  mount_uploader :image_file, ClothImageUploader
+  include Discard::Model
+
   validates :brand, allow_blank: true, length: { maximum: 50 }
   validates :body, allow_blank: true, length: { maximum: 65_535 }
   validates :purchase_date, allow_blank: true, comparison: { less_than_or_equal_to: Date.today }# comparison:比較
@@ -13,8 +16,6 @@ class Cloth < ApplicationRecord
   has_many :category_cloths, dependent: :destroy
   has_many :categories, through: :category_cloths
   has_many :favorites, dependent: :destroy
-
-  mount_uploader :image_file, ClothImageUploader
 
   def self.ransackable_associations(auth_object = nil)
     [ "seasons", "categories" ]
