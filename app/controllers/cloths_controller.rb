@@ -1,10 +1,10 @@
 class ClothsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, expect: %i[ discarded ]
   before_action :set_cloth, only: %i[ show update destroy ]
   after_action :check_season, only: %i[ create ]
 
   def index
-    @q = current_user.cloths.ransack(params[:q])
+    @q = current_user.cloths.kept.ransack(params[:q])
     @cloths = @q.result(distinct: true).page(params[:page]) # 検索結果に重複を許さない
   end
 
@@ -50,6 +50,16 @@ class ClothsController < ApplicationController
 
   def favorites
     @favorite_cloths = current_user.favorite_cloths
+  end
+
+  def discard
+    @cloth = current_user.cloths.find(params[:id])
+    @cloth.discard!
+    redirect_to cloths_path, notice: "断捨離した！", status: :see_other
+  end
+
+  def discarded
+    @discarded_cloths = Cloth.includes(:user).discarded
   end
 
   private
