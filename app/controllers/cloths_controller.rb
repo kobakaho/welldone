@@ -1,5 +1,5 @@
 class ClothsController < ApplicationController
-  before_action :authenticate_user!, expect: %i[ discarded ]
+  before_action :authenticate_user!, except: %i[ discarded ]
   before_action :set_cloth, only: %i[ show update destroy ]
   after_action :check_season, only: %i[ create ]
 
