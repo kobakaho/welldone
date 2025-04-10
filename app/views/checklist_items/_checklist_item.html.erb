@@ -2,7 +2,9 @@
   <% if checklist_item.persisted? %>
     <td class="text-lg"><%= checklist_item.name %></td>
     <td>
-      <%= link_to "✖", checklist_item_path(checklist_item), class: "delete-checklist_item-link text-red-500", data: { turbo_method: :delete } %>
+      <%= link_to checklist_item_path(checklist_item), data: { turbo_method: :delete } do %>
+        <i class="delete-checklist_item-link fa-solid fa-minus fa-xl" style="color: #293454;"></i>
+      <% end %>
     </td>
   <% end %>
 </tr>

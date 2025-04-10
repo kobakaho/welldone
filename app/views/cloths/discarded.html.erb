@@ -1,5 +1,8 @@
 <% if @discarded_cloths.present? %>
-    <%= render @discarded_cloths %>
-    <% else %>
-    <p>断捨離したアイテムはありません。</p>
+  <%= render "discarded" %>
+  <% else %>
+  <p>断捨離したアイテムはありません。</p>
 <% end %>
+
+ユーザー名をランダムのランダムstringを生成する
+タイムラインでユーザー名と断捨離した件数を表示
