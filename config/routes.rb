@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :cloths, only: %i[new create index show edit update destroy] do
     collection do
       get :favorites
+      get :discarded
+    end
+    member do
+      post :discard
     end
   end
 
