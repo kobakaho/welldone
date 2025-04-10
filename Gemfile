@@ -34,6 +34,7 @@ gem "ancestry"
 gem "kaminari", "~> 1.2.2"
 gem "ransack"
 
+gem 'discard', '~> 1.4'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 gem "dotenv-rails"
