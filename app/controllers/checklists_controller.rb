@@ -29,7 +29,6 @@ class ChecklistsController < ApplicationController
   end
 
   def update
-
     if @checklist.update(checklist_params)
     else
       flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Checklist.model_name.human)
