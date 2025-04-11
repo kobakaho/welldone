@@ -18,48 +18,52 @@
   </head>
 
   <body>
-    <div class="hero-overlay bg-base-100">
-      <% if flash[:notice].present? %>
-        <div class="alert alert-success flex items-center p-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 shrink-0 stroke-current mr-2"
-            fill="none"
-            viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span><%= flash[:notice] %></span>
-        </div>
-      <% end %>
-      
-      <% if flash[:alert].present? %>
-        <div class="alert alert-error flex items-center p-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 shrink-0 stroke-current mr-2"
-            fill="none"
-            viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span><%= flash[:alert] %></span>
-        </div>
-      <% end %>
-  
-      <% if user_signed_in? %>
-      <%= render "shared/header" %>
-      <% else %>
-      <%= render "shared/before_sign_in_header" %>
-      <% end %>
-      <%= yield %>
-      <%= render 'shared/footer'%>
+    <div class="container">
+      <div class="hero-overlay bg-base-100">
+
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success flex items-center p-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 shrink-0 stroke-current mr-2"
+              fill="none"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span><%= flash[:notice] %></span>
+          </div>
+        <% end %>
+        
+        <% if flash[:alert].present? %>
+          <div class="alert alert-error flex items-center p-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 shrink-0 stroke-current mr-2"
+              fill="none"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span><%= flash[:alert] %></span>
+          </div>
+        <% end %>
+    
+        <% if user_signed_in? %>
+        <%= render "shared/header" %>
+        <% else %>
+        <%= render "shared/before_sign_in_header" %>
+        <% end %>
+        <%= yield %>
+        <%= turbo_frame_tag "modal" %>
+        <%= render 'shared/footer'%>
+      </div>
     </div>
   </body>
 </html>
