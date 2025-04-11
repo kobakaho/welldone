@@ -4,7 +4,7 @@
     <span><%= I18n.t(".defaults.create") %></span>
   <% end %>
 
-  <div id="checklist", class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
+  <div id="new_checklist", class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
     <% if @checklists.present? %>
       <% @checklists.each do |checklist| %>
         <%= link_to checklist_path(checklist), class: "card transition-transform transform hover:scale-105" do %>
