@@ -26,7 +26,7 @@ export default class extends Controller {
   // private
 
   get #modalTurboFrame() {
-    return document.querySelector("turbo-frame[id="modal"]");
+    return document.querySelector("turbo-frame[id='modal']");
   }
 }
 
