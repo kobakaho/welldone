@@ -21,7 +21,7 @@ class ChecklistsController < ApplicationController
     if @checklist.save
     else
       flash.now[:danger] = I18n.t("defaults.flash_message.not_created", item: Checklist.model_name.human)
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
