@@ -3,7 +3,7 @@ class ChecklistsController < ApplicationController
   before_action :set_checklist, only: %i[ show edit update destroy ]
 
   def index
-    @checklists = current_user.checklists
+    @checklists = current_user.checklists.order(created_at: :desc)
   end
 
   def new
@@ -18,13 +18,10 @@ class ChecklistsController < ApplicationController
   def create
     @checklist = current_user.checklists.new(checklist_params)
 
-    respond_to do |format|
-      if @checklist.save
-        format.html { redirect_to checklist_url(@checklist), notice: I18n.t("defaults.flash_message.created", item: Checklist.model_name.human) }
-      else
-        flash.now[:danger] = I18n.t("defaults.flash_message.not_created", item: Checklist.model_name.human)
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @checklist.save
+    else
+      flash.now[:danger] = I18n.t("defaults.flash_message.not_created", item: Checklist.model_name.human)
+      render :new, status: :unprocessable_entity 
     end
   end
 
