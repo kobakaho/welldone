@@ -29,13 +29,11 @@ class ChecklistsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @checklist.update(checklist_params)
-        format.html { redirect_to checklist_url(@checklist), notice: I18n.t("defaults.flash_message.updated", item: Checklist.model_name.human) }
-      else
-        flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Checklist.model_name.human)
-        format.html { render :new, status: :unprocessable_entity }
-      end
+
+    if @checklist.update(checklist_params)
+    else
+      flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Checklist.model_name.human)
+      format.html { render :new, status: :unprocessable_entity }
     end
   end
 

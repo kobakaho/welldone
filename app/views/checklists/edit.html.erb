@@ -1,8 +1,13 @@
-<div class="container mx-auto flex justify-center items-center min-h-screen">
-  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
-    <%= link_to checklist_path do %>
-      <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
-    <% end %>
-    <%= render "form" %>
+<turbo-frame id="modal">
+  <div data-controller="modal" data-action="turbo:submit-end->modal#hideOnSubmit keydown.esc->modal#hide" role="dialog" tabindex="-1" 
+  class="fixed inset-0 z-30 flex items-center justify-center w-full h-screen p-2">
+    <div class="container mx-auto flex justify-center items-center min-h-screen">
+      <%= button_to nil, nil, type: :button, method: :get, form: { data: {action: "modal#hide"} },
+      class: "fixed inset-0 block w-full h-screen cursor-default bg-gray-900/30" %>
+        <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
+          <%= render "form" %>
+        </div>
+      </div>
+    </div>  
   </div>
-</div>  
+</turbo-frame>
