@@ -32,7 +32,7 @@ class ChecklistsController < ApplicationController
     if @checklist.update(checklist_params)
     else
       flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Checklist.model_name.human)
-      format.html { render :new, status: :unprocessable_entity }
+      render :new, status: :unprocessable_entity
     end
   end
 

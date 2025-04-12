@@ -1,5 +1,5 @@
 <div class="container mx-auto px-4 min-h-screen">
-  <%= link_to new_checklist_path, data: { turbo_frame: "modal" }, class: "btn btn-secondary flex items-center mt-10" do %>
+  <%= link_to new_checklist_path, data: { action: "modal#open", turbo_frame: "modal" }, class: "btn btn-secondary flex items-center mt-10" do %>
     <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
     <span><%= I18n.t(".defaults.create") %></span>
   <% end %>

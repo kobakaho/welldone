@@ -21,7 +21,7 @@ class ClothsController < ApplicationController
     if @cloth.save
     else
       flash.now[:danger] = I18n.t("defaults.flash_message.not_created", item: Cloth.model_name.human)
-      format.html { render :new, status: :unprocessable_entity }
+      render :new, status: :unprocessable_entity
     end
   end
 

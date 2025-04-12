@@ -8,7 +8,7 @@ export default class extends Controller {
     this.dialog = this.dialogTarget
     console.log("modal.js 読み込みに成功しました")
   }
-  
+
   open(event) {
     event.preventDefault()
     this.dialog.showModal()
@@ -24,31 +24,6 @@ export default class extends Controller {
     if (event.target === this.dialog) {
       this.dialog.close()
     }
-  }
-
-  closeModal() {
-    this.dialog.close()
-  }
-  hide(event) {
-    event.preventDefault();
-    
-    this.element.remove();
-  }
-
-  hideOnSubmit(event) {
-    if (event.detail.success) {
-      this.hide();
-    }
-  }
-
-  disconnect() {
-    this.#modalTurboFrame.src = null;
-  }
-
-  // private
-
-  get #modalTurboFrame() {
-    return document.querySelector("turbo-frame[id='modal']");
   }
 }
 

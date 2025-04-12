@@ -1,11 +1,10 @@
-<turbo-frame id ="modal">
-  <div data-controller="modal" data-action="turbo:submit-end->modal#hideOnSubmit keydown.esc->modal#hide"
-  role="dialog" tabindex="-1" class="fixed inset-0 z-30 flex items-center justify-center w-full h-screen p-2">
-    <%= button_to nil, nil, type: :button, method: :get, form: { data: {action: "modal#hide"} }, 
-    class: "fixed inset-0 block w-full h-screen cursor-default bg-gray-900/30" %>
-     <div class="card bg-base-100 shadow-md w-96 p-6">
-        <%= render "form", checklist: @checklist %>
-      </div>  
-    </div>
-  </div>    
-</turbo-frame>   
+<turbo-frame id="modal">
+  <dialog data-controller="modal" data-modal-target="dialog" 
+    data-action="click->modal#backdropClick" id="modal_dialog" class="modal" open>
+    <div class="modal-box">
+
+    <%= render "form", checklist: @checklist %>
+    
+    <form method="dialog" class="modal-backdrop"></form>
+  </dialog>
+</turbo-frame>
