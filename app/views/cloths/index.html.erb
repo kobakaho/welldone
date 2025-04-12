@@ -1,4 +1,6 @@
 <div class="container mx-auto px-4 min-h-screen">
+<p>画面を最新の状態にするにはリロードしてください</p>
+
   <%= render 'search_form', q: @q, url: cloths_path %>
 
   <%= link_to new_cloth_path, data: { action: "modal#open", turbo_frame: "modal" } do %>
@@ -16,7 +18,7 @@
         <% end %>
       <% end %>
     <% else %>
-      <p class="col-span-full text-center">アイテムが見つかりませんでした</p>
+      <div class="col-span-full text-center">アイテムが見つかりませんでした</div>
     <% end %>
   </div>     
    <%= paginate @cloths %>

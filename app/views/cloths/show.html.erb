@@ -4,8 +4,8 @@
     <%= link_to cloths_path do %>
       <button class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;" ></button>
       <% end %>
-    <div class="absolute right-4 flex space-x-2">
 
+    <div class="absolute right-4 flex space-x-2">
       <%= link_to edit_cloth_path(@cloth), data: { action: "modal#open", turbo_frame: "modal" } do %>
         <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
       <% end %>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
 
-    <%= render @cloth %>
+      <%= render @cloth %>
 
     <%= button_to  "断捨離", discard_cloth_path(@cloth), data: { confirm: "断捨離しますか？他のユーザーも見ることができるようになります", turbo_confirm:"断捨離しますか？他のユーザーも見ることができるようになります"} %>
   </div>
