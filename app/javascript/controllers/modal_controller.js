@@ -19,7 +19,7 @@ export default class extends Controller {
     this.dialog.close()
   }
 
-  closeSubmit(event) {
+  closeOnSubmit(event) {
     if (event.detail.success) {
       this.dialog.close()
     }
@@ -30,6 +30,16 @@ export default class extends Controller {
     if (event.target === this.dialog) {
       this.dialog.close()
     }
+  }
+
+  diconnect(){
+    this.#modalTurboFrame.erc = null;
+  }
+
+  // private
+
+  get #modalTurboFrame() {
+    return document.querySelector("turbo-frame[id='modal']");
   }
 }
 
