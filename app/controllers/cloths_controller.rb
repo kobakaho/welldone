@@ -30,13 +30,11 @@ class ClothsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @cloth.update(cloth_params)
-        format.html { redirect_to cloth_url(@cloth), notice: I18n.t("defaults.flash_message.updated", item: Cloth.model_name.human) }
-      else
-        flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Cloth.model_name.human)
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @cloth.update(cloth_params)
+       redirect_to cloth_path(@cloth)
+    else
+      flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Cloth.model_name.human)
+      render :edit, status: :unprocessable_entity
     end
   end
 
