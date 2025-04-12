@@ -1,18 +1,22 @@
 <div class="container mx-auto flex justify-center items-center min-h-screen">
   <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
+
     <%= link_to cloths_path do %>
-      <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
-    <% end %>
-    <div class="absolute right-4 flex space-x-2">
-      <%= link_to edit_cloth_path(@cloth) do %>
-        <i class="fa-solid fa-pen-to-square fa-lg" style="color: #293454;"></i>
+      <button class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;" ></button>
       <% end %>
+
+    <div class="absolute right-4 flex space-x-2">
+      <%= link_to edit_cloth_path(@cloth), data: { action: "modal#open", turbo_frame: "modal" } do %>
+        <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
+      <% end %>
+    
       <%= link_to @cloth, data: { turbo_method: :delete, confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" } do %>
-        <i class="fa-solid fa-trash" style="color: #293454;"></i>
+        <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
       <% end %>
     </div>
 
-    <%= render @cloth %>
+      <%= render @cloth %>
+
     <%= button_to  "断捨離", discard_cloth_path(@cloth), data: { confirm: "断捨離しますか？他のユーザーも見ることができるようになります", turbo_confirm:"断捨離しますか？他のユーザーも見ることができるようになります"} %>
   </div>
 </div>

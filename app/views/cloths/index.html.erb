@@ -1,12 +1,14 @@
 <div class="container mx-auto px-4 min-h-screen">
+<p>画面を最新の状態にするにはリロードしてください</p>
+
   <%= render 'search_form', q: @q, url: cloths_path %>
 
-  <%= link_to new_cloth_path, class: "btn btn-secondary flex items-center mt-10" do %>
-    <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
+  <%= link_to new_cloth_path, data: { action: "modal#open", turbo_frame: "modal" } do %>
+    <button class="btn btn-secondary flex items-center mt-10 fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
     <span><%= I18n.t(".defaults.create") %></span>
   <% end %>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
+  <div id="new_cloth", class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
     <% if @cloths.present? %>
       <% @cloths.each do |cloth| %>
         <%= link_to cloth_path(cloth), class: "block bg-base-100 shadow-xl rounded-lg overflow-hidden transition-transform transform hover:scale-105" do %>
@@ -16,9 +18,8 @@
         <% end %>
       <% end %>
     <% else %>
-      <p class="col-span-full text-center">アイテムが見つかりませんでした</p>
+      <div class="col-span-full text-center">アイテムが見つかりませんでした</div>
     <% end %>
   </div>     
    <%= paginate @cloths %>
 </div>
-

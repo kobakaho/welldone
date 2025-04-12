@@ -5,7 +5,7 @@ class ClothsController < ApplicationController
 
   def index
     @q = current_user.cloths.kept.ransack(params[:q])
-    @cloths = @q.result(distinct: true).page(params[:page]) # 検索結果に重複を許さない
+    @cloths = @q.result(distinct: true).page(params[:page]).order(created_at: :desc) # 検索結果に重複を許さない
   end
 
   def show
@@ -18,13 +18,10 @@ class ClothsController < ApplicationController
   def create
     @cloth = current_user.cloths.new(cloth_params)
 
-    respond_to do |format| # 異なるリクエストに対応するための記述
-      if @cloth.save
-        format.html { redirect_to cloth_url(@cloth), notice: I18n.t("defaults.flash_message.created", item: Cloth.model_name.human) }
-      else
-        flash.now[:danger] = I18n.t("defaults.flash_message.not_created", item: Cloth.model_name.human)
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @cloth.save
+    else
+      flash.now[:danger] = I18n.t("defaults.flash_message.not_created", item: Cloth.model_name.human)
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -33,13 +30,11 @@ class ClothsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @cloth.update(cloth_params)
-        format.html { redirect_to cloth_url(@cloth), notice: I18n.t("defaults.flash_message.updated", item: Cloth.model_name.human) }
-      else
-        flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Cloth.model_name.human)
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @cloth.update(cloth_params)
+       redirect_to cloth_path(@cloth)
+    else
+      flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Cloth.model_name.human)
+      render :edit, status: :unprocessable_entity
     end
   end
 

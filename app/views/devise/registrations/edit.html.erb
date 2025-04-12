@@ -1,16 +1,21 @@
 <div class="container mx-auto flex justify-center items-center min-h-screen">
-  <div class="card border border-4 border-base-300 bg-base-100 max-w-md w-full mx-auto my-10 p-6 shadow-lg">
-    <div class="card-body space-y-1">
-    <h2 class="text-xl font-semibold "><%= resource.username.presence || resource.email %>さん</h2>
+  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-5">
+  
+    <%= link_to :back do %>
+      <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
+    <% end %>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="card-body">
+      <h2 class="text-xl font-semibold "><%= resource.username.presence || resource.email %>さん</h2>
 
-    <!-- Name Field -->
-    <div class="form-control">
-      <%= f.label :username, t(".username"), class: "label font-semibold" %>
-      <%= f.text_field :username, autofocus: true, class: "input input-bordered w-full" %>
-    </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Name Field -->
+      <div class="form-control">
+        <%= f.label :username, t(".username"), class: "label font-semibold" %>
+        <%= f.text_field :username, autofocus: true, class: "input input-bordered w-full" %>
+      </div>
 
       <!-- Email Field -->
       <div class="form-control">
@@ -59,21 +64,18 @@
           <%= image_tag current_user.profile_image.url, class: " object-contain max-w-[200px] max-h-[150px]" %>
         </div>
       <% end %>
-    </div>
+      </div>
 
       <!-- Submit Button -->
       <div class="form-group mt-3">
         <%= f.submit t(".update"), class: "btn btn-primary w-full" %>
       </div>
-    <% end %>
+      <% end %>
 
-    <!-- Cancel Account Section -->
-    <h3 class="text-lg font-semibold mt-8 mb-4"><%= t(".cancel_my_account") %></h3>
-    <div class="mb-6">
-      <%= button_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger w-full" %>
-    </div>
-
-    <%= link_to t(".back"), :back, class: "btn btn-link" %>
+      <!-- Cancel Account Section -->
+      <h3 class="text-lg font-semibold mt-8 mb-4"><%= t(".cancel_my_account") %>
+        <%= button_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger w-full" %>
+      </h3>
     </div>
   </div>
 </div>

@@ -1,8 +1,10 @@
-<div class="container mx-auto flex justify-center items-center min-h-screen">
-  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
-    <%= link_to checklist_path do %>
-      <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
-    <% end %>
+<turbo-frame id="modal">
+  <dialog data-controller="modal" data-modal-target="dialog" 
+    data-action="turbo:submit-end->modal#closeOnSubmit click->modal#backdropClick" id="modal_dialog" class="modal" open>
+    <div class="modal-box">
+
     <%= render "form" %>
-  </div>
-</div>  
+    
+    <form method="dialog" class="modal-backdrop"></form>
+  </dialog>
+</turbo-frame>
