@@ -19,6 +19,12 @@ export default class extends Controller {
     this.dialog.close()
   }
 
+  closeSubmit(event) {
+    if (event.detail.success) {
+      this.dialog.close()
+    }
+  }
+
   backdropClick(event) {
     // モーダルの外側（backdrop）クリックで閉じる
     if (event.target === this.dialog) {
