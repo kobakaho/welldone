@@ -27,7 +27,7 @@ gem "rails-i18n", "~> 7.0.0"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 gem "fog-aws"
 
 gem "ancestry"
