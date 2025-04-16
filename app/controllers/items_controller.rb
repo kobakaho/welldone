@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
   def create
     @checklist = current_user.checklists.find(params[:checklist_id])
-    @original_item = @checklist.original_items.build(original_item_params) 
+    @original_item = @checklist.original_items.build(original_item_params)
 
     if @original_item.save
       @checklist.original_items << @original_item

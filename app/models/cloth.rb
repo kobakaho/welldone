@@ -1,7 +1,7 @@
 class Cloth < ApplicationRecord
   mount_uploader :image_file, ClothImageUploader
   include Discard::Model
-  
+
   validates :brand, allow_blank: true, length: { maximum: 50 }
   validates :body, allow_blank: true, length: { maximum: 65_535 }
   validates :purchase_date, allow_blank: true, comparison: { less_than_or_equal_to: Date.today }# comparison:比較
