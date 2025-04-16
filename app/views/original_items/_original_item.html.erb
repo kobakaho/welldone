@@ -1,0 +1,10 @@
+<tr id="original_item-<%= original_item.id %>" class="p-4 flex justify-between items-center">
+  <% if original_item.persisted? %>
+    <td class="text-lg"><%= original_item.name %></td>
+    <td>
+      <%= link_to checklist_item_path(@checklist, original_item), data: { turbo_method: :delete } do %>
+        <i class="delete-original_item-link fa-solid fa-minus fa-xl" style="color: #293454;"></i>
+      <% end %>
+    </td>
+  <% end %>
+</tr>
