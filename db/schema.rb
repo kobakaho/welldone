@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_09_145750) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_15_132410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,10 +33,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_145750) do
 
   create_table "checklist_items", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "checklist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["checklist_id"], name: "index_checklist_items_on_checklist_id"
   end
 
   create_table "checklists", force: :cascade do |t|
@@ -62,6 +60,21 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_145750) do
     t.index ["user_id"], name: "index_cloths_on_user_id"
   end
 
+  create_table "default_item_checklists", force: :cascade do |t|
+    t.bigint "default_item_id", null: false
+    t.bigint "checklist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checklist_id"], name: "index_default_item_checklists_on_checklist_id"
+    t.index ["default_item_id"], name: "index_default_item_checklists_on_default_item_id"
+  end
+
+  create_table "default_items", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "cloth_id"
@@ -70,6 +83,21 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_145750) do
     t.index ["cloth_id"], name: "index_favorites_on_cloth_id"
     t.index ["user_id", "cloth_id"], name: "index_favorites_on_user_id_and_cloth_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "original_item_checklists", force: :cascade do |t|
+    t.bigint "original_item_id", null: false
+    t.bigint "checklist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checklist_id"], name: "index_original_item_checklists_on_checklist_id"
+    t.index ["original_item_id"], name: "index_original_item_checklists_on_original_item_id"
+  end
+
+  create_table "original_items", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "season_cloths", force: :cascade do |t|
@@ -106,11 +134,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_145750) do
 
   add_foreign_key "category_cloths", "categories"
   add_foreign_key "category_cloths", "cloths"
-  add_foreign_key "checklist_items", "checklists"
   add_foreign_key "checklists", "users"
   add_foreign_key "cloths", "users"
+  add_foreign_key "default_item_checklists", "checklists"
+  add_foreign_key "default_item_checklists", "default_items"
   add_foreign_key "favorites", "cloths"
   add_foreign_key "favorites", "users"
+  add_foreign_key "original_item_checklists", "checklists"
+  add_foreign_key "original_item_checklists", "original_items"
   add_foreign_key "season_cloths", "cloths"
   add_foreign_key "season_cloths", "seasons"
 end
