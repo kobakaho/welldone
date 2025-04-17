@@ -41,6 +41,7 @@ class ChecklistsController < ApplicationController
     redirect_to checklists_path, notice: I18n.t("defaults.flash_message.deleted", item: Checklist.model_name.human), status: :see_other
   end
 
+
   private
 
   def set_checklist

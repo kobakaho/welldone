@@ -1,18 +1,18 @@
 <%= form_with model: @checklist do |form| %>
   <div>        
     <label class="label">
-    <%= form.label :default_items, "デフォルト", class: "label-text font-bold" %>
+    <%= form.label :default_items, class: "label-text font-bold" %>
     </label>
-    <div class="flex flex-wrap gap-2">
-        <%= form.collection_check_boxes :default_item_ids, DefaultItem.order(:id), :id, :name do |f| %>
-            <label class="flex items-center gap-1 cursor-pointer">
-            <%= f.check_box class: "checkbox checkbox-xs checkbox-info" %>
-            <%= f.text %>
-            </label>
+    <div class="flex flex-wrap gap-2 w-full border border-gray-300 mt-3">
+      <%= form.collection_check_boxes :default_item_ids, DefaultItem.order(:id), :id, :name do |f| %>
+          <label class="flex items-center gap-1 cursor-pointer">
+          <%= f.check_box class: "checkbox checkbox-xs checkbox-info" %>
+          <%= f.text %>
+          </label>
         <% end %>
-    </div>
-    <div>
-    <%= form.submit  I18n.t(".helpers.submit.submit"),  class: "btn btn-primary btn-block mt-6" %>
+      
+        <%= form.submit  "デフォルトアイテムを確定する",  class: "btn btn-neutral" %>
+        <p class="text-center text-sm text-gray-500">確定ボタンを押したら矢印ボタンで戻ってください</p>
     </div>
   </div>
 <% end %>

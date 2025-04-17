@@ -9,7 +9,6 @@
     <% if @checklists.present? %>
       <% @checklists.each do |checklist| %>
         <%= link_to checklist_path(checklist), class: "card bg-base-100 shadow-md hover:shadow-lg transition cursor-pointer" do %>
-          <div class="card-body p-4">
             <div class="font-semibold text-center mb-4 text-lg"><%= checklist.title %></div>
 
               <div class="flex items-center space-x-2">   
