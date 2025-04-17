@@ -1,0 +1,24 @@
+<div class="container mx-auto flex justify-center items-center min-h-screen">
+  <div class="mx-auto bg-base-100 p-6 rounded-lg shadow-md w-full mt-6">
+    <div class="flex justify-between items-center">
+      <div class="mx-auto bg-base-100 p-6 rounded-lg shadow-md w-full mt-6">
+
+      <%= link_to checklist_path(@checklist) do %>
+        <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
+      <% end %>
+
+      <h2 class="text-xl font-semibold mb-4 text-center">チェックリスト</h2>
+
+      <%= render "original_items/form", original_item: @original_item, checklist: @checklist %>
+
+      <table id="table-original_item" class="w-full border border-gray-300 mt-3">
+        <tbody>
+          <%= render @original_items %>
+        </tbody>
+      </table>
+
+      <%= render "default_items/form",  default_items: @default_items, checklist: @checklist %>
+      </div>
+    </div>
+  </div>    
+</div>

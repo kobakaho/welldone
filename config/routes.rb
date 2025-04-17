@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :checklists, only: %i[new create index show edit update destroy] do
-    resources :checklist_items, only: %i[ create destroy ], shallow: true
+  resources :checklists, only: %i[new create show index edit update destroy] do
+    resources :items, only: %i[ new create destroy ]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "static_pages/terms", to: "static_pages#terms", as: "terms"

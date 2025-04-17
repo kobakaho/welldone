@@ -11,8 +11,8 @@ class ChecklistsController < ApplicationController
   end
 
   def show
-    @checklist_item = @checklist.checklist_items.new
-    @checklist_items = @checklist.checklist_items
+    @default_items = @checklist.default_items
+    @original_items = @checklist.original_items
   end
 
   def create
@@ -41,6 +41,7 @@ class ChecklistsController < ApplicationController
     redirect_to checklists_path, notice: I18n.t("defaults.flash_message.deleted", item: Checklist.model_name.human), status: :see_other
   end
 
+
   private
 
   def set_checklist
@@ -48,6 +49,6 @@ class ChecklistsController < ApplicationController
   end
 
   def checklist_params
-    params.require(:checklist).permit(:title)
+    params.require(:checklist).permit(:title, original_item_ids: [], default_item_ids: [])
   end
 end

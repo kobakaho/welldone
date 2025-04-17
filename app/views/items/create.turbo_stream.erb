@@ -1,0 +1,12 @@
+<% if @original_item.errors.present? %>
+  <%= turbo_stream.replace "original_item-form" do %>
+    <%= render 'original_items/form', original_item: @original_item, checklist: @checklist %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "table-original_item" do %>
+    <%= render 'original_items/original_item', original_item: @original_item %>
+  <% end %>
+  <%= turbo_stream.replace "original_item-form" do %>
+    <%= render 'original_items/form', original_item: OriginalItem.new, checklist: @checklist %>
+  <% end %>
+<% end %>

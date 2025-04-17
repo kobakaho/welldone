@@ -16,7 +16,8 @@
     </div>
 
       <%= render @cloth %>
-
-    <%= button_to  "断捨離", discard_cloth_path(@cloth), data: { confirm: "断捨離しますか？他のユーザーも見ることができるようになります", turbo_confirm:"断捨離しますか？他のユーザーも見ることができるようになります"} %>
+    
+    
+    <%= button_to  "断捨離する", discard_cloth_path(@cloth), data: { confirm: "断捨離しますか？一覧画面から消え、他のユーザーも見ることができるようになります", turbo_confirm:"断捨離しますか？一覧画面から消え、他のユーザーも見ることができるようになります"}, class: "btn btn-block btn-info" %>
   </div>
 </div>
