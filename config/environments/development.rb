@@ -38,7 +38,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.default_url_options = { host: "localhost:3000" }# 開発用
- 
+
   config.action_mailer.delivery_method = :smtp # googleサーバー
   config.action_mailer.smtp_settings = {
   address:         "smtp.gmail.com",
@@ -47,7 +47,7 @@ Rails.application.configure do
   user_name:       ENV["MAIL_ADDRESS"],
   password:        ENV["MAIL_PASSWORD"],
   authentication:  "plain",
-  enable_starttls: true,
+  enable_starttls: true
   }
 
   # Disable caching for Action Mailer templates even if Action Controller
