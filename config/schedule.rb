@@ -18,7 +18,10 @@ set :output, "#{Rails.root}/log/cron.log"
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-every :minute do
-  rake "user:send"
+every 15.minutes do
+  #1.day, at: "18:00" do #6, 10, 11, 3月の夜18時に送る
+  #if [6, 10, 11, 3].include?(Time.current.month)
+    rake "user:send"
+  #end
 end
 # Learn more: http://github.com/javan/whenever
