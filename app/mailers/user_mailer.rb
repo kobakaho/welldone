@@ -3,9 +3,9 @@ class UserMailer < ApplicationMailer
     @user = user
     @user_name = @user.username
 
-    if development
+    if Rails.env.development?
       @url = "http://localhost:3000/users/sign_in"
-    else production
+    elseif Rails.env.production?
       @url = "http://welldoneshari.com/users/sign_in"
     end
 
