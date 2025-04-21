@@ -1,22 +1,20 @@
 <div class="container mx-auto flex justify-center items-center min-h-screen">
-  <div class="card border border-4 border-base-300 bg-base-100 max-w-md w-full mx-auto my-10 p-6 shadow-lg">
+  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
     <div class="card-body space-y-4">
       <h2 class="card-title text-center"><%= t(".sign_in") %></h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <!-- メール入力 -->
+
         <div class="form-control">
           <%= f.label :email, class: "label font-semibold" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full" %>
         </div>
 
-        <!-- パスワード入力 -->
         <div class="form-control">
           <%= f.label :password, class: "label font-semibold" %>
           <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered w-full" %>
         </div>
 
-        <!-- Remember Me チェックボックス -->
         <% if devise_mapping.rememberable? %>
           <div class="form-control">
             <label class="cursor-pointer flex items-center gap-2 mt-2">
@@ -26,7 +24,6 @@
           </div>
         <% end %>
 
-        <!-- サインインボタン -->
         <div class="form-control">
           <%= f.submit t(".sign_in"), class: "btn btn-primary w-full mt-4" %>
         </div>

@@ -1,37 +1,36 @@
 <div class="container mx-auto flex justify-center items-center min-h-screen">
-  <div class="card border border-4 border-base-300 bg-base-100 max-w-md w-full mx-auto my-10 p-6 shadow-lg">
+  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-10">
+  
     <div class="card-body space-y-4">
       <h2 class="card-title text-center"><%= t(".sign_up") %></h2>
       
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <!-- メール入力 -->
         <div>
-          <label class="input validator flex items-center gap-2">
+          <label class="input input-bordered validator flex items-center gap-2">
             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </g>
             </svg>
-            <%= f.email_field :email, placeholder: "mail@site.com", required: true, class: "input input-bordered w-full" %>
+            <%= f.email_field :email, placeholder: "mail@example.com", required: true, class: "input input-neutral"%>
           </label>
         </div>
 
-        <!-- パスワード入力 -->
         <div>
-          <label class="input validator flex items-center gap-2 mt-2">
+          <label class="input input-bordered validator flex items-center gap-2 mt-4">
             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
                 <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
                 <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
               </g>
             </svg>
-            <%= f.password_field :password, placeholder: "Password", required: true, 
+            <%= f.password_field :password, placeholder: "パスワード", required: true, 
                   minlength: 8, pattern: "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", 
-                  title: "8文字以上で、数字、小文字、大文字を含む必要があります",
-                  class: "input input-bordered w-full" %>
+                  title: "8文字以上で、数字、小文字、大文字を含む必要があります", 
+                  class: "input input-neutral"%>
           </label>
           <p class="validator-hint text-sm text-red-500 hidden">
           8文字以上で、以下を含む必要があります, including:
@@ -40,21 +39,19 @@
             <br/>少なくとも1つの大文字
           </p>
         </div>
-          <!-- パスワード確認 -->
+
         <div>
-          <label class="input flex items-center gap-2 mt-2">
-            <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password",
-                  class: "input input-bordered w-full" %>
+          <label class="input input-bordered flex items-center gap-2 mt-4">
+            <%= f.password_field :password_confirmation, placeholder: "パスワード確認用", autocomplete: "new-password" %>
           </label>
         </div>
 
-        <!-- サインアップボタン -->
+
         <div class="mt-6">
           <%= f.submit t(".sign_up"), class: "btn btn-primary w-full" %>
         </div>
       <% end %>
 
-      <!-- フラッシュメッセージ -->
       <% if flash[:alert] %>
         <div class="custom-alert mt-4 text-red-500 text-center">
           <span class="close cursor-pointer" onclick="this.parentElement.style.display='none';">&times;</span>
