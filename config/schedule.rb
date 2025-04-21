@@ -19,7 +19,7 @@ set :output, "#{Rails.root}/log/cron.log"
 #   runner "AnotherModel.prune_old_records"
 # end
 every 1.month, at: "15 18:00" do # 6, 10, 11, 3月の15日夜18時に送る
-    if [ 6, 10, 11, 3 ].include?(Time.current.month)
+  if [ 6, 10, 11, 3 ].include?(Time.current.month)
     rake "user:send"
   end
 end
