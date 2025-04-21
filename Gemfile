@@ -35,6 +35,8 @@ gem "kaminari", "~> 1.2.2"
 gem "ransack"
 
 gem "discard", "~> 1.4"
+
+gem "whenever", require: false
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 gem "dotenv-rails"
@@ -69,6 +71,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener_web", "~> 3.0"
 end
 
 group :test do
