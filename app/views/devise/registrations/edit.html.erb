@@ -1,12 +1,12 @@
 <div class="container mx-auto flex justify-center items-center min-h-screen">
   <div class="card bg-base-100 shadow-md w-96 relative p-6 my-5">
-  
+
     <%= link_to :back do %>
       <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
     <% end %>
 
     <div class="card-body">
-      <h2 class="text-xl font-semibold "><%= resource.username.presence || current_user.username.presence || resource.email %>さん</h2>
+      <h2 class="text-xl font-semibold"><%= resource.username.presence || current_user.username.presence || resource.email %>さん</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
