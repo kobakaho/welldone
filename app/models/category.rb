@@ -3,6 +3,9 @@ class Category < ApplicationRecord
 
   has_many :category_cloths, dependent: :destroy
   has_many :cloths, through: :category_cloths
+  has_many :category_seasons, dependent: :destroy
+  has_many :seasons, through: :category_seasons
+
   has_ancestry
 
   def self.ransackable_associations(auth_object = nil)
