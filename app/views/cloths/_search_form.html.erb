@@ -1,19 +1,22 @@
 <%= search_form_for q, url: url do |f| %>
-  <div class="flex items-center space-x-2 m-10">
-    <%= f.search_field :seasons_name_or_categories_name_cont, 
-      class: "input input-bordered w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
-      placeholder: "シーズンorカテゴリー　あいまい検索" %>
+  <div class="flex flex-col space-y-5">
+    <%= f.search_field :brand_or_body_cont, 
+      class: "input input-bordered w-fll",
+      placeholder: "ブランド・購入理由 あいまい検索" %>
 
-    <% Season.all.each do |season| %>
-      <%= f.check_box :seasons_id_eq_any, { multiple: true, include_hidden: false, class: "checkbox checkbox-sm checkbox-info", checked: season[:checked], disabled: season[:disabled] }, season[:id] %>
-      <label><%= season.name %></label>
+    <%= f.select :categories_id_eq, options_for_select(Category.all.pluck(:name, :id)), { include_blank: "カテゴリーを選択" }, { class: "select select-bordered" } %>
     
-    <% end %>
-
-
-     <div class="input-group-append">
-      <%= f.submit class: "btn btn-primary" %>
+    <div class="flex flex-wrap gap-4">
+      <% Season.all.each do |season| %>
+        <div class="flex items-center space-x-2 mx-3">
+          <%= f.check_box :seasons_id_eq_any, { multiple: true, include_hidden: false, class: "checkbox checkbox-sm checkbox-info", checked: season[:checked], disabled: season[:disabled] }, season[:id] %>
+          <label><%= season.name %></label>
+        </div>
+      <% end %>
     </div>
-  <!--シーズンチェックボックス-->
+
+    <div>
+      <%= f.submit class: "btn btn-primary w-full" %>
+    </div>
   </div>
 <% end %>

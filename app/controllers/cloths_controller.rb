@@ -69,6 +69,7 @@ class ClothsController < ApplicationController
 
   def cloth_params
     category_ids = []
+    category_ids << params[:root_id] if params[:root_id].present?
     category_ids << params[:parent_id] if params[:parent_id].present?
     category_ids << params[:child_id] if params[:child_id].present?
 

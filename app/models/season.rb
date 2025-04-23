@@ -11,6 +11,6 @@ class Season < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "name" , "id" ]
+    [ "name", "id" ]
   end
 end

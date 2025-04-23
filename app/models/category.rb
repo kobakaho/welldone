@@ -13,6 +13,6 @@ class Category < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "name" ]
+    [ "name", "id" ]
   end
 end
