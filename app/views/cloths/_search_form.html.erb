@@ -3,8 +3,17 @@
     <%= f.search_field :seasons_name_or_categories_name_cont, 
       class: "input input-bordered w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
       placeholder: "シーズンorカテゴリー　あいまい検索" %>
-    <div class="input-group-append">
+
+    <% Season.all.each do |season| %>
+      <%= f.check_box :seasons_id_eq_any, { multiple: true, include_hidden: false, class: "checkbox checkbox-sm checkbox-info", checked: season[:checked], disabled: season[:disabled] }, season[:id] %>
+      <label><%= season.name %></label>
+    
+    <% end %>
+
+
+     <div class="input-group-append">
       <%= f.submit class: "btn btn-primary" %>
     </div>
+  <!--シーズンチェックボックス-->
   </div>
 <% end %>
