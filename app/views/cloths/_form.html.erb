@@ -44,12 +44,14 @@
     </div>
   </div>
 
+  
   <div class="form-control w-full max-w-xs">
     <label class="label">
-      <span class="label-text font-bold">ブランド(任意)</span>
+      <span class="label-text font-bold">購入日(任意)</span>
     </label>
-    <%= form.text_field :brand, class: "input input-sm input-bordered outline-inherit" %>
+    <%= form.date_field :purchase_date, class: "input input-sm input-bordered outline-inherit" %>
   </div>
+
 
   <div class="form-control w-full max-w-xs">
     <label class="label">
@@ -60,9 +62,9 @@
 
   <div class="form-control w-full max-w-xs">
     <label class="label">
-      <span class="label-text font-bold">購入日(任意)</span>
+      <span class="label-text font-bold">ブランド(任意)</span>
     </label>
-    <%= form.date_field :purchase_date, class: "input input-sm input-bordered outline-inherit" %>
+    <%= form.text_field :brand, class: "input input-sm input-bordered outline-inherit" %>
   </div>
 
   <div class="form-control w-full max-w-xs">

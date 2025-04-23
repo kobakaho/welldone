@@ -23,6 +23,6 @@ class Cloth < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "name", "id", "brand", "body" ]
+    [ "name", "id", "brand", "body", "purchase_date", "price" ]
   end
 end
