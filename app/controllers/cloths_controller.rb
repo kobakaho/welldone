@@ -9,9 +9,10 @@ class ClothsController < ApplicationController
       grouping_hash = search_term.reduce({}) do |hash, word|
         hash.merge(word => { brand_or_body_cont: word })
       end
-    @q = current_user.cloths.kept.ransack({ combinator: "and", groupings: grouping_hash })
+      other_conditions = params[:q].except(:brand_or_body_cont)
+      @q = current_user.cloths.kept.ransack(other_conditions.merge({ combinator: "and", groupings: grouping_hash }))
     else
-    @q = current_user.cloths.kept.ransack({ combinator: "and" })
+    @q = current_user.cloths.kept.ransack(params[:q])
     end
     @cloths = @q.result(distinct: true).page(params[:page]).order(created_at: :desc) # 検索結果に重複を許さない
   end
