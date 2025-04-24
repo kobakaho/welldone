@@ -29,7 +29,7 @@
       </div>
     </span>
 
-    <%= f.search_field :brand_or_body_cont, value: params[:q][:brand_or_body_cont], class: "input input-bordered w-fll", placeholder: "ブランド&購入理由 あいまい検索" %>
+    <%= f.search_field :brand_or_body_cont, value: params.dig(:q, :brand_or_body_cont), class: "input input-bordered w-fll", placeholder: "ブランド&購入理由 あいまい検索" %>
 
     <div>
       <%= f.submit class: "btn btn-outline btn-info w-full" %>
