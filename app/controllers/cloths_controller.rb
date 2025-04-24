@@ -6,15 +6,15 @@ class ClothsController < ApplicationController
   def index
     if params[:q].present? && params[:q][:brand_or_body_cont].present?
       search_term = params[:q][:brand_or_body_cont].split(/[\p{blank}\s]+/)
-      grouping_hash = search_term.reduce({}) do |hash, word| 
+      grouping_hash = search_term.reduce({}) do |hash, word|
         hash.merge(word => { brand_or_body_cont: word })
       end
-    @q = current_user.cloths.kept.ransack({combinator: "and", groupings: grouping_hash})
+    @q = current_user.cloths.kept.ransack({ combinator: "and", groupings: grouping_hash })
     else
-    @q = current_user.cloths.kept.ransack({combinator: "and" })
+    @q = current_user.cloths.kept.ransack({ combinator: "and" })
     end
     @cloths = @q.result(distinct: true).page(params[:page]).order(created_at: :desc) # 検索結果に重複を許さない
-  end  
+  end
 
   def show
   end
