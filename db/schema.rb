@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_15_132410) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_22_072802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_15_132410) do
     t.index ["cloth_id"], name: "index_category_cloths_on_cloth_id"
   end
 
+  create_table "category_seasons", force: :cascade do |t|
+    t.bigint "season_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_seasons_on_category_id"
+    t.index ["season_id"], name: "index_category_seasons_on_season_id"
+  end
+
   create_table "checklist_items", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -47,7 +56,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_15_132410) do
   end
 
   create_table "cloths", force: :cascade do |t|
-    t.string "image_file"
+    t.string "image_file", null: false
     t.string "brand"
     t.text "body"
     t.date "purchase_date"
@@ -134,6 +143,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_15_132410) do
 
   add_foreign_key "category_cloths", "categories"
   add_foreign_key "category_cloths", "cloths"
+  add_foreign_key "category_seasons", "categories"
+  add_foreign_key "category_seasons", "seasons"
   add_foreign_key "checklists", "users"
   add_foreign_key "cloths", "users"
   add_foreign_key "default_item_checklists", "checklists"

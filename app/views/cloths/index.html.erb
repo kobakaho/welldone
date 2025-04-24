@@ -1,24 +1,29 @@
-<div class="container mx-auto px-4 min-h-screen">
-<p class="text-center mt-4 text-sm text-gray-500">画面を最新の状態にするにはリロードしてください</p>
+<div class="container mx-auto px-4 min-h-screen flex flex-col lg:flex-row gap-4">
 
-  <%= render 'search_form', q: @q, url: cloths_path %>
+  <aside class="lg:w-1/4 bg-base-200 p-4 rounded-lg m-4">
+    <%= render 'search_form', q: @q, url: cloths_path %>
+  </aside>
 
-  <%= link_to new_cloth_path, data: { action: "modal#open", turbo_frame: "modal" } do %>
-    <button class="btn  btn-circle  fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
-  <% end %>
+  <main class="flex-1 p-4">
+    <p class="text-center mt-4 text-sm text-gray-500">画面を最新の状態にするにはリロードしてください</p>
 
-  <div id="new_cloth", class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
-    <% if @cloths.present? %>
-      <% @cloths.each do |cloth| %>
-        <%= link_to cloth_path(cloth), class: "block bg-base-100 shadow-xl rounded-lg overflow-hidden transition-transform transform hover:scale-105" do %>
-          <div class="w-full aspect-square">
-            <%= image_tag cloth.image_file.url, class: "w-full h-full object-cover" %>
-          </div>
-        <% end %>
-      <% end %>
-    <% else %>
-      <div class="col-span-full text-center">アイテムが見つかりませんでした</div>
+    <%= link_to new_cloth_path, data: { action: "modal#open", turbo_frame: "modal" } do %>
+      <button class="btn  btn-circle  fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
     <% end %>
-  </div>     
-   <%= paginate @cloths %>
+
+    <div id="new_cloth", class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
+      <% if @cloths.present? %>
+        <% @cloths.each do |cloth| %>
+          <%= link_to cloth_path(cloth), class: "block bg-base-100 shadow-xl rounded-lg overflow-hidden transition-transform transform hover:scale-105" do %>
+            <div class="w-full aspect-square">
+              <%= image_tag cloth.image_file.url, class: "w-full h-full object-cover" %>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <div class="col-span-full text-center">アイテムが見つかりませんでした</div>
+      <% end %>
+    </div>     
+    <%= paginate @cloths %>
+  </main>
 </div>

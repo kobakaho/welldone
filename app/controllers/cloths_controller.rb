@@ -4,7 +4,16 @@ class ClothsController < ApplicationController
   after_action :check_season, only: %i[ create ]
 
   def index
+    if params[:q].present? && params[:q][:brand_or_body_cont].present?
+      search_term = params[:q][:brand_or_body_cont].split(/[\p{blank}\s]+/)
+      grouping_hash = search_term.reduce({}) do |hash, word|
+        hash.merge(word => { brand_or_body_cont: word })
+      end
+      other_conditions = params[:q].except(:brand_or_body_cont)
+      @q = current_user.cloths.kept.ransack(other_conditions.merge({ combinator: "and", groupings: grouping_hash }))
+    else
     @q = current_user.cloths.kept.ransack(params[:q])
+    end
     @cloths = @q.result(distinct: true).page(params[:page]).order(created_at: :desc) # 検索結果に重複を許さない
   end
 
@@ -69,6 +78,7 @@ class ClothsController < ApplicationController
 
   def cloth_params
     category_ids = []
+    category_ids << params[:root_id] if params[:root_id].present?
     category_ids << params[:parent_id] if params[:parent_id].present?
     category_ids << params[:child_id] if params[:child_id].present?
 
