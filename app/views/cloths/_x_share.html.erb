@@ -1,9 +1,0 @@
-<% if current_user %>
-  <%= link_to "https://twitter.com/intent/tweet?url=https://welldoneshari.com/cloths/discarded%0A&text=well断で断捨離した！", 
-  target: "_blank", rel: "noopener noreferrer", data: { show_cont: false } do %>
-    <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
-  <% end %>
-  <%= link_to "#", data: { turbo_method: :delete, confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" } do %>
-    <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
-  <% end %>
-<% end %>
