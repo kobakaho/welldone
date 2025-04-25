@@ -20,6 +20,7 @@ gem "cssbundling-rails"
 gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
+
 gem "devise"
 gem "devise-i18n"
 gem "rails-i18n", "~> 7.0.0"
@@ -29,14 +30,17 @@ gem "omniauth-rails_csrf_protection"
 
 gem "carrierwave", "~> 3.0"
 gem "fog-aws"
+gem "aws-sdk-s3", require: false
 
 gem "ancestry"
+gem "discard", "~> 1.4"
+
 gem "kaminari", "~> 1.2.2"
 gem "ransack"
 
-gem "discard", "~> 1.4"
-
 gem "whenever", require: false
+
+gem "meta-tags"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 gem "dotenv-rails"
@@ -51,7 +55,6 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-gem "aws-sdk-s3", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
