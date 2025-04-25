@@ -18,7 +18,11 @@
           </svg>
         </label>
       </div>
-      <div class="mx-2 flex-1 px-2"><%= link_to I18n.t(".defaults.welldone"), root_path, class: "btn btn-ghost normal-case text-xl" %></div>
+      <div class="mx-2 flex-1 px-2">
+        <%= link_to "/", class: "btn btn-ghost normal-case text-xl" do %>
+          <%= image_tag "logo.png", width: 140, height: 20, class: "w-20" %>
+        <% end %>
+      </div>
       <div class="hidden flex-none lg:block">
         <ul class="menu menu-horizontal space-x-4">
           <!-- Navbar menu content here -->
@@ -26,8 +30,8 @@
           <details>
             <summary><%= link_to I18n.t(".header.closet"), cloths_path, class: "btn btn-ghost" %></summary>
             <ul class="p-2">
-              <li><%= link_to "お気に入り", favorites_cloths_path, class: "btn btn btn-ghost" %></li>
-              <li><%= link_to "断捨離済", discarded_cloths_path, class: "btn btn btn-ghost" %></li>
+              <li><%= link_to "わたしのお気に入り", favorites_cloths_path, class: "btn btn btn-ghost" %></li>
+              <li><%= link_to "みんなの断捨離タイムライン", discarded_cloths_path, class: "btn btn btn-ghost" %></li>
             </ul>
           </details>
           </li>
@@ -74,8 +78,8 @@
       <details>
         <summary><%= link_to I18n.t(".header.closet"), cloths_path, class: "btn btn-ghost" %></summary>
         <ul class="p-2">
-          <li><%= link_to "お気に入り", favorites_cloths_path, class: "btn btn btn-ghost" %></li>
-          <li><%= link_to "断捨離済", discarded_cloths_path, class: "btn btn btn-ghost" %></li>
+          <li><%= link_to "わたしのお気に入り", favorites_cloths_path, class: "btn btn btn-ghost" %></li>
+          <li><%= link_to "みんなの断捨離タイムライン", discarded_cloths_path, class: "btn btn btn-ghost" %></li>
         </ul>
       </details>
       </li>
