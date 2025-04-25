@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <!-- Google tag (gtag.js) -->
+    <title><%= content_for(:title) || "well断" %></title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= display_meta_tags(default_meta_tags) %>
+    <%= favicon_link_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <script src="https://kit.fontawesome.com/3dbc11d7b1.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" href="icon.png">
+ 
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-70PTSSRLRN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,21 +29,6 @@
 
       gtag('config', 'G-70PTSSRLRN');
     </script>
-    
-    <title><%= content_for(:title) || "well断" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= favicon_link_tag %>
-
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <script src="https://kit.fontawesome.com/3dbc11d7b1.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
