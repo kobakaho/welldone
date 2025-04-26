@@ -8,7 +8,6 @@ class Cloth < ApplicationRecord
   validates :price, presence: true, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 }
   validates :season_ids, presence: true
   validates :category_ids, presence: true
-  validates :image_file, presence: true
 
   belongs_to :user
 
