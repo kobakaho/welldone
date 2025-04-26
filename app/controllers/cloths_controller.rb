@@ -66,6 +66,12 @@ class ClothsController < ApplicationController
     @discarded_cloths = Cloth.includes(:user).discarded
   end
 
+  def destroy_discarded
+    @discarded_cloth = current_user.cloths.discarded.find(params[:id])
+    @discarded_cloth.destroy!
+    redirect_to discarded_cloths_path, status: :see_other
+  end
+
   private
 
   def check_season
