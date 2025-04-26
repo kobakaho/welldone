@@ -11,19 +11,22 @@
       <button class="btn  btn-circle  fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
     <% end %>
 
-    <div id="new_cloth", class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
-      <% if @cloths.present? %>
-        <% @cloths.each do |cloth| %>
-          <%= link_to cloth_path(cloth), class: "block bg-base-100 shadow-xl rounded-lg overflow-hidden transition-transform transform hover:scale-105" do %>
-            <div class="w-full aspect-square">
-              <%= image_tag cloth.image_file.url, class: "w-full h-full object-cover" %>
-            </div>
+    <div id="new_cloth">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
+        <% if @cloths.present? %>
+          <% @cloths.each do |cloth| %>
+            <%= link_to cloth_path(cloth), class: "block bg-base-100 shadow-xl rounded-lg overflow-hidden transition-transform transform hover:scale-105" do %>
+              <div class="w-full aspect-square">
+                <%= image_tag cloth.image_file.url, class: "w-full h-full object-cover" %>
+              </div>
+            <% end %>
           <% end %>
+        <% else %>
+          <div class="col-span-full text-center">アイテムが見つかりませんでした</div>
         <% end %>
-      <% else %>
-        <div class="col-span-full text-center">アイテムが見つかりませんでした</div>
-      <% end %>
-    </div>     
+      </div>     
+    </div>
     <%= paginate @cloths %>
+
   </main>
 </div>
