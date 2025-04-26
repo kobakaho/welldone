@@ -1,7 +1,14 @@
-<div class="container mx-auto px-4 min-h-screen">
-  <% if @favorite_cloths.present? %>
-    <%= render @favorite_cloths %>  
-  <% else %>
-    <p class="col-span-full text-center">お気に入りしましょう</p>
-  <% end %>
+<div class="container mx-auto px-4 min-h-screen flex flex-col lg:flex-row gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <% if @favorite_cloths.present? %>
+      <% @favorite_cloths.each do |cloth| %>
+        <div class="flex card bg-base-100 w-96 shadow-md relative p-6 m-8">
+          <%= render cloth %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-span-full text-center">お気に入りしましょ</div>
+    <% end %>
+  </div>
 </div>

@@ -1,9 +1,8 @@
 <div class="container mx-auto px-4 min-h-screen">
   <p class="text-center mt-4 text-sm text-gray-500">画面を最新の状態にするにはリロードしてください</p>
-    <%= link_to new_checklist_path, data: { action: "modal#open", turbo_frame: "modal" }, class: "btn btn-secondary flex items-center mt-10" do %>
-    <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
-    <span><%= I18n.t(".defaults.create") %></span>
-  <% end %>
+    <%= link_to new_checklist_path, data: { action: "modal#open", turbo_frame: "modal" } do %>
+      <button class="btn  btn-circle fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
+    <% end %>
 
   <div id="new_checklist" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 my-8">
     <% if @checklists.present? %>
