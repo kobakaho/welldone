@@ -20,9 +20,9 @@
           target: "_blank", rel: "noopener noreferrer", data: { show_cont: false } do %>
             <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
           <% end %>
-          <%= link_to destroy_discarded_path(cloth), data: { turbo_method: :delete, confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" } do %>
+          <#%= link_to destroy_discarded_path(cloth, cloth.id, id: cloth.id), data: { turbo_method: :delete, confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" } do %>
             <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
-          <% end %>
+          <#% end %>
         <% end %>
         
       </div>
