@@ -1,7 +1,9 @@
 <header class="navbar  bg-base-200 shadow-md p-4">
   <div class="container mx-auto flex justify-between items-center">
     <h1 class="text-xl font-bold">
-      <%= link_to I18n.t(".defaults.welldone"), root_path, class: "btn btn-ghost normal-case text-xl" %>
+    <%= link_to "/", class: "btn btn-ghost normal-case text-xl" do %>
+      <%= image_tag "logo.png", width: 140, height: 20, class: "w-20" %>
+    <% end %>
     </h1>
     <div class="flex gap-4">
       <%= link_to I18n.t(".devise.shared.links.sign_up"), new_user_registration_path, class: "btn btn-primary" %>

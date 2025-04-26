@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
     member do
       post :discard
+      delete "destroy_discarded/:id", to: "cloths#destroy_discarded", as: :destroy_discarded
     end
   end
 
