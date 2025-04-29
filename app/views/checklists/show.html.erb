@@ -1,13 +1,13 @@
-<div class="container mx-auto flex justify-center items-start min-h-screen px-4">
-  <div class="mx-auto bg-base-100 p-6 rounded-lg shadow-md w-full mt-6 max-w-4xl">
+<div class="container mx-auto flex justify-center items-start h-screen">
+  <div class="bg-base-100 p-6 rounded-lg shadow-md w-full mt-6 max-w-4xl">
 
     <!-- ヘッダー部分：戻るボタン・タイトル・編集ボタン -->
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex justify-between items-center">
 
       <%= link_to checklists_path, class: "btn btn-ghost btn-circle" do %>
         <i class="fa-solid fa-arrow-right fa-rotate-180 fa-xl" style="color: #293454;"></i>
       <% end %>
-      <h1 class="text-xl font-bold text-center flex-1"><%= @checklist.title %></h1>
+      <h1 class="text-xl font-bold text-center"><%= @checklist.title %></h1>
 
       <%= link_to new_checklist_item_path(@checklist) do %>
         <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
@@ -25,7 +25,6 @@
           <% end %>
         </ul>
       </div>
-
-      </div>        
+    </div>        
   </div>
 </div>
