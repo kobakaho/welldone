@@ -1,4 +1,4 @@
-<div class="container mx-auto flex justify-center items-center min-h-screen">
+<div class="container mx-auto flex justify-center items-center">
   <div class="card bg-base-100 shadow-md w-96 relative p-6 my-5">
 
     <%= link_to :back do %>
@@ -29,7 +29,7 @@
       <label class="label">
         <%= f.label :profile_image, "画像挿入", class: "label-text font-bold" %>
       </label>
-      <%= f.file_field :profile_image, class: "file-input file-input-bordered outline-inherit", accept: "image/*" %>
+      <%= f.file_field :profile_image, class: "file-input file-input-bordered", accept: "image/*" %>
       <%= f.hidden_field :profile_image_cache %>
     
       <% if current_user.profile_image? %>
@@ -44,7 +44,7 @@
       </div>
       <% end %>
 
-      <h3 class="text-lg font-semibold mt-8 mb-4"><%= t(".cancel_my_account") %>
+      <h3 class="text-lg font-semibold mt-8"><%= t(".cancel_my_account") %>
         <%= button_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger w-full" %>
       </h3>
     </div>

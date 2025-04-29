@@ -1,6 +1,6 @@
 <div id="get_parents">
     <%= select_tag :parent_id, options_from_collection_for_select(parents, :id, :name), 
     include_blank: "選択してください", 
-    class: "select select-bordered mt-2",
+    class: "select select-bordered w-full mt-2",
     data: { controller: "category", action: "change->category#fetchChildren" } %>
 </div>

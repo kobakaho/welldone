@@ -1,7 +1,7 @@
 <header class="drawer">
   <input id="header-drawer" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
-    <!-- Navbar  -->
+
     <div class="navbar bg-base-300 w-full z-[50]">
       <div class="flex-none lg:hidden">
         <label for="header-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost">
@@ -19,13 +19,13 @@
         </label>
       </div>
       <div class="mx-2 flex-1 px-2">
-        <%= link_to "/", class: "btn btn-ghost normal-case text-xl" do %>
+        <%= link_to "/", class: "btn btn-ghost" do %>
           <%= image_tag "logo.png", width: 140, height: 20, class: "w-20" %>
         <% end %>
       </div>
       <div class="hidden flex-none lg:block">
         <ul class="menu menu-horizontal space-x-4">
-          <!-- Navbar menu content here -->
+
           <li>
           <details>
             <summary><%= link_to I18n.t(".header.closet"), cloths_path, class: "btn btn-ghost" %></summary>
@@ -58,7 +58,7 @@
   <div class="drawer-side z-[60]">
     <label for="header-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
     <ul class="menu bg-base-200 min-h-full w-80 p-4 space-y-4">
-      <!-- Sidebar content here -->
+
       <div class="dropdown dropdown-end">
         <% if current_user %>
           <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">

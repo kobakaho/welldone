@@ -1,9 +1,8 @@
 <div class="container mx-auto flex justify-center items-center min-h-screen">
-  <div class="mx-auto bg-base-100 p-6 rounded-lg shadow-md w-full mt-6">
     <div class="flex justify-between items-center">
       <div class="mx-auto bg-base-100 p-6 rounded-lg shadow-md w-full mt-6">
 
-      <%= link_to checklist_path(@checklist) do %>
+      <%= link_to checklist_path(@checklist), class: "btn btn-ghost btn-circle" do %>
         <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
       <% end %>
 
@@ -20,5 +19,4 @@
       <%= render "default_items/form",  default_items: @default_items, checklist: @checklist %>
       </div>
     </div>
-  </div>    
 </div>
