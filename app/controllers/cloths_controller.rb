@@ -53,7 +53,7 @@ class ClothsController < ApplicationController
   end
 
   def favorites
-    @favorite_cloths = current_user.favorite_cloths
+    @favorite_cloths = current_user.favorite_cloths.page(params[:page]).order(created_at: :desc) 
   end
 
   def discard
