@@ -1,31 +1,29 @@
-<figure>
-  <div>
-    <%= image_tag cloth.image_file_url, class: "max-w-xs h-auto" %>
-  </div>
-</figure>
 <div class="card-body">
+  <figure>    
+    <%= image_tag cloth.image_file_url, class: "max-w-[250px], max-h-[200px]" %>
+  </figure>
 
-  <div class="flex justify-end mb-2">
+  <div class="flex justify-end">
     <%= render "favorite_buttons", { cloth: cloth} %>
   </div>
-  
-  <p>カテゴリー:
+
+  <p>カテゴリー :　
     <% cloth.categories.each do |category| %>
       <%= category.name %>
     <% end %>  
   </p>
 
-  <p>シーズン:
+  <p>シーズン :　
     <% cloth.seasons.each do |season| %>
       <%= season.name %>
     <% end %>
   </p>
 
-  <p>ブランド:<%= cloth.brand %></p>
+  <p>ブランド :　<%= cloth.brand %></p>
 
-  <p>購入金額:<%= cloth.price %>円</p>
+  <p>購入金額 :　<%= cloth.price %>円</p>
 
-  <p>購入日:<%= cloth.purchase_date %></p>
+  <p>購入日 :　<%= cloth.purchase_date %></p>
 
-  <p>購入理由:<%= cloth.body %></p>
+  <p>購入理由 :　<%= cloth.body %></p>
 </div>

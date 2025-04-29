@@ -1,7 +1,8 @@
-<div class="container mx-auto px-4 min-h-screen">
+<div class="container mx-auto px-4 h-screen">
   <% if @discarded_cloths.present? %>
 
-  <ul class="timeline timeline-vertical">
+  <ul class="timeline timeline-vertical ">
+
     <% @discarded_cloths.each do |cloth| %>
       <li id="timeline-cloth-<%= cloth.id %>">
         <div class="timeline-start">
@@ -14,25 +15,31 @@
         </div>
         <div class="timeline-end timeline-box flex items-center space-x-4 p-4">
           <div class="w-12 rounded-full overflow-hidden bg bg-base-200 flex-shrink-0">
-            <%= image_tag cloth.user.profile_image_url, class: "w-full h-full object-cover" %>              
+            <%= image_tag cloth.user.profile_image_url %>              
           </div>
+          <div class="flex w-full flex-col">
+
           <div class="flex-1">
             <p class="text-sm font-semibold"><%= cloth.user.username %> さんが断捨離しました！！</p>
           </div>
-
           <% if user_signed_in? && cloth.user == current_user %>
-            <div class="flex items-center space-x-2">
+            <div class="divider"></div>
+
+            <div class="flex flex-wrap items-center flex justify-center space-x-2">
+
               <%= link_to "https://twitter.com/intent/tweet?text=well断で断捨離した！%0A&url=https://welldoneshari.com/cloths/discarded", 
               target: "_blank", rel: "noopener noreferrer" do %>
                 <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
               <% end %>
+
               <%= link_to destroy_discarded_cloth_path(cloth, cloth.id, id: cloth), data: { turbo_method: :delete, confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" } do %>
                 <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
               <% end %>
             </div>
           <% end %>
         </div>
-        <hr />
+      </div>
+      <hr />
       </li>
     <% end %>
   </ul>

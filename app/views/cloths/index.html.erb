@@ -1,6 +1,6 @@
-<div class="container mx-auto px-4 min-h-screen flex flex-col lg:flex-row gap-4">
+<div class="container mx-auto px-4 min-h-screen flex flex-col md:flex-row lg:flex-row gap-4">
 
-  <aside class="lg:w-1/4 bg-base-200 p-4 rounded-lg m-4">
+  <aside class="md:w-1/4 lg:w-1/4 bg-base-200 rounded-lg p-3 m-4">
     <%= render 'search_form', q: @q, url: cloths_path %>
   </aside>
 
@@ -12,17 +12,17 @@
     <% end %>
 
     <div id="new_cloth">
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-8">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-6 my-8">
         <% if @cloths.present? %>
           <% @cloths.each do |cloth| %>
-            <%= link_to cloth_path(cloth), class: "block bg-base-100 shadow-xl rounded-lg overflow-hidden transition-transform transform hover:scale-105" do %>
+            <%= link_to cloth_path(cloth), class: "block bg-base-100  rounded-md overflow-hidden transition-transform transform hover:scale-105" do %>
               <div class="w-full aspect-square">
                 <%= image_tag cloth.image_file.url, class: "w-full h-full object-cover" %>
               </div>
             <% end %>
           <% end %>
         <% else %>
-          <div class="col-span-full text-center">アイテムが見つかりませんでした</div>
+          <div class="text-center mt-4">アイテムが見つかりませんでした</div>
         <% end %>
       </div>     
     </div>
