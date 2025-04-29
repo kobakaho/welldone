@@ -1,10 +1,10 @@
 <%= search_form_for q, url: url do |f| %>
-  <div class="card flex flex-col space-y-5">
 
+  <div class="flex flex-col space-y-5">
     <div class="font-bold text-center">検索フォーム</div>
 
     <%= f.select :categories_id_eq, options_for_select(Category.all.pluck(:name, :id)), { include_blank: "カテゴリーを選択" }, { class: "select select-bordered" } %>
- 
+
     <div class="flex flex-wrap gap-4">
       <% Season.all.each do |season| %>
         <div class="flex items-center space-x-2 mx-3">
