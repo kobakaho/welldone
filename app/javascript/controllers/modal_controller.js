@@ -8,7 +8,6 @@ export default class extends Controller {
     this.dialog = this.dialogTarget
     console.log("modal.js 読み込みに成功しました")
   }
-
   open(event) {
     event.preventDefault()
     this.dialog.showModal()
@@ -22,6 +21,9 @@ export default class extends Controller {
   closeOnSubmit(event) {
     if (event.detail.success) {
       this.dialog.close()
+      setTimeout(() => {
+        location.reload();
+      }, 1);
     }
   }
 
