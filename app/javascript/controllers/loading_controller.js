@@ -13,6 +13,5 @@ export default class extends Controller {
   }
   hide() {
     this.spinnerTarget.classList.add("hidden")
-    //リロードして閉じる 現状画面遷移までの間で閉じる
   }
 }
