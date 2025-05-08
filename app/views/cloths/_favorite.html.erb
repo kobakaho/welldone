@@ -1,3 +1,5 @@
 <%= link_to favorites_path(cloth_id: cloth.id), id: "favorite-button-for-cloth-#{cloth.id}", data: { turbo_method: :post } do %>
-  <button class="btn btn-ghost fa-regular fa-heart fa-xl" style="color: #bb6c69;"></button>
+  <div class="tooltip" data-tip="お気に入り"> 
+    <button class="btn btn-ghost fa-regular fa-heart fa-xl" style="color: #bb6c69;"></button>
+  </div>
 <% end %>

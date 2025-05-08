@@ -6,7 +6,6 @@ ja:
       category: カテゴリー
       season: シーズン
       checklist: チェックリスト
-      checklist_item: チェックリストアイテム
     attributes:
       cloth:
         image_file: アイテム画像
@@ -18,8 +17,6 @@ ja:
         category_ids: カテゴリー
       checklist:
         title: タイトル
-      checklist_item:
-        name: アイテム
     errors:
       models:
         cloth:

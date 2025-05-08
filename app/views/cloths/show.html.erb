@@ -1,18 +1,24 @@
 <div class="container mx-auto p-4 flex flex-wrap items-center justify-center min-h-screen">
   <div class="card bg-base-100 shadow-md w-96 relative p-6 my-6">
 
-    <%= link_to cloths_path, class: "btn btn-ghost btn-circle" do %>
-      <button class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;" ></button>
+    <%= link_to cloths_path do %>
+      <div class="tooltip" data-tip="戻る"> 
+        <button class="btn btn-ghost btn-circle fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;" ></button>
+      </div>
       <% end %>
 
     <div class="absolute right-4 space-x-2">
       <%= link_to edit_cloth_path(@cloth), data: { action: "modal#open", turbo_frame: "modal" } do %>
-        <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
-      <% end %>
+        <div class="tooltip" data-tip="編集"> 
+          <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
+        </div>
+        <% end %>
     
       <%= link_to @cloth, data: { turbo_method: :delete, confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" } do %>
-        <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
-      <% end %>
+        <div class="tooltip" data-tip="削除"> 
+          <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
+        </div>
+        <% end %>
     </div>
 
     <%= render @cloth %>
