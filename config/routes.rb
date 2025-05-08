@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :cloths, only: %i[new create index show edit update destroy] do
-    collection do
+    collection do # idを伴わないパス
       get :favorites
       get :discarded
     end
-    member do
+    member do # idを伴うパス
       post :discard
       delete "destroy_discarded/:id", to: "cloths#destroy_discarded", as: :destroy_discarded
     end
@@ -29,8 +29,16 @@ Rails.application.routes.draw do
   end
 
   resources :checklists, only: %i[new create show index edit update destroy] do
-    resources :items, only: %i[ new create destroy ]
+    resources :items, only: %i[ new create destroy ] do
+      collection do
+        post :new_original_item
+      end
+      member do
+        delete "destroy_original_item/:id", to: "items#destroy_original_item", as: :destroy_original_item
+      end
+    end
   end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "static_pages/terms", to: "static_pages#terms", as: "terms"
   get "static_pages/policy", to: "static_pages#policy", as: "policy"
