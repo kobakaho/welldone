@@ -40,7 +40,7 @@ class ClothsController < ApplicationController
 
   def update
     if @cloth.update(cloth_params)
-       redirect_to cloth_path(@cloth)
+      redirect_to cloth_path(@cloth)
     else
       flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Cloth.model_name.human)
       render :edit, status: :unprocessable_entity
@@ -59,7 +59,7 @@ class ClothsController < ApplicationController
   def discard
     @cloth = current_user.cloths.find(params[:id])
     @cloth.discard!
-    redirect_to cloths_path, notice: "断捨離した！", status: :see_other
+    redirect_to cloths_path, notice: "みんなの断捨離タイムラインに移動しました", status: :see_other
   end
 
   def discarded
