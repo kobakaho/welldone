@@ -9,18 +9,20 @@ class ItemsController < ApplicationController
 
 
   def create
-    @new_original_item = @checklist.original_items.build(original_item_params)
+    @checklist = current_user.checklists.find(params[:checklist_id])
+    @new_original_item = @checklist.original_items.new(original_item_params)
 
     if @new_original_item.save
       original_item_checklist = OriginalItemChecklist.find_or_create_by(checklist: @checklist, original_item: @new_original_item)
       redirect_to new_checklist_item_path(@checklist)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
 
   def destroy_original_item
+    @checklist = current_user.checklists.find(params[:checklist_id])
     @original_item = @checklist.original_items.find(params[:id])
     @original_item.destroy!
     redirect_to new_checklist_item_path(@checklist), status: :see_other

@@ -17,6 +17,8 @@ ja:
         category_ids: カテゴリー
       checklist:
         title: タイトル
+      original_item:
+        name: アイテム
     errors:
       models:
         cloth:

@@ -11,7 +11,7 @@
       <%= form_with model: @new_original_item, url: checklist_items_path(@checklist), class: "join w-full", local: true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="join w-full">
-          <%= f.text_field :name, class: "input input-bordered join-item w-full", placeholder: "アイテム名を入力" %>
+          <%= f.text_field :name, class: "input input-bordered join-item w-full", placeholder: "アイテム名"%>
           <button type="submit" class="btn join-item">
             <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
           </button>
@@ -19,41 +19,42 @@
       <% end %>
 
       <div class="border border-gray-300 p-3 mt-6">
-
         <h3 class="font-bold flex justify-center mb-3">作成したアイテム</h3>
         <div class="divider"></div>
-        <% @original_items.each do |item| %>
-          <% if OriginalItemChecklist.exists?(checklist: @checklist, original_item: item) %>
-            <div class="flex items-center justify-between my-6 mx-5">
-              <span class="font-bold"><%= item.name %></span>
-              <%= link_to destroy_original_item_checklist_item_path(@checklist, item.id), data: { turbo_method: :delete } do %>
-                <i class="delete-original_item-link fa-solid fa-minus fa-lg" style="color: #293454;"></i>
-              <% end %>
-            </div>
+        <% if @original_items.present? %>
+          <% @original_items.each do |item| %>
+            <% if OriginalItemChecklist.exists?(checklist: @checklist, original_item: item) %>
+              <div class="flex items-center justify-between my-6 mx-5">
+                <span class="font-bold"><%= item.name %></span>
+                <%= link_to destroy_original_item_checklist_item_path(@checklist, item.id), data: { turbo_method: :delete } do %>
+                  <button class="btn btn-ghost btn-circle fa-solid fa-minus fa-lg" style="color: #293454;"></button>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </aside>
 
     <main class="flex-1">
-      <%= form_with model: @checklist, local: true do |f| %>
+      <%= form_with model: @checklist do |f| %>
         <div class="border border-gray-300 p-4">
           <h3 class="font-bold flex justify-center mb-3">オススメのアイテム</h3>
           <div class="divider"></div>
-
           <div class="text-nowrap grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3">
-            <% @default_items.each do |item| %>
-              <label class="flex items-center space-x-2 gap-2">
-                <%= hidden_field_tag "checklist[default_item_ids][]", nil %>
-                <%= check_box_tag "checklist[default_item_ids][]", item.id, @checklist.default_items.exists?(id: item.id), class: "checkbox checkbox-sm checkbox-info" %>
-                <%= item.name %>
-              </label>
+            <% if @default_items.present? %>
+              <% @default_items.each do |item| %>
+                <label class="flex items-center space-x-2 gap-2">
+                  <%= hidden_field_tag "checklist[default_item_ids][]", nil %>
+                  <%= check_box_tag "checklist[default_item_ids][]", item.id, @checklist.default_items.exists?(id: item.id), class: "checkbox checkbox-sm checkbox-info" %>
+                  <%= item.name %>
+                </label>
+              <% end %>
             <% end %>
           </div>
         </div>
         <%= f.submit "確定", class: "btn btn-primary w-full mt-6" %>
       <% end %>
     </main>
-
   </div>
 </div>
