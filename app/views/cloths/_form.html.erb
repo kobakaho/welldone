@@ -20,6 +20,7 @@
     <label class="label">
       <span class="label-text font-bold">カテゴリーを選択【必須】</span>
     </label>
+
     <%= select_tag :root_id,
           options_for_select(Category.where(ancestry: nil).pluck(:name, :id)),
           include_blank: "選択してください",
@@ -74,6 +75,6 @@
   </div>
   
   <div>
-    <%= form.submit I18n.t(".helpers.submit.submit"), data: { action: "click->loading#show" }, class: "btn btn-primary btn-block mt-6" %>
+    <%= form.submit I18n.t(".helpers.submit.submit"), class: "btn btn-primary btn-block mt-6" %>
   </div>
 <% end %>
