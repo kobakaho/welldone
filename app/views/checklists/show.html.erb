@@ -1,26 +1,33 @@
 <div class="container mx-auto p-4 flex flex-wrap justify-center items-start h-screen">
   <div class="bg-base-100 p-6 rounded-lg shadow-md w-full mt-6 max-w-4xl">
-
+  
     <div class="flex justify-between items-center">
 
-      <%= link_to checklists_path, class: "btn btn-ghost btn-circle" do %>
-        <i class="fa-solid fa-arrow-right fa-rotate-180 fa-xl" style="color: #293454;"></i>
-      <% end %>
+      <%= link_to checklists_path do %>
+        <div class="tooltip" data-tip="戻る">
+          <button class="btn btn-ghost btn-circle fa-solid fa-arrow-right fa-rotate-180 fa-xl" style="color: #293454;"></button>
+        </div>
+        <% end %>
       <h1 class="text-xl font-bold text-center"><%= @checklist.title %></h1>
 
       <%= link_to new_checklist_item_path(@checklist) do %>
-        <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
+        <div class="tooltip" data-tip="アイテムを編集">
+          <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
+        </div>
       <% end %>
+
+  
     </div>
+    <div class="divider"></div>
 
     <div class="flex justify-between items-center">
-      <div class="mb-8">
-        <ul class="list-disc list-inside">
+      <div class="m-4">
+        <ul class="list-disc list-inside space-y-3">
           <% @checklist.default_items.each do |item| %>
             <li class="text-lg"><%= item.name %></li>
           <% end %>
-          <% @checklist.original_items.each do |original_item| %>
-            <li class="text-lg"><%= original_item.name %></li>
+          <% @checklist.original_items.each do |item| %>
+            <li class="text-lg"><%= item.name %></li>
           <% end %>
         </ul>
       </div>

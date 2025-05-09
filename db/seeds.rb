@@ -16,6 +16,8 @@ end
   DefaultItem.find_or_create_by!(name: name)
 end
 
+
+
 CategoryCloth.delete_all
 Category.delete_all
 

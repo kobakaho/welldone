@@ -2,7 +2,7 @@
 
   <%= link_to new_checklist_path, data: { action: "modal#open", turbo_frame: "modal" } do %>
     <button class="btn btn-circle fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
-  <% end %>絶対位置
+  <% end %>
 
   <div id="new_checklist" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
     <% if @checklists.present? %>
@@ -13,14 +13,20 @@
             <%= link_to checklist_path(checklist) do %>
 
               <div class="font-semibold text-center text-lg"><%= checklist.title %></div>
+              <div class="divider"></div>
+
                 <div class="flex justify-end space-x-2">
                   <%= link_to edit_checklist_path(checklist), data: {turbo_frame: "modal"} do %>
-                    <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
+                    <div class="tooltip" data-tip="タイトルを編集">
+                      <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
+                    </div>
                   <% end %>
           
                   <%= link_to checklist, data: { turbo_method: :delete, confirm: "本当に削除しますか？作成したアイテムも削除されます", turbo_confirm: "本当に削除しますか？作成したアイテムも削除されます" } do %>
-                    <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;" ></button>
-                  <% end %>
+                    <div class="tooltip" data-tip="削除">
+                      <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;" ></button>
+                    </div>
+                    <% end %>
                 </div>
             </div>
           </div>

@@ -11,8 +11,6 @@ class ChecklistsController < ApplicationController
   end
 
   def show
-    @default_items = @checklist.default_items
-    @original_items = @checklist.original_items
   end
 
   def create
@@ -30,9 +28,10 @@ class ChecklistsController < ApplicationController
 
   def update
     if @checklist.update(checklist_params)
-    else
-      flash.now[:danger] = I18n.t("defaults.flash_message.not_updated", item: Checklist.model_name.human)
-      render :new, status: :unprocessable_entity
+      if params[:checklist][:default_item_ids].present?
+        @checklist.default_item_ids = params[:checklist][:default_item_ids]
+      end
+        redirect_to checklist_path(@checklist), notice: I18n.t("defaults.flash_message.updated", item: Checklist.model_name.human)
     end
   end
 
@@ -40,7 +39,6 @@ class ChecklistsController < ApplicationController
     @checklist.destroy!
     redirect_to checklists_path, notice: I18n.t("defaults.flash_message.deleted", item: Checklist.model_name.human), status: :see_other
   end
-
 
   private
 

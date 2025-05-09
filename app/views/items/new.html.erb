@@ -1,22 +1,60 @@
-<div class="container mx-auto p-4 flex flex-wrap justify-center items-center min-h-screen">
-    <div class="flex justify-between items-center">
-      <div class="mx-auto bg-base-100 p-6 rounded-lg shadow-md w-full mt-6">
+<div class="container mx-auto p-4 min-h-screen">
+  <div class="flex flex-col gap-3 md:flex-row bg-base-100 p-6 rounded-lg shadow-md">
 
-      <%= link_to checklist_path(@checklist), class: "btn btn-ghost btn-circle" do %>
-        <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></i>
+    <aside class="w-full md:w-1/3 lg:w-1/3">
+      <%= link_to checklist_path(@checklist) do %>
+        <div class="tooltip" data-tip="戻る">
+          <button class="btn btn-ghost btn-circle fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;"></button>
+        </div>
+        <% end %>
+
+      <%= form_with model: @new_original_item, url: checklist_items_path(@checklist), class: "join w-full", local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="join w-full">
+          <%= f.text_field :name, class: "input input-bordered join-item w-full", placeholder: "アイテム名"%>
+          <button type="submit" class="btn join-item">
+            <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
+          </button>
+        </div>
       <% end %>
 
-      <h2 class="text-xl font-semibold mb-4 text-center">チェックリスト</h2>
-
-      <%= render "original_items/form", original_item: @original_item, checklist: @checklist %>
-
-      <table id="table-original_item" class="w-full border border-gray-300 mt-3">
-        <tbody>
-          <%= render @original_items %>
-        </tbody>
-      </table>
-
-      <%= render "default_items/form",  default_items: @default_items, checklist: @checklist %>
+      <div class="border border-gray-300 p-3 mt-6">
+        <h3 class="font-bold flex justify-center mb-3">作成したアイテム</h3>
+        <div class="divider"></div>
+        <% if @original_items.present? %>
+          <% @original_items.each do |item| %>
+            <% if OriginalItemChecklist.exists?(checklist: @checklist, original_item: item) %>
+              <div class="flex items-center justify-between my-6 mx-5">
+                <span class="font-bold"><%= item.name %></span>
+                <%= link_to destroy_original_item_checklist_item_path(@checklist, item.id), data: { turbo_method: :delete } do %>
+                  <button class="btn btn-ghost btn-circle fa-solid fa-minus fa-lg" style="color: #293454;"></button>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
-    </div>
+    </aside>
+
+    <main class="flex-1">
+      <%= form_with model: @checklist do |f| %>
+        <div class="border border-gray-300 p-4">
+          <h3 class="font-bold flex justify-center mb-3">オススメのアイテム</h3>
+          <div class="divider"></div>
+          <div class="text-nowrap grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3">
+            <% if @default_items.present? %>
+              <% @default_items.each do |item| %>
+                <label class="flex items-center space-x-2 gap-2">
+                  <%= hidden_field_tag "checklist[default_item_ids][]", nil %>
+                  <%= check_box_tag "checklist[default_item_ids][]", item.id, @checklist.default_items.exists?(id: item.id), class: "checkbox checkbox-sm checkbox-info" %>
+                  <%= item.name %>
+                </label>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <%= f.submit "確定", class: "btn btn-primary w-full mt-6" %>
+      <% end %>
+    </main>
+  </div>
 </div>
