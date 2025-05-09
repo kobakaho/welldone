@@ -1,10 +1,10 @@
 <div class="container mx-auto p-4 flex flex-wrap min-h-screen flex flex-col">
 
   <%= link_to new_checklist_path, data: { action: "modal#open", turbo_frame: "modal" } do %>
-    <button class="btn btn-circle fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
+    <button class=" btn btn-block fa-solid fa-plus fa-2xl" style="color: #293454;"></button>
   <% end %>
 
-  <div id="new_checklist" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+  <div id="new_checklist" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-3">
     <% if @checklists.present? %>
       <% @checklists.each do |checklist| %>
 
@@ -23,10 +23,8 @@
                   <% end %>
           
                   <%= link_to checklist, data: { turbo_method: :delete, confirm: "本当に削除しますか？作成したアイテムも削除されます", turbo_confirm: "本当に削除しますか？作成したアイテムも削除されます" } do %>
-                    <div class="tooltip" data-tip="削除">
-                      <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;" ></button>
-                    </div>
-                    <% end %>
+                    <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;" ></button>
+                  <% end %>
                 </div>
             </div>
           </div>
