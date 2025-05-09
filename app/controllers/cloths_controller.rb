@@ -63,7 +63,7 @@ class ClothsController < ApplicationController
   end
 
   def discarded
-    @discarded_cloths = Cloth.includes(:user).discarded
+    @discarded_cloths = Cloth.includes(:user).discarded.order(discarded_at: :asc)
   end
 
   def destroy_discarded
