@@ -4,10 +4,8 @@
     <div class="flex justify-between items-center">
 
       <%= link_to checklists_path do %>
-        <div class="tooltip" data-tip="戻る">
-          <button class="btn btn-ghost btn-circle fa-solid fa-arrow-right fa-rotate-180 fa-xl" style="color: #293454;"></button>
-        </div>
-        <% end %>
+        <button class="btn btn-ghost btn-circle fa-solid fa-arrow-right fa-rotate-180 fa-xl" style="color: #293454;"></button>
+      <% end %>
       <h1 class="text-xl font-bold text-center"><%= @checklist.title %></h1>
 
       <%= link_to new_checklist_item_path(@checklist) do %>
