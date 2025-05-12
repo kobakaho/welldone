@@ -95,10 +95,10 @@ class ClothsController < ApplicationController
     category_ids << params[:parent_id] if params[:parent_id].present?
     category_ids << params[:child_id] if params[:child_id].present?
 
-    params.require(:cloth).permit( :image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
+    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
   end
 
   def discard_params
-    params.require(:cloth).permit( :title )
+    params.require(:cloth).permit(:title)
   end
 end
