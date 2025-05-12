@@ -14,8 +14,9 @@ Rails.application.routes.draw do
       get :discarded
     end
     member do # idを伴うパス
-      post :discard
-      delete "destroy_discarded/:id", to: "cloths#destroy_discarded", as: :destroy_discarded
+      get :confirm_discard
+      patch :discard
+      delete :destroy_discarded
     end
   end
 
