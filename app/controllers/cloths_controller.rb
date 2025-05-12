@@ -1,6 +1,6 @@
 class ClothsController < ApplicationController
   before_action :authenticate_user!, except: %i[ discarded ]
-  before_action :set_cloth, only: %i[ show update destroy ]
+  before_action :set_cloth, only: %i[ show update destroy confirm_discard discard]
   after_action :check_season, only: %i[ create ]
 
   def index
@@ -26,6 +26,7 @@ class ClothsController < ApplicationController
 
   def create
     @cloth = current_user.cloths.new(cloth_params)
+    @cloth.title ||= "もっと捨てたい"
 
     if @cloth.save
     else
@@ -56,10 +57,16 @@ class ClothsController < ApplicationController
     @favorite_cloths = current_user.favorite_cloths.page(params[:page]).order(created_at: :desc)
   end
 
+  def confirm_discard
+  end
+
   def discard
-    @cloth = current_user.cloths.find(params[:id])
-    @cloth.discard!
-    redirect_to cloths_path, notice: "みんなの断捨離タイムラインに移動しました", status: :see_other
+    if @cloth.update(discard_params)
+      @cloth.discard!
+      redirect_to cloth_path, notice: "みんなの断捨離タイムラインに移動しました", status: :see_other
+    else
+      render :confirm_discard, status: :unprocessable_entity
+    end
   end
 
   def discarded
@@ -88,6 +95,10 @@ class ClothsController < ApplicationController
     category_ids << params[:parent_id] if params[:parent_id].present?
     category_ids << params[:child_id] if params[:child_id].present?
 
-    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] },).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
+    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
+  end
+
+  def discard_params
+    params.require(:cloth).permit(:title)
   end
 end
