@@ -1,0 +1,21 @@
+<div class="max-w-md mx-auto space-y-6">
+  <div class="text-center">
+    <div class="font-bold">確認画面</div>
+    <div class="divider"></div>
+
+    <p>公開される画像</p>
+    <%= image_tag cloth.image_file_url, class: "max-w-[250px] max-h-[200px] mx-auto rounded-md" %>
+  </div>
+
+  <%= form_with model: @cloth, url: discard_cloth_path(@cloth), class: "space-y-4" do |form| %>
+    <%= render "shared/error_messages", object: form.object %>
+
+    <div class="form-control">
+      <%= form.text_field :title, placeholder: "お気持ち", class: "input input-bordered w-full" %>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit "確定する", data: { confirm: "一覧画面から消え、他のユーザーも見ることができるようになります", turbo_confirm: "一覧画面から消え、他のユーザーも見ることができるようになります" }, class: "btn btn-primary px-6 py-2" %>
+    </div>
+  <% end %>
+</div>
