@@ -16,7 +16,11 @@
     </div>
 
     <%= render @cloth %>
-    
-    <%= button_to  "断捨離する", discard_cloth_path(@cloth), data: { confirm: "断捨離しますか？一覧画面から消え、他のユーザーも見ることができるようになります", turbo_confirm:"断捨離しますか？一覧画面から消え、他のユーザーも見ることができるようになります"}, class: "btn btn-block btn-info" %>
+        
+    <div class="tooltip" data-tip="確認画面が表示されます">
+      <%= link_to confirm_discard_cloth_path(@cloth), data: { action: "modal#open", turbo_frame: "modal" }, class: "btn btn-block btn-outline btn-info" do %>
+      断捨離する
+      <% end %>
+    </div>
   </div>
 </div>
