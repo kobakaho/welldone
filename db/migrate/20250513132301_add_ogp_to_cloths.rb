@@ -1,0 +1,5 @@
+class AddOgpToCloths < ActiveRecord::Migration[7.2]
+  def change
+    add_column :cloths, :ogp, :string
+  end
+end
