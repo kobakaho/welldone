@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :cloths, only: %i[new create index show edit update destroy] do
+  resources :cloths, only: %i[new create index show edit update destroy ] do
     collection do # idを伴わないパス
       get :favorites
       get :discarded
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do # idを伴うパス
       get :confirm_discard
       patch :discard
+      get :show_discarded
       delete :destroy_discarded
     end
   end
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
         post :new_original_item
       end
       member do
-        delete "destroy_original_item/:id", to: "items#destroy_original_item", as: :destroy_original_item
+        delete :destroy_original_item
       end
     end
   end
@@ -44,6 +45,8 @@ Rails.application.routes.draw do
   get "static_pages/terms", to: "static_pages#terms", as: "terms"
   get "static_pages/policy", to: "static_pages#policy", as: "policy"
 
+  get "images/ogp.png", to: "images#ogp", as: "images_ogp"
+  
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

@@ -1,0 +1,33 @@
+<turbo-frame id="modal">
+  <dialog data-controller="modal" data-modal-target="dialog" 
+    data-action="turbo:submit-end->modal#closeOnSubmit click->modal#backdropClick" id="modal_dialog" class="modal" open>
+    <div class="modal-box">
+
+
+    <div class="flex flex-wrap items-center space-y-2">
+      <div class="avatar">
+        <div class="w-10 rounded-full">
+          <%= image_tag @cloth.user.profile_image_url %>
+        </div>
+      </div>
+      <p class="text-sm font-semibold"><%= @cloth.user.username %> さん</p>
+
+      <%= image_tag @cloth.image_file_url, class: "max-w-[300px] max-h-[250px] mx-auto rounded-md" %>
+      <p class="text-sm text-center"><%= @cloth.title %></p>
+
+      <% prepare_meta_tags(@cloth) %>
+      <%= link_to "https://twitter.com/intent/tweet?text=断捨離した！%0A&url=https://welldoneshari.com/cloths/discarded", target: "_blank", rel: "noopener noreferrer" do %>
+       <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
+      <% end %>
+
+      <% if user_signed_in? && @cloth.user == current_user %>
+        <%= link_to destroy_discarded_cloth_path(@cloth, @cloth.id, id: @cloth), 
+        data: { turbo_method: :delete, confirm: "本当に削除しますか？" } do %>
+        <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
+      <% end %>
+    </div>
+    <% end %>
+
+    <form method="dialog" class="modal-backdrop"></form>
+  </dialog>
+</turbo-frame>
