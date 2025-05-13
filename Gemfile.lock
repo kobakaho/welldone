@@ -495,6 +495,7 @@ DEPENDENCIES
   kaminari (~> 1.2.2)
   letter_opener_web (~> 3.0)
   meta-tags
+  mini_magick
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pg (~> 1.1)

@@ -31,6 +31,8 @@ gem "omniauth-rails_csrf_protection"
 gem "carrierwave", "~> 3.0"
 gem "fog-aws"
 gem "aws-sdk-s3", require: false
+gem "meta-tags"
+gem "mini_magick"
 
 gem "ancestry"
 gem "discard", "~> 1.4"
@@ -40,7 +42,6 @@ gem "ransack"
 
 gem "whenever", require: false
 
-gem "meta-tags"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 gem "dotenv-rails"
