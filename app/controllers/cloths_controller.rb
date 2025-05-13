@@ -117,7 +117,7 @@ class ClothsController < ApplicationController
 
     set_meta_tags og: {
       site_name: "well断",
-      title: "well断",
+      title: "みんなで断捨離",
       description: "クローゼットを管理し、断捨離をサポートするサービス",
       type: "website",
       url: "http://welldoneshari.com",

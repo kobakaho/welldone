@@ -15,8 +15,8 @@
       <%= image_tag @cloth.image_file_url, class: "max-w-[300px] max-h-[250px] mx-auto rounded-md" %>
       <p class="text-sm text-center"><%= @cloth.title %></p>
 
-      <% prepare_meta_tags(@cloth) %>
-      <%= link_to "https://twitter.com/intent/tweet?text=断捨離した！%0A&hashtags=well断&url=https://welldoneshari.com/cloths/discarded", target: "_blank", rel: "noopener noreferrer" do %>
+      <% prepare_meta_tags @cloth %>
+      <%= link_to "https://twitter.com/intent/tweet?text=「#{CGI.escape(@cloth.title)}」%0A&hashtags=well断&url=https://welldoneshari.com/cloths/discarded", target: "_blank", rel: "noopener noreferrer" do %>
        <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
       <% end %>
 
