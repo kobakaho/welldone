@@ -1,7 +1,8 @@
 class ClothsController < ApplicationController
-  before_action :authenticate_user!, except: %i[ discarded ]
+  skip_before_action :authenticate_user!, only: %i[ discarded show_discarded ]
   before_action :set_cloth, only: %i[ show update destroy confirm_discard discard]
   after_action :check_season, only: %i[ create ]
+  helper_method :prepare_meta_tags
 
   def index
     if params[:q].present? && params[:q][:brand_or_body_cont].present?
@@ -73,6 +74,11 @@ class ClothsController < ApplicationController
     @discarded_cloths = Cloth.includes(:user).discarded.order(discarded_at: :asc)
   end
 
+  def show_discarded
+    @cloth = Cloth.discarded.find(params[:id])
+    prepare_meta_tags(@cloth)
+  end
+
   def destroy_discarded
     @discarded_cloth = current_user.cloths.discarded.find(params[:id])
     @discarded_cloth.destroy!
@@ -95,10 +101,33 @@ class ClothsController < ApplicationController
     category_ids << params[:parent_id] if params[:parent_id].present?
     category_ids << params[:child_id] if params[:child_id].present?
 
-    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
+    params.require(:cloth).permit( :image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
   end
 
   def discard_params
     params.require(:cloth).permit(:title)
+  end
+
+  def prepare_meta_tags(cloth)
+    image_url = if cloth.image_file.present?
+                  cloth.image.url.to_s
+                else
+                  "#{request.base_url}/images/ogp.png?text=#{CGI.escape(cloth.title)}"
+                end
+    
+    set_meta_tags og: {
+      site_name: "well断",
+      title: "#{cloth.title} | well断",
+      description: "クローゼットを管理し、断捨離をサポートするサービス",
+      type: "website",
+      url: "http://welldoneshari.com",
+      image: image_url,
+      local: "ja-JP"
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@",
+      image: image_url
+    } 
   end
 end
