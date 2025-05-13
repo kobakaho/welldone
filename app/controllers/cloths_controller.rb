@@ -109,15 +109,16 @@ class ClothsController < ApplicationController
   end
 
   def prepare_meta_tags(cloth)
-    image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(cloth.title)}"
-    # if cloth.image_file_url.present?
-    #              cloth.image_file_url.to_s
-    # else
-    # end
+    image_url =
+    if cloth.image_file.present?
+      cloth.image_file.url.to_s
+    else
+      "#{request.base_url}/images/ogp.png?text=#{CGI.escape(cloth.title)}"
+    end
 
     set_meta_tags og: {
       site_name: "well断",
-      title: "みんなで断捨離",
+      title: " みんなも断捨離 | well断",
       description: "クローゼットを管理し、断捨離をサポートするサービス",
       type: "website",
       url: "http://welldoneshari.com",

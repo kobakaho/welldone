@@ -19,20 +19,20 @@
 
             <div class="timeline-end timeline-box flex items-center space-x-4 p-4">
               <div class="flex flex-col">
-                <div class="flex items-center gap-3">
-                  <div class="flex-1">
+                <div class="flex-1">
+                  <div class="flex justify-center gap-2">
                     <div class="avatar">
                       <div class="w-10 rounded-full">
                         <%= image_tag cloth.user.profile_image_url %>
                       </div>
                     </div>
-                      <p class="text-sm font-semibold"><%= cloth.user.username %> さんが断捨離しました！</p>
-
-                      <%= link_to  show_discarded_cloth_path(cloth), data: { action: "modal#open", turbo_frame: "modal" }, class: "btn btn-outline btn-info" do %>
-                      詳細<% end %>
-
-                    </div>
+                    <p class="text-sm font-semibold"><%= cloth.user.username %> さんが断捨離しました</p>
                   </div>
+                  <div class="flex justify-end ">
+                    <%= link_to  show_discarded_cloth_path(cloth), data: { action: "modal#open", turbo_frame: "modal" }, class: "btn btn-circle" do %>
+                    詳細<% end %>
+                  </div>
+                </div>
               </div>
             </div>
             <hr />

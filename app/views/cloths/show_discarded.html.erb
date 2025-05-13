@@ -4,29 +4,33 @@
     <div class="modal-box">
 
 
-    <div class="flex flex-wrap items-center space-y-2">
-      <div class="avatar">
-        <div class="w-10 rounded-full">
-          <%= image_tag @cloth.user.profile_image_url %>
+    <div>
+      <div class="flex justify-center gap-2">
+        <div class="avatar">
+          <div class="w-12 rounded-full">
+            <%= image_tag @cloth.user.profile_image_url %>
+          </div>
         </div>
+        <p class="text-lg font-semibold"><%= @cloth.user.username %> さん</p>
       </div>
-      <p class="text-sm font-semibold"><%= @cloth.user.username %> さん</p>
-
+      <div class="divider"></div>
+      
       <%= image_tag @cloth.image_file_url, class: "max-w-[300px] max-h-[250px] mx-auto rounded-md" %>
-      <p class="text-sm text-center"><%= @cloth.title %></p>
+      <p class="text-xl text-center mt-2">「<%= @cloth.title %>」</p>
 
-      <% prepare_meta_tags @cloth %>
-      <%= link_to "https://twitter.com/intent/tweet?text=「#{CGI.escape(@cloth.title)}」%0A&hashtags=well断&url=https://welldoneshari.com/cloths/discarded", target: "_blank", rel: "noopener noreferrer" do %>
-       <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
-      <% end %>
+      <div class="flex justify-end mt-2 gap-2">
+        <% prepare_meta_tags @cloth %>
+        <%= link_to "https://twitter.com/intent/tweet?text=「#{CGI.escape(@cloth.title)}」%0A&hashtags=well断&url=https://welldoneshari.com/cloths/discarded", target: "_blank", rel: "noopener noreferrer" do %>
+        <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
+        <% end %>
 
-      <% if user_signed_in? && @cloth.user == current_user %>
-        <%= link_to destroy_discarded_cloth_path(@cloth, @cloth.id, id: @cloth), 
-        data: { turbo_method: :delete, confirm: "本当に削除しますか？" } do %>
-        <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
-      <% end %>
-    </div>
-    <% end %>
+        <% if user_signed_in? && @cloth.user == current_user %>
+          <%= link_to destroy_discarded_cloth_path(@cloth, @cloth.id, id: @cloth), 
+          data: { turbo_method: :delete, confirm: "本当に削除しますか？" } do %>
+          <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;"></button>
+          <% end %>
+        <% end %>
+      </div>
 
     <form method="dialog" class="modal-backdrop"></form>
   </dialog>
