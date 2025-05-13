@@ -101,7 +101,7 @@ class ClothsController < ApplicationController
     category_ids << params[:parent_id] if params[:parent_id].present?
     category_ids << params[:child_id] if params[:child_id].present?
 
-    params.require(:cloth).permit( :image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
+    params.require(:cloth).permit(:image_file, :image_file_cache, :brand, :body, :purchase_date, :price, { season_ids: [] }).merge(category_ids: category_ids) # モデル名_ids: []複数のidを配列で受け取る
   end
 
   def discard_params
@@ -111,10 +111,10 @@ class ClothsController < ApplicationController
   def prepare_meta_tags(cloth)
     image_url = if cloth.image_file.present?
                   cloth.image.url.to_s
-                else
+    else
                   "#{request.base_url}/images/ogp.png?text=#{CGI.escape(cloth.title)}"
-                end
-    
+    end
+
     set_meta_tags og: {
       site_name: "well断",
       title: "well断",
@@ -128,6 +128,6 @@ class ClothsController < ApplicationController
       card: "summary_large_image",
       site: "@",
       image: image_url
-    } 
+    }
   end
 end

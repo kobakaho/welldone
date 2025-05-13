@@ -20,7 +20,7 @@ module ApplicationHelper
       twitter: {
         card: "summary_large_image",
         site: "@",
-        image: image_url("ogp.png")    
+        image: image_url("ogp.png")
       }
     }
   end
