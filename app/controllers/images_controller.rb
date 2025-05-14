@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, raise: false
 
-  def ogp
+  def show_discarded
     text = ogp_params[:text]
     image = OgpCreator.build(text).tempfile.open.read
     send_data image, type: "image/png", disposition: "inline"

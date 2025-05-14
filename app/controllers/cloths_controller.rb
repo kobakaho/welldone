@@ -76,7 +76,7 @@ class ClothsController < ApplicationController
 
   def show_discarded
     @cloth = Cloth.discarded.find(params[:id])
-    prepare_meta_tags(@cloth)
+    prepare_meta_tags(@cloth)#これが読み込まれてないと思うdefault_が出力されてる
   end
 
   def destroy_discarded
@@ -118,12 +118,12 @@ class ClothsController < ApplicationController
 
     set_meta_tags og: {
       site_name: "well断",
-      title: " みんなも断捨離 | well断",
+      title: "私は捨てました | well断",
       description: "クローゼットを管理し、断捨離をサポートするサービス",
       type: "website",
-      url: "http://welldoneshari.com",
+      url: request.original_url,
       image: image_url,
-      local: "ja-JP"
+      locale: "ja-JP"
     },
     twitter: {
       card: "summary_large_image",
