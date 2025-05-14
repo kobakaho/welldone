@@ -6,6 +6,7 @@ class OgpCreator
   TEXT_POSITION = "0,0"
   FONT = "./app/assets/fonts/NotoSansJP-Bold.ttf"
   FONT_SIZE = 60
+  FONT_COLOR = "black"
   INDENTION_COUNT = 16
   ROW_LIMIT = 8
 
@@ -17,6 +18,7 @@ class OgpCreator
       config.font FONT
       config.gravity GRAVITY
       config.pointsize FONT_SIZE
+      config.fill FONT_COLOR
       config.draw "text #{TEXT_POSITION} '#{text}'"
     end
   end

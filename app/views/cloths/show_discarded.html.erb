@@ -1,9 +1,4 @@
-<turbo-frame id="modal">
-  <dialog data-controller="modal" data-modal-target="dialog" 
-    data-action="turbo:submit-end->modal#closeOnSubmit click->modal#backdropClick" id="modal_dialog" class="modal" open>
-    <div class="modal-box">
-
-    <div>
+    <div class="container mx-auto px-4">
       <div class="flex justify-center gap-2">
         <div class="avatar">
           <div class="w-12 rounded-full">
@@ -20,13 +15,9 @@
       <div class="flex justify-center mt-2">
        
           <% prepare_meta_tags(@cloth) %>
-          <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(discarded_cloths_url)}&0A%0A&hashtags=well断" %>
+          <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(show_discarded_cloth_url(@cloth))}&0A%0A&hashtags=well断" %>
           <%= link_to twitter_share_url, target: "_blank", rel: "noopener noreferrer" do %>
             <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
           <% end %>
       </div>
     </div>
-
-    <form method="dialog" class="modal-backdrop"></form>
-  </dialog>
-</turbo-frame>
