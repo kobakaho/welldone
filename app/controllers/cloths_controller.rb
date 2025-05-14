@@ -110,7 +110,7 @@ class ClothsController < ApplicationController
 
   def prepare_meta_tags(cloth)
     image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(cloth.title)}"
-    
+
     set_meta_tags og: {
       site_name: "well断",
       title: "私は捨てました | well断",
