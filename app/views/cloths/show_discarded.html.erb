@@ -20,7 +20,7 @@
       <div class="flex justify-center mt-2">
        
           <% prepare_meta_tags(@cloth) %>
-          <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(show_discarded_cloth_url(@cloth))}&text=#{CGI.escape(@cloth.title)}%0A%0A&hashtags=well断" %>
+          <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(discarded_cloths_url)}&0A%0A&hashtags=well断" %>
           <%= link_to twitter_share_url, target: "_blank", rel: "noopener noreferrer" do %>
             <button class="btn btn-circle fa-brands fa-square-x-twitter fa-xl" style="color: #293454;"></button>
           <% end %>
