@@ -24,7 +24,7 @@ class OgpCreator
   end
 
   private
-  
+
   def self.prepare_text(text)
     text.to_s.scan(/.{1,#{INDENTION_COUNT}}/)[0...ROW_LIMIT].join("\n")
   end
