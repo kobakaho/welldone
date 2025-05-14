@@ -76,7 +76,7 @@ class ClothsController < ApplicationController
 
   def show_discarded
     @cloth = Cloth.discarded.find(params[:id])
-    prepare_meta_tags(@cloth)#これが読み込まれてないと思うdefault_が出力されてる
+    prepare_meta_tags(@cloth)
   end
 
   def destroy_discarded
@@ -109,12 +109,7 @@ class ClothsController < ApplicationController
   end
 
   def prepare_meta_tags(cloth)
-    image_url =
-    if cloth.image_file.present?
-      cloth.image_file.url.to_s
-    else
-      "#{request.base_url}/images/ogp.png?text=#{CGI.escape(cloth.title)}"
-    end
+    image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(cloth.title)}"
 
     set_meta_tags og: {
       site_name: "well断",
