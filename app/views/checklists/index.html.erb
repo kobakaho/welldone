@@ -21,11 +21,13 @@
                       <button class="btn btn-circle fa-solid fa-pen-to-square fa-lg" style="color: #293454;" ></button>
                     </div>
                   <% end %>
-          
-                  <%= link_to checklist, data: { turbo_method: :delete, confirm: "本当に削除しますか？作成したアイテムも削除されます", turbo_confirm: "本当に削除しますか？作成したアイテムも削除されます" } do %>
-                    <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;" ></button>
-                  <% end %>
-                </div>
+
+                  <div class="tooltip tooltip-bottom" data-tip="チェックリストを削除">
+                    <%= link_to checklist, data: { turbo_method: :delete, confirm: "本当に削除しますか？作成したアイテムも削除されます", turbo_confirm: "本当に削除しますか？作成したアイテムも削除されます" } do %>
+                      <button class="btn btn-circle fa-solid fa-trash fa-lg" style="color: #293454;" ></button>
+                    <% end %>
+                  </div>
+               </div>
             </div>
           </div>
         <% end %>

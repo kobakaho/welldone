@@ -1,8 +1,9 @@
 <%= form_with model: @checklist, class: "space-y-6" do |form| %>
   <%= render "shared/error_messages", object: form.object %>
 
+  <div class="text-center font-bold">チェックリストタイトル</div>
   <div class="form-control">
-    <%= form.text_field :title, placeholder: "チェックリストタイトル", class: "input input-bordered w-full" %>
+    <%= form.text_field :title, placeholder: " ex)毎シーズン必ず着る服", class: "input input-bordered w-full" %>
   </div>
 
   <div class="mt-6 text-center">

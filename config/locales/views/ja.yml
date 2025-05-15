@@ -31,7 +31,7 @@ ja:
     price: 購入金額
     purchase_date: 購入日
     body: 購入理由
-    image_file: アイテム画像
+    image_file: お洋服画像
   category: 
     name: カテゴリー
   season: 
