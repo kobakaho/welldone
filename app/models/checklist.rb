@@ -1,5 +1,5 @@
 class Checklist < ApplicationRecord
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
 
   has_many :default_item_checklists, dependent: :destroy
   has_many :default_items, through: :default_item_checklists
