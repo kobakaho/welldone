@@ -2,13 +2,13 @@
 ja:
   activerecord:
     models:
-      cloth: アイテム
+      cloth: お洋服
       category: カテゴリー
       season: シーズン
       checklist: チェックリスト
     attributes:
       cloth:
-        image_file: アイテム画像
+        image_file: 画像
         brand: ブランド
         body: 購入理由
         purchase_date: 購入日
