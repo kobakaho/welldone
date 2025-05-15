@@ -64,9 +64,9 @@ class ClothsController < ApplicationController
   def discard
     if @cloth.update(discard_params)
       @cloth.discard!
-      redirect_to cloth_path, notice: "みんなの断捨離タイムラインに移動しました", status: :see_other
+      render json: { redirect_url: cloths_path }, status: :ok
     else
-      render :confirm_discard, status: :unprocessable_entity
+      render json: { error: "断捨離済みです" }, status: :unprocessable_entity    
     end
   end
 

@@ -23,7 +23,15 @@ export default class extends Controller {
       this.dialog.close()
       setTimeout(() => {
         location.reload();
-      }, 1);
+      });
+      
+      event.detail.fetchResponse.response.json().then((json) => {
+      if (json.redirect_url) {
+        window.location.href = json.redirect_url;
+      } else {
+        location.reload(); 
+      }
+    });
     }
   }
 
