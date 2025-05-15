@@ -15,6 +15,7 @@ ja:
         price: 購入金額
         season_ids: シーズン
         category_ids: カテゴリー
+        title: お気持ち
       checklist:
         title: タイトル
       original_item:
@@ -22,7 +23,7 @@ ja:
     errors:
       models:
         cloth:
-          blank: 必須項目です
+          blank: ：必須項目です
           less_than_or_equal_to: 明日以降の日付は入力できません
         checklist:
           taken: 既に登録されています

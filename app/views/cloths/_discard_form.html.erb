@@ -3,15 +3,20 @@
     <div class="font-bold">確認画面</div>
     <div class="divider"></div>
 
-    <p>公開される画像</p>
+    <p class="font-bold mb-2">公開される画像</p>
     <%= image_tag cloth.image_file_url, class: "max-w-[250px] max-h-[200px] mx-auto rounded-md" %>
   </div>
 
   <%= form_with model: @cloth, url: discard_cloth_path(@cloth), class: "space-y-4" do |form| %>
     <%= render "shared/error_messages", object: form.object %>
 
-    <div class="form-control">
-      <%= form.text_field :title, placeholder: "お気持ち", class: "input input-bordered w-full" %>
+    <div>
+      <label class="label">
+        <%= form.label :title, "お気持ち【必須】", class: "label-text font-bold" %>
+      </label>
+      <div class="form-control">
+        <%= form.text_field :title, placeholder: "捨てるときの気持ちを教えてください", class: "input input-bordered w-full" %>
+      </div>
     </div>
 
     <div class="text-center">

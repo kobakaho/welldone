@@ -10,12 +10,19 @@
 
       <%= form_with model: @new_original_item, url: checklist_items_path(@checklist), class: "join w-full", local: true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div class="join w-full">
-          <%= f.text_field :name, class: "input input-bordered join-item w-full", placeholder: "アイテム名"%>
-          <button type="submit" class="btn join-item">
-            <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
-          </button>
+
+        <div class="w-full">
+          <label class="label">
+            <%= f.label :name, "アイテム名", class: "label-text font-bold" %>
+          </label>
+          <div class="join w-full">
+            <%= f.text_field :name, class: "input input-bordered join-item w-full", placeholder: "ex)ときめかない"%>
+            <button type="submit" class="btn join-item">
+              <i class="fa-solid fa-plus fa-2xl" style="color: #293454;"></i>
+            </button>
+          </div>
         </div>
+
       <% end %>
 
       <div class="border border-gray-300 p-3 mt-6">
