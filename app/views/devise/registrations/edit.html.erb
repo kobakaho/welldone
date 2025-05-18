@@ -1,5 +1,5 @@
-<div class="container mx-auto flex flex-wrap justify-center items-center">
-  <div class="card bg-base-100 shadow-md w-96 relative p-6 my-5">
+<div class="container flex flex-wrap justify-center items-center">
+  <div class="card bg-base-100 shadow-md w-full max-w-sm mx-auto relative p-6 my-5">
 
     <%= link_to :back do %>
       <button class="btn btn-ghost btn-circle fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #293454;" ></button>
@@ -25,12 +25,13 @@
         <div class="text-sm text-gray-600">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-      <div>
+      <div class="max-w-sm mx-auto">
       <label class="label">
         <%= f.label :profile_image, "プロフィール画像", class: "label-text font-bold" %>
       </label>
-      <%= f.file_field :profile_image, class: "file-input file-input-bordered", accept: "image/*" %>
+      <%= f.file_field :profile_image, class: "file-input file-input-bordered w-full", accept: "image/*" %>
       <%= f.hidden_field :profile_image_cache %>
+      </div>
     
       <% if current_user.profile_image? %>
         <div class="mt-2 flex justify-center">

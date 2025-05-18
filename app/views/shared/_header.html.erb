@@ -31,11 +31,11 @@
             <summary><%= link_to I18n.t(".header.closet"), cloths_path, data: { action: "click->loading#show" }, class: "btn btn-ghost" %></summary>
             <ul class="p-2">
               <li><%= link_to "わたしのお気に入り", favorites_cloths_path, data: { action: "click->loading#show" }, class: "btn btn btn-ghost" %></li>
-              <li><%= link_to "みんなの断捨離タイムライン", discarded_cloths_path, data: { action: "click->loading#show" }, class: "btn btn btn-ghost" %></li>
+              <li><%= link_to I18n.t(".header.checklist"), checklists_path, data: { action: "click->loading#show" }, class: "btn btn-ghost" %></li>
             </ul>
           </details>
           </li>
-          <li><%= link_to I18n.t(".header.checklist"), checklists_path, data: { action: "click->loading#show" }, class: "btn btn-ghost" %></li>
+          <li><%= link_to "みんなの断捨離タイムライン", discarded_cloths_path, data: { action: "click->loading#show" }, class: "btn btn btn-ghost" %></li>
           <% if current_user %>
             <div class="dropdown dropdown-end">
               <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -79,11 +79,11 @@
         <summary><%= link_to I18n.t(".header.closet"), cloths_path, data: { action: "click->loading#show" }, class: "btn btn-ghost" %></summary>
         <ul class="p-2">
           <li><%= link_to "わたしのお気に入り", favorites_cloths_path, data: { action: "click->loading#show" }, class: "btn btn btn-ghost" %></li>
-          <li><%= link_to "みんなの断捨離タイムライン", discarded_cloths_path, data: { action: "click->loading#show" }, class: "btn btn btn-ghost" %></li>
+          <li><%= link_to I18n.t(".header.checklist"), checklists_path, data: { action: "click->loading#show" }, class: "btn btn-ghost" %></li>
         </ul>
       </details>
+        <li><%= link_to "みんなの断捨離タイムライン", discarded_cloths_path, data: { action: "click->loading#show" }, class: "btn btn btn-ghost" %></li>
       </li>
-      <li><%= link_to I18n.t(".header.checklist"), checklists_path, data: { action: "click->loading#show" }, class: "btn btn-ghost" %></li>
     </ul>
   </div>
 </header>

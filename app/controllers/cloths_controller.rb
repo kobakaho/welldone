@@ -66,7 +66,7 @@ class ClothsController < ApplicationController
       @cloth.discard!
       render json: { redirect_url: cloths_path }, status: :ok
     else
-      render json: { error: "断捨離済みです" }, status: :unprocessable_entity
+      render :confirm_discard, status: :unprocessable_entity
     end
   end
 

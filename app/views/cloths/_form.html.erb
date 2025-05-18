@@ -1,5 +1,5 @@
 <!--  form_with 入力フォームに必要なHTMLを作成 -->
-<%= form_with model: @cloth do |form| %>
+<%= form_with model: @cloth, html: { class: "w-full space-y-4" } do |form| %>
   <%= render "shared/error_messages", object: form.object %>
 
   <div>
@@ -35,7 +35,7 @@
     <label class="label">
       <%= form.label :seasons, "シーズン【必須】", class: "label-text font-bold" %>
     </label>
-    <div class="flex inline-flex space-x-5">
+    <div class="flex inline-flex flex-wrap space-x-5">
       <%= form.collection_check_boxes :season_ids, Season.order(:id), :id, :name do |b| %>
         <label class="flex items-center gap-2 cursor-pointer">
           <%= b.check_box class: "checkbox checkbox-xs checkbox-info" %>
