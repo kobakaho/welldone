@@ -48,10 +48,10 @@
         <div class="border border-gray-300 p-4">
           <h3 class="font-bold flex justify-center mb-3">オススメのアイテム</h3>
           <div class="divider"></div>
-          <div class="text-nowrap grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3">
             <% if @default_items.present? %>
               <% @default_items.each do |item| %>
-                <label class="flex items-center space-x-2 gap-2">
+                <label class="flex text-wrap items-center space-x-2 gap-2">
                   <%= hidden_field_tag "checklist[default_item_ids][]", nil %>
                   <%= check_box_tag "checklist[default_item_ids][]", item.id, @checklist.default_items.exists?(id: item.id), class: "checkbox checkbox-sm checkbox-info" %>
                   <%= item.name %>
