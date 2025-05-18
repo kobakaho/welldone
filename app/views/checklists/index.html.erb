@@ -8,7 +8,7 @@
     <% if @checklists.present? %>
       <% @checklists.each do |checklist| %>
 
-        <div class="card w-full max-w-sm bg-base-100 shadow-sm hover:shadow-lg m-2 transition cursor-pointer">
+        <div class="card w-full max-w-sm mx-auto bg-base-100 shadow-sm hover:shadow-lg m-2 transition cursor-pointer">
           <div class="card-body">
             <%= link_to checklist_path(checklist) do %>
 
