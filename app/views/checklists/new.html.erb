@@ -1,7 +1,7 @@
 <turbo-frame id="modal">
   <dialog data-controller="modal" data-modal-target="dialog" 
     data-action="turbo:submit-end->modal#closeOnSubmit click->modal#backdropClick keydown.esc->modal#close" id="modal_dialog" class="modal" open>
-    <div class="modal-box">
+    <div class="modal-box w-auto h-auto overflow-y-auto">
 
     <%= render "form", checklist: @checklist %>
     
