@@ -18,11 +18,12 @@
 
   <div class="form-control">
     <label class="label">
-      <span class="label-text font-bold">カテゴリーを選択【必須】</span>
+      <%= form.label :category_id, "カテゴリーを選択【必須】", class: "label-text font-bold" %>
     </label>
 
     <%= select_tag :root_id,
-          options_for_select(Category.where(ancestry: nil).pluck(:name, :id)),
+          options_for_select(Category.where(ancestry: nil).pluck(:name, :id),
+          @cloth.category_ids.present? ? Category.find(@cloth.category_ids.last).root_id : nil ), #root_idあれば表示するなければnil
           include_blank: "選択してください",
           class: "select select-bordered w-full",
           data: { controller: "category", action: "change->category#fetchParents" } %>
