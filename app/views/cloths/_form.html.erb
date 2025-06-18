@@ -28,8 +28,9 @@
           class: "select select-bordered w-full",
           data: { controller: "category", action: "change->category#fetchParents" } %>
   </div>
-  <div id="get_parents" class="form-control hidden"></div>
-
+  <div id="get_parents" class="form-control <%= @parents.present? ? '' : 'hidden'%>">
+    <%= render "categories/get_parents", locals: { parents: @parents, selected: @selected_parent_id } if @parents.present? %>
+  </div>
   <div id="get_children" class="form-control hidden"></div>
 
   <div>        
