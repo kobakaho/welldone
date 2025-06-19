@@ -42,11 +42,11 @@ class ClothsController < ApplicationController
     if selected_category.present?
       parent_category = selected_category.parent
       if parent_category.present?
-        @parents = parent_category.siblings.presence || [parent_category]
+        @parents = parent_category.siblings.presence || [ parent_category ]
         @selected_parent_id = parent_category.id
 
         @children = parent_category.children
-        @selected_children_id = selected_category.id        
+        @selected_children_id = selected_category.id
       else
         @parents = selected_category.children
         @selected_parent_id = nil
