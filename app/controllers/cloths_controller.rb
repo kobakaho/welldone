@@ -37,7 +37,7 @@ class ClothsController < ApplicationController
   end
 
   def edit
-    selected_category = Category.find(@cloth.category_ids.last)
+    selected_category = Category.find_by(@cloth.category_ids.last)
 
     if selected_category.present?
       parent_category = selected_category.parent
