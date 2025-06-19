@@ -8,6 +8,9 @@ export default class extends Controller {
   fetchParents(event) {
     const rootId = event.target.value;
 
+    document.getElementById("get_parents").innerHTML = `<option value="" style="display: none;"></option>`;    
+    document.getElementById("get_children").innerHTML = `<option value="" style="display: none;"></option>`;    
+
     if (rootId) {
       fetch(`/categories/get_parents?root_id=${rootId}`, {
         headers: {
