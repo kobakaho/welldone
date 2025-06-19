@@ -18,18 +18,23 @@
 
   <div class="form-control">
     <label class="label">
-      <span class="label-text font-bold">カテゴリーを選択【必須】</span>
+      <%= form.label :category_id, "カテゴリーを選択【必須】", class: "label-text font-bold" %>
     </label>
 
     <%= select_tag :root_id,
-          options_for_select(Category.where(ancestry: nil).pluck(:name, :id)),
+          options_for_select(Category.where(ancestry: nil).pluck(:name, :id),
+          @cloth.category_ids.present? ? Category.find(@cloth.category_ids.last).root_id : nil ), #root_idあれば表示するなければnil
           include_blank: "選択してください",
           class: "select select-bordered w-full",
           data: { controller: "category", action: "change->category#fetchParents" } %>
   </div>
-  <div id="get_parents" class="form-control hidden"></div>
+  <div id="get_parents" class="form-control <%= @parents.present? ? '' : 'hidden'%>">
+    <%= render "categories/get_parents", locals: { parents: @parents, selected: @selected_parent_id } if @parents.present? %>
+  </div>
 
-  <div id="get_children" class="form-control hidden"></div>
+  <div id="get_children" class="form-control <%= @children.present? ? '' : 'hidden'%>">
+    <%= render "categories/get_children", locals: { children: @children, selected: @selected_children_id } if @children.present? %>
+  </div>
 
   <div>        
     <label class="label">

@@ -1,6 +1,6 @@
 class ClothsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ discarded show_discarded ]
-  before_action :set_cloth, only: %i[ show update destroy confirm_discard discard]
+  before_action :set_cloth, only: %i[ show edit update destroy confirm_discard discard]
   after_action :check_season, only: %i[ create ]
   helper_method :prepare_meta_tags
 
@@ -37,7 +37,28 @@ class ClothsController < ApplicationController
   end
 
   def edit
-    @cloth = current_user.cloths.find(params[:id])
+    selected_category = Category.find(@cloth.category_ids.last)
+
+    if selected_category.present?
+      parent_category = selected_category.parent
+      if parent_category.present?
+        @parents = parent_category.siblings.presence || [ parent_category ]
+        @selected_parent_id = parent_category.id
+
+        @children = parent_category.children
+        @selected_children_id = selected_category.id
+      else
+        @parents = selected_category.children
+        @selected_parent_id = nil
+        @parents = [] # 親がいない場合は空の配列を設定
+        @selected_parent_id = nil
+      end
+    else
+      @parents = [] # selected_categoryがない場合も空の配列を設定
+      @children = []
+      @selected_parent_id = nil
+      @selected_children_id = nil
+    end
   end
 
   def update
