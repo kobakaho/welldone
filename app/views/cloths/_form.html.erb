@@ -31,7 +31,10 @@
   <div id="get_parents" class="form-control <%= @parents.present? ? '' : 'hidden'%>">
     <%= render "categories/get_parents", locals: { parents: @parents, selected: @selected_parent_id } if @parents.present? %>
   </div>
-  <div id="get_children" class="form-control hidden"></div>
+
+  <div id="get_children" class="form-control <%= @children.present? ? '' : 'hidden'%>">
+    <%= render "categories/get_children", locals: { children: @children, selected: @selected_children_id } if @children.present? %>
+  </div>
 
   <div>        
     <label class="label">

@@ -44,13 +44,20 @@ class ClothsController < ApplicationController
       if parent_category.present?
         @parents = parent_category.siblings.presence || [parent_category]
         @selected_parent_id = parent_category.id
+
+        @children = parent_category.children
+        @selected_children_id = selected_category.id        
       else
+        @parents = selected_category.children
+        @selected_parent_id = nil
         @parents = [] # 親がいない場合は空の配列を設定
         @selected_parent_id = nil
       end
     else
       @parents = [] # selected_categoryがない場合も空の配列を設定
+      @children = []
       @selected_parent_id = nil
+      @selected_children_id = nil
     end
   end
 
